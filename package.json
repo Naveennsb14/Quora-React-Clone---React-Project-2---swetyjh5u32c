@@ -10,9 +10,20 @@
   ],
   "main": "src/index.js",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.0",
+    "@mui/material": "^5.15.0",
+    "html-react-parser": "^5.0.7",
+    "javascript-time-ago": "^2.5.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "5.0.0"
+    "react-icons": "^4.12.0",
+    "react-quill": "^2.0.0",
+    "react-responsive-modal": "^6.4.2",
+    "react-router-dom": "^6.21.0",
+    "react-scripts": "5.0.0",
+    "react-time-ago": "^7.2.1"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",
