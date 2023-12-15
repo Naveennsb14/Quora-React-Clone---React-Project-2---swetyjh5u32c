@@ -1,0 +1,65 @@
+
+.qHeader{
+    background-color: #FFFFFF;
+    max-width: 100%;
+    
+}
+.qHeader__content{
+    /* background-color: red; */
+    max-width: 80%;
+    height: 60px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.quora__logo{
+    width: 120px;
+    height: 30px;
+    margin-right: -60px;
+
+}
+
+.qHeader__icons{
+    display: flex;
+    font-size: 30px;
+    color: #8F9092;
+    font-weight: bolder;
+    gap: 36px;
+}
+
+.qHeader__input{
+    display: flex;
+    margin-left: -80px;
+    /* position: absolute */
+
+}
+.qHeader__searchlogo{
+    font-size: x-large;
+    position: relative;
+    left: 28px;
+    top: 8px;
+    font-weight: lighter;
+    color: #8F9092;
+}
+
+.qHeader__inputbox {
+    width: 320px;
+    color: #8F9092;
+    border: 1px solid #8F9092;
+    height: 36px;
+    padding: auto;
+    padding-left: 28px;
+
+    &:focus {
+        border: 1px solid #2E69FF;
+        outline: none;
+    }
+}
+
+
+.qHeader__Rem{
+    display: flex;
+    align-items: center;
+}
