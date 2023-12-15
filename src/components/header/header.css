@@ -15,9 +15,10 @@
 }
 
 .quora__logo{
-    width: 120px;
-    height: 30px;
+    width: 100px;
+    height: 28px;
     margin-right: -60px;
+    cursor: pointer;
 
 }
 
@@ -27,6 +28,11 @@
     color: #8F9092;
     font-weight: bolder;
     gap: 36px;
+    cursor: pointer;
+    
+}
+.qHeader__icon:hover{
+color: #B92B27;
 }
 
 .qHeader__input{
@@ -51,6 +57,7 @@
     height: 36px;
     padding: auto;
     padding-left: 28px;
+    border-radius: 4px;
 
     &:focus {
         border: 1px solid #2E69FF;
@@ -62,4 +69,42 @@
 .qHeader__Rem{
     display: flex;
     align-items: center;
+}
+.qHeader__userlogo{
+    font-size: 32px;
+    margin: auto;
+    color: #8F9092;
+    cursor: pointer;
+}
+
+.qHeader__addQcreateQ{
+    padding: 16px;
+    border: none;
+}
+
+.addQ{
+    padding: 8px 12px;
+    border: none;
+    margin-right: 0.5px;
+    background-color: #B92B27;
+    border-radius: 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+        background-color: #A82723;
+    }
+}
+
+.createQ{
+    padding: 8px 12px;
+    border: none;
+    background-color: #B92B27;
+    border-radius: 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+        background-color: #A82723;
+    }
 }
