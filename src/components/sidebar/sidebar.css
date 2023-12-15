@@ -1,0 +1,36 @@
+.quora__sidebar {
+  flex: 1;
+  background-color: #f1f2f2;
+  color: #636466;
+  cursor: pointer;
+}
+.quora__sidebarlist {
+  list-style: none;
+  & :hover {
+    background-color: #e4e6e6;
+    border-radius: 4px;
+  }
+}
+.sidebarlist {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sidebar__spacelogo {
+  font-size: large;
+  padding: 6px;
+}
+.sidebar_listlogo {
+  width: 20px;
+  height: 20px;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.sidebar_listnavigation {
+  font-size: 12px;
+  padding: 8px 2px;
+  font-weight: lighter;
+}

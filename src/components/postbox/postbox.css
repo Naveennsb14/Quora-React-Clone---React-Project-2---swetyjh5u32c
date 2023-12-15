@@ -1,0 +1,72 @@
+.quora_postbox{
+    padding: 4px;
+    background-color: #FFFFFF;
+
+}
+
+.quora__AskPost{
+    margin-bottom: 20px;
+
+}
+
+.quora_feedInputSection{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.quora_feedUserlogo{
+    font-size: 28px;
+    color: #8F9092;
+    text-align: center;
+}
+
+.quora_feedUserInput{
+    width: 520px;
+    padding: 8px;
+    color: #939598;
+    background-color: #F1F2F2;
+    border: 1px solid #DEE0E1;
+    border-radius: 20px;
+    &:focus{
+        outline: none;
+        cursor: pointer;
+    }
+
+}
+
+.quora_Answerbox{
+    max-width: 70%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    color: #636466;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: small;
+}
+.quora_Ask{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.quora_Answer{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.quora_postFeed{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.quora_postlogo{
+    font-size: large;
+}
+
+.vertical-line {
+    height: 16px; /* Adjust the height as needed */
+    width: 1px; /* Adjust the width of the line */
+    background-color: #DEE0E1; /* Adjust the color of the line */
+    margin: 0 auto; /* Center the line horizontally */
+  }
