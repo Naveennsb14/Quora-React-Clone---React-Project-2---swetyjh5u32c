@@ -8,6 +8,12 @@ const Feed = () => {
     <div className="feed-bar">
         <Postbox/>
         <Timeline/>
+        <Timeline/>
+        <Timeline/>
+        <Timeline/>
+        <Timeline/>
+        <Timeline/>
+        <Timeline/>
     </div>
   )
 }

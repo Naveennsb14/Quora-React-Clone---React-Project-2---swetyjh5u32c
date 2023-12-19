@@ -1,8 +1,11 @@
 .quora__sidebar {
+  margin-top: 54px;
   flex: 1;
   background-color: #f1f2f2;
   color: #636466;
   cursor: pointer;
+  /* position: fixed; */
+
 }
 .quora__sidebarlist {
   list-style: none;
