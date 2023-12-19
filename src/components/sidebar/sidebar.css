@@ -1,14 +1,16 @@
 .quora__sidebar {
   margin-top: 54px;
-  flex: 1;
+  flex: 1 1;
   background-color: #f1f2f2;
   color: #636466;
   cursor: pointer;
-  /* position: fixed; */
-
+  margin-right: 10rem;
+  z-index: 0;
+  
 }
 .quora__sidebarlist {
   list-style: none;
+  position: fixed;
   & :hover {
     background-color: #e4e6e6;
     border-radius: 4px;

@@ -1,0 +1,126 @@
+.quora_loginPage {
+    background-image: url("https://qph.cf2.quoracdn.net/main-qimg-b5faebde65208b4e09af0a85b3893ddd-lq");
+    background-size: cover;
+    background-repeat: no-repeat; /* Image will not repeat
+    /* Set height to 100vh for full viewport height */
+    height: 100vh;
+    /* Set width to 100% for full viewport width */
+    width: 100%;
+    /* Additional styling properties if needed */
+  }
+
+  .quora_loginSection{
+    max-width: 700px;
+    margin: auto;
+    background-color: #FFFFFF;
+    height: 100vh;
+  }
+
+  .quora_loginInputboxSection{
+    margin-top: 40px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .quora_loginwithemail_orfacebook{
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+  }
+
+  .quora_privacyStatement{
+    color: #9C9EA1;
+    font-size: small;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+
+  .quora_privacyText{
+    color: #3C77B7;
+  }
+
+  .loginWith_gmail{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #DEE0E1;
+    padding: 8px;
+    color: #282829;
+    margin-bottom: 8px;
+    &:hover{
+        background-color: #F5F5F5;
+    }
+  }
+
+  .loginWith_faceBook{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #DEE0E1;
+    padding: 8px;
+    color: #282829;
+    margin-bottom: 20px;
+    &:hover{
+        background-color: #F5F5F5;
+    }
+  }
+
+  .Quora_signupWithemail{
+    text-align: center;
+    color: #636466;
+    font-size: small;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 20px;
+    &:hover{
+        background-color: #F5F5F5;
+    }
+  }
+
+  .input_loginSection{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .quora_loginHeader{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quora_loginLogo{
+    padding: auto;
+    margin: auto;
+    width: 200px;
+    margin-top: 4px;
+  }
+
+  .quora_loginHeaderpara{
+    font-weight: bold;
+    color: #636466;
+    font-size: 16px;
+  }
+
+  .gmail_logo{
+    width: 24px;
+  }
+  .facebook_logo{
+    width: 24px;
+  }
+
+  .login_vertical-line {
+    border-left: 1px solid #DEE0E1; /* Adjust the color and thickness as needed */
+    height: 420px; /* Adjust the height as needed */
+    margin: 0 16px;
+  }
+
+  .login_horizontal-line{
+    margin-top: 8px;
+    width: 19rem;
+    color: #DEE0E1;
+  }
+  
