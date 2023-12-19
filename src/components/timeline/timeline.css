@@ -1,0 +1,37 @@
+.quora_timeLine{
+    margin-top: 10px;
+    background-color: #FFFFFF;
+    height: auto;
+}
+.quoraprofileSection_details{
+    padding: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.quoraprofile_Logo{
+    color: #8F9092;
+    font-size: 28px;
+}
+
+.quoraProfile_Info{
+    display: flex;
+    flex-direction: column;
+}
+
+.quoraProfile_Nameinfo{
+    display: flex;
+    gap: 16px;
+}
+
+.quoraProfile_followLink{
+    color: #2E69FF;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.quoraProfile_paragraph{
+    color: #636466;
+    margin-top: 4px;
+    font-size: 12px;
+}
