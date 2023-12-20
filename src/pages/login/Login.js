@@ -17,11 +17,8 @@ const Login = () => {
         <div className="quora_loginInputboxSection">
           <div className="quora_loginwithemail_orfacebook">
             <p className="quora_privacyStatement">
-              By continuing you indicate that you agree to
-              <br /> Quora’s{" "}
-              <span className="quora_privacyText">
-                Terms of Service
-              </span> and{" "}
+              By continuing you indicate that you agree to Quora’s{" "}
+              <span className="quora_privacyText">Terms of Service</span> and{" "}
               <span className="quora_privacyText">Privacy Policy.</span>
             </p>
             <div className="loginWith_gmail">
@@ -65,10 +62,14 @@ const Login = () => {
                 placeholder="Your password"
               />
               <div className="login_lowerSection">
-                <span className="forgot_password">Forgot Password</span>
-                <button type="submit" className="login_button" value="login">
-                  Login
-                </button>
+                <div className="quora_forgotPassword">
+                  <span className="forgot_password">Forgot Password?</span>
+                </div>
+                <div className="quora_Loginbtn">
+                  <button type="submit" className="login_button" value="login">
+                    Login
+                  </button>
+                </div>
               </div>
             </form>
           </div>

@@ -1,5 +1,5 @@
 .quora_loginPage {
-    background-image: url("https://qph.cf2.quoracdn.net/main-qimg-b5faebde65208b4e09af0a85b3893ddd-lq");
+    background-image: url("https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png");
     background-size: cover;
     background-repeat: no-repeat; /* Image will not repeat
     /* Set height to 100vh for full viewport height */
@@ -12,8 +12,13 @@
   .quora_loginSection{
     max-width: 700px;
     margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px; 
     background-color: #FFFFFF;
-    height: 100vh;
+    height: auto;
   }
 
   .quora_loginInputboxSection{
@@ -31,7 +36,7 @@
   .quora_privacyStatement{
     color: #9C9EA1;
     font-size: small;
-    letter-spacing: 0.5px;
+    /* letter-spacing: 0.5px; */
     margin-bottom: 16px;
   }
 
@@ -48,6 +53,7 @@
     padding: 8px;
     color: #282829;
     margin-bottom: 8px;
+    cursor: pointer;
     &:hover{
         background-color: #F5F5F5;
     }
@@ -62,6 +68,7 @@
     padding: 8px;
     color: #282829;
     margin-bottom: 20px;
+    cursor: pointer;
     &:hover{
         background-color: #F5F5F5;
     }
@@ -74,6 +81,7 @@
     font-weight: bold;
     padding: 8px;
     border-radius: 20px;
+    cursor: pointer;
     &:hover{
         background-color: #F5F5F5;
     }
@@ -123,4 +131,66 @@
     width: 19rem;
     color: #DEE0E1;
   }
+
+  .quora_loginText_container{
+    margin-bottom: 20px;
+    color: #424243;
+    font-weight: bold;
+    font-size: 14px;
+  }
   
+  .login_form{
+    display: flex;
+    flex-direction: column;
+    color: #282829;
+    font-size: 13px;
+    font-weight: bolder;
+  }
+
+  .loginInput_Email{
+    margin-top: 8px;
+    padding: 12px 8px;
+    border: 1px solid #DEE0E1;
+    &:focus{
+      outline: none;
+      border: 1px solid #2E69FF;
+    }
+  }
+
+  .loginInput_Password{
+    margin-top: 8px;
+    margin-bottom: 36px;
+    padding: 12px 8px;
+    border: 1px solid #DEE0E1;
+    &:focus{
+      outline: none;
+      border: 1px solid #2E69FF;
+    }
+  }
+
+  .login_lowerSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .forgot_password{
+    color: #939598;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  .login_button{
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    color: #F4F7FF;
+    font-weight: bold;
+    background-color: #96B4FF;
+    cursor: pointer;
+    &:hover{
+      background-color: #1A73E8;
+    }
+  }
