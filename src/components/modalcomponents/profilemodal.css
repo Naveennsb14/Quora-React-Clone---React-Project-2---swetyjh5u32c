@@ -1,0 +1,9 @@
+.quora__profileModal{
+width: 240px;
+height: 540px;
+background-color: #FFFFFF;
+right: 140px;
+position: absolute;
+top: 66px;
+position: fixed;
+}

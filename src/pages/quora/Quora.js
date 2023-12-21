@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./quora.css"
 import { Header } from "../../components/header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -9,7 +9,7 @@ export const Quora = () => {
   return (
     <div className="quora">
       <Header />
-      <div className="quora__contents">
+      <div className="quora__contents" >
         <div className="quora__content">
           <Sidebar/>
           <Feed/>

@@ -8,15 +8,16 @@ import { IoIosSearch } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
 import { Createpost } from "../modalcomponents/Createpost";
 import { useContext, useState } from "react";
-import { modalforAddQuestion, modalforCreatePost } from "../App";
+import { modalforAddQuestion, modalforCreatePost, modalforuserProfile } from "../App";
 import Addquestion from "../modalcomponents/Addquestion";
-import Createspace from "../modalcomponents/Createspace";
 
 export const Header = () => {
   const { createPortalforaddpost, setCreateportalforaddpost } =
     useContext(modalforCreatePost);
   const { createPortalforaddquestion, setCreateportalforaddquestion } =
     useContext(modalforAddQuestion);
+    const { createPortalforuserProfile, setCreatePortaluserProfile } =
+    useContext(modalforuserProfile);
   return (
     <div className="qHeader">
       <div className="qHeader__content">
@@ -52,7 +53,7 @@ export const Header = () => {
           />
         </div>
         <div className="qHeader__Rem">
-          <RxAvatar className="qHeader__userlogo" />
+          <RxAvatar className="qHeader__userlogo" onClick={()=>setCreatePortaluserProfile(!createPortalforuserProfile)}/>
           <div className="qHeader__addQcreateQ">
             <button
               className="addQ"
