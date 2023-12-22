@@ -12,7 +12,6 @@
 }
 
 .quora_AddchildquestionModal{
-    display: flex;
         position: fixed;
         z-index: 11;
         justify-content: space-between;
@@ -20,4 +19,34 @@
         pointer-events: auto;
         width: 760px;
         height: 480px;
+        border: 1px solid #DEE0E1;
+        border-radius: 5px;
+}
+
+
+.quora_AddquestionModalCrossLogo{
+    font-size: 20px;
+    color: #656668;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.quoraAddquestionModalHeaderSection{
+    margin: auto;
+    font-weight: bold;
+    color: #282829;
+    font-size: 14px;
+    position: absolute;
+    top: 48px;
+    left: 45%;
+    
+}
+
+.quoraquestionTipsDetails{
+    width: 80%;
+    background-color: #EBF0FF;
+    left: 40px;
+    position: absolute;
+    left: 52px;
+    top: 72px;
 }

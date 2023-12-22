@@ -2,8 +2,113 @@
 width: 240px;
 height: 540px;
 background-color: #FFFFFF;
-right: 140px;
+right: 190px;
 position: absolute;
 top: 66px;
 position: fixed;
+border: 1px solid #DEE0E1;
+border-radius: 5px;
+}
+
+.quora_profileModalTopSection{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+}
+.quora_profileModalTopSectionLogo{
+    color: #8F9092;
+    font-size: 32px;
+    padding: 16px;
+}
+
+.quora_profileModalTopSectionuserNameandlogo{
+    display: flex;
+    gap: 8px;
+}
+
+.quora_profileModalTopSectionuserName{
+    color: #282829;
+    font-weight: bolder;
+    font-size: 18px;
+    padding: 2px;
+    margin-left: 14px;
+    margin-bottom: 16px;
+}
+
+.quora_profileModalTopSectionuserlogo{
+    color: #898989;
+    margin-top: 2px;
+    font-size: 20px;
+}
+
+.quora_profileModalTopSectionhorizontal-line{
+    width: 100%; /* Adjust the width as needed */
+    height: 1px; /* Adjust the height as needed */
+    background-color: #EBECED; /* Adjust the color as needed */
+}
+
+.quora_profileModalNavigationSection{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    
+}
+
+.quora_ProfileModaleNavigation{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover{
+        background-color: #F1F2F2;
+    }
+}
+
+.quora_profileModalIcon{
+    padding: 10px;
+    color: #282829;
+    font-size: 20px;
+}
+
+.quora_profileModalNavText{
+    font-size: 14px;
+    
+}
+
+.quora_profileModalBottomSection{
+    display: flex;
+    flex-direction: column;
+}
+
+.quora_profileModalToggleMode{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+    font-size: 13px;
+    margin-left: 2px;
+    cursor: pointer;
+    &:hover{
+        background-color: #F1F2F2;
+    }
+}
+
+.quora_profileModalToggleModebutton{
+    font-size: 10px;
+    padding: 4px;
+    margin-right: 4px;
+    background-color: #E6E7E8;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.quora_profileModalBottomSectiontext{
+    font-size: 13px;
+    padding: 6px;
+    margin-left: 2px;
+    cursor: pointer;
+    &:hover{
+        background-color: #F1F2F2;
+    }
+
 }
