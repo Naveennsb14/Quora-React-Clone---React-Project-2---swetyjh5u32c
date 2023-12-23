@@ -1,24 +1,135 @@
+.quora_childPostmodal {
+  position: fixed;
+  z-index: 11;
+  background-color: #fff;
+  pointer-events: auto;
+  width: 760px;
+  height: 480px;
+  border: 1px solid #dee0e1;
+  border-radius: 5px;
+}
+
 .quora_createPostmodal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 12;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 12;
 }
 
-.quora_childPostmodal{
-    display: flex;
-        position: fixed;
-        z-index: 11;
-        justify-content: space-between;
-        background-color: #fff;
-        pointer-events: auto;
-        width: 760px;
-        height: 480px;
-
+.quora_childPostmodal {
+  display: flex;
+  position: fixed;
+  z-index: 11;
+  justify-content: space-between;
+  background-color: #fff;
+  pointer-events: auto;
+  width: 760px;
+  height: 480px;
 }
+
+.quora__createPostInputSectionhorizontal-line {
+  width: 100%; /* Adjust the width as needed */
+  height: 1px; /* Adjust the height as needed */
+  background-color: #ececec;
+  position: absolute;
+  top: 72px;
+}
+
+.quora__createPostprofileSection {
+  display: flex;
+  position: absolute;
+  top: 80px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.quora__createPostprofileSectionUserLogo {
+  font-size: 40px;
+  color: #8f9092;
+}
+
+.quora__createPostprofileSectionuserDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.quora__createPostprofileuserName {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.createPostprofileuserCredentialsdetails {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #6e6f71;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+.quora__credentials {
+  font-size: 13px;
+  color: #6e6f71;
+}
+
+.quora__createPostInputhorizontal__line {
+  width: 100%; /* Adjust the width as needed */
+  height: 1px; /* Adjust the height as needed */
+  background-color: #ececec;
+  position: absolute;
+  bottom: 60px;
+}
+
+.quora__createPostInputDetails {
+  position: absolute;
+  top: 140px;
+  left: 10px;
+  width: 94%;
+  padding: 12px;
+  font-size: medium;
+  border: none;
+  outline: none;
+  color: #747475;
+}
+
+.quora__createPostselectImage {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 12px;
+  left: 4px;
+}
+
+.quora__selectImageLogo {
+  font-size: 24px;
+  padding: 8px;
+  color: #636466;
+  cursor: pointer;
+}
+
+.quora__createPostbutton {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  background-color: #96b4ff;
+  cursor: pointer;
+  position: absolute;
+  bottom: 14px;
+  right: 8px;
+
+  &:hover {
+    background-color: #2e69ff;
+  }
+}
+
+/* .quora__otherInputs{
+    display: none;
+} */

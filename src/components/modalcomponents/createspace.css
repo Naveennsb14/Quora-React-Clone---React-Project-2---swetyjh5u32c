@@ -20,4 +20,7 @@
         pointer-events: auto;
         width: 760px;
         height: 480px;
+        border: 1px solid #dee0e1;
+        border-radius: 5px;
 }
+        

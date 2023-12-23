@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { createPortal } from "react-dom";
 import { modalforCreateSpace } from "../App";
 import "./createspace.css";
+import { RxCross1 } from "react-icons/rx";
 
 const Createspace = () => {
   const { createPortalforcreatespace, setCreateportalforcreatespace } =
@@ -17,7 +18,12 @@ const Createspace = () => {
     createPortalforcreatespace && (
       <div className="quora__modalforCreatespace" onClick={handleOverlayClick}>
         <div className="quora__childmodalforcreatespace">
-          modal for create space
+        <div className="quora_AddchildQuestion">
+            <RxCross1
+              className="quora_AddquestionModalCrossLogo"
+              onClick={handleOverlayClick}
+            />
+          </div>
         </div>
       </div>
     ),
