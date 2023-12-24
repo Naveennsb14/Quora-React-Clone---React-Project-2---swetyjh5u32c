@@ -50,7 +50,7 @@ export const Createpost = () => {
             <label for="img" className="quora__selectImage"><IoImagesOutline className="quora__selectImageLogo"/></label>
             <input type="file" id="img" name="img" accept="image/*" className="quora__otherInputs"></input>
             </div>
-            <button className="quora__createPostbutton">Post</button>
+            <button type="submit" className="quora__createPostbutton">Post</button>
           </form>
         </div>
       </div>

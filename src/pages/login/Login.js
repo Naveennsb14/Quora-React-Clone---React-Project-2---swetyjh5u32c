@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { Signupmodal } from "../../components/modalcomponents/Signupmodal";
 import "./login.css";
+import { modalforSignup } from "../../components/App";
 
 const Login = () => {
+  const { createSignupModal, setCreatesignupModal } =
+    useContext(modalforSignup);
   return (
     <div className="quora_loginPage">
       <div className="quora_loginSection">
@@ -37,7 +42,7 @@ const Login = () => {
               />
               <span className="facebook_loginText">Continue with Facebook</span>
             </div>
-            <span className="Quora_signupWithemail">Sign up With email</span>
+            <span className="Quora_signupWithemail" onClick={()=>setCreatesignupModal(true)}>Sign up With email</span>
           </div>
           <div class="login_vertical-line"></div>
           <div className="input_loginSection">
@@ -75,6 +80,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Signupmodal/>
     </div>
   );
 };

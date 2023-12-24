@@ -9,6 +9,7 @@ export const modalforCreatePost = createContext();
 export const modalforAddQuestion = createContext();
 export const modalforCreateSpace = createContext();
 export const modalforuserProfile = createContext();
+export const modalforSignup = createContext();
 
 function App() {
   const [createPortalforaddpost, setCreateportalforaddpost] = useState(false);
@@ -18,38 +19,46 @@ function App() {
     useState(false);
   const [createPortalforuserProfile, setCreatePortaluserProfile] =
     useState(false);
+  const [createSignupModal, setCreatesignupModal] = useState(false);
 
   return (
-    <modalforuserProfile.Provider
-      value={{ createPortalforuserProfile, setCreatePortaluserProfile }}
+    <modalforSignup.Provider
+      value={{ createSignupModal, setCreatesignupModal }}
     >
-      <modalforCreateSpace.Provider
-        value={{ createPortalforcreatespace, setCreateportalforcreatespace }}
+      <modalforuserProfile.Provider
+        value={{ createPortalforuserProfile, setCreatePortaluserProfile }}
       >
-        <modalforAddQuestion.Provider
-          value={{ createPortalforaddquestion, setCreateportalforaddquestion }}
+        <modalforCreateSpace.Provider
+          value={{ createPortalforcreatespace, setCreateportalforcreatespace }}
         >
-          <modalforCreatePost.Provider
-            value={{ createPortalforaddpost, setCreateportalforaddpost }}
+          <modalforAddQuestion.Provider
+            value={{
+              createPortalforaddquestion,
+              setCreateportalforaddquestion,
+            }}
           >
-            <BrowserRouter>
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <div className="App">
-                      <Quora />
-                    </div>
-                  }
-                />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/login" element={<Login />} />
-              </Routes>
-            </BrowserRouter>
-          </modalforCreatePost.Provider>
-        </modalforAddQuestion.Provider>
-      </modalforCreateSpace.Provider>
-    </modalforuserProfile.Provider>
+            <modalforCreatePost.Provider
+              value={{ createPortalforaddpost, setCreateportalforaddpost }}
+            >
+              <BrowserRouter>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <div className="App">
+                        <Quora />
+                      </div>
+                    }
+                  />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/login" element={<Login />} />
+                </Routes>
+              </BrowserRouter>
+            </modalforCreatePost.Provider>
+          </modalforAddQuestion.Provider>
+        </modalforCreateSpace.Provider>
+      </modalforuserProfile.Provider>
+    </modalforSignup.Provider>
   );
 }
 
