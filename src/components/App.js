@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
 import Login from "../pages/login/Login";
 import { Quora } from "../pages/quora/Quora";
-import Signup from "../pages/signup/Signup";
 import "../styles/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Authprovider } from "../pages/authprovider/Authprovider";
 
 export const modalforCreatePost = createContext();
 export const modalforAddQuestion = createContext();
@@ -22,43 +22,47 @@ function App() {
   const [createSignupModal, setCreatesignupModal] = useState(false);
 
   return (
-    <modalforSignup.Provider
-      value={{ createSignupModal, setCreatesignupModal }}
-    >
-      <modalforuserProfile.Provider
-        value={{ createPortalforuserProfile, setCreatePortaluserProfile }}
+    <Authprovider> 
+      <modalforSignup.Provider
+        value={{ createSignupModal, setCreatesignupModal }} // context api for signup Modal
       >
-        <modalforCreateSpace.Provider
-          value={{ createPortalforcreatespace, setCreateportalforcreatespace }}
+        <modalforuserProfile.Provider
+          value={{ createPortalforuserProfile, setCreatePortaluserProfile }} // context api for user Modal
         >
-          <modalforAddQuestion.Provider
+          <modalforCreateSpace.Provider
             value={{
-              createPortalforaddquestion,
-              setCreateportalforaddquestion,
-            }}
+              createPortalforcreatespace,
+              setCreateportalforcreatespace,
+            }} // context api for create space
           >
-            <modalforCreatePost.Provider
-              value={{ createPortalforaddpost, setCreateportalforaddpost }}
+            <modalforAddQuestion.Provider // context api for add question
+              value={{
+                createPortalforaddquestion,
+                setCreateportalforaddquestion,
+              }}
             >
-              <BrowserRouter>
-                <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      <div className="App">
-                        <Quora />
-                      </div>
-                    }
-                  />
-                  <Route path="/signup" element={<Signup />} />
-                  <Route path="/login" element={<Login />} />
-                </Routes>
-              </BrowserRouter>
-            </modalforCreatePost.Provider>
-          </modalforAddQuestion.Provider>
-        </modalforCreateSpace.Provider>
-      </modalforuserProfile.Provider>
-    </modalforSignup.Provider>
+              <modalforCreatePost.Provider // context api for create post
+                value={{ createPortalforaddpost, setCreateportalforaddpost }}
+              >
+                <BrowserRouter>
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={
+                        <div className="App">
+                          <Quora />
+                        </div>
+                      }
+                    />
+                    <Route path="/login" element={<Login />} />
+                  </Routes>
+                </BrowserRouter>
+              </modalforCreatePost.Provider>
+            </modalforAddQuestion.Provider>
+          </modalforCreateSpace.Provider>
+        </modalforuserProfile.Provider>
+      </modalforSignup.Provider>
+    </Authprovider>
   );
 }
 

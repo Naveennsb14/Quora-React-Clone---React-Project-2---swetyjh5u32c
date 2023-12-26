@@ -1,11 +1,69 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Signupmodal } from "../../components/modalcomponents/Signupmodal";
 import "./login.css";
 import { modalforSignup } from "../../components/App";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../authprovider/Authprovider";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { createSignupModal, setCreatesignupModal } =
     useContext(modalforSignup);
+  const [loginForm, setLoginForm] = useState({
+    email: "",
+    password: "",
+  });
+  const { setIsLoggedIn } = useAuth();
+  const { state } = useLocation();
+
+  const getUser = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        projectID: "swetyjh5u",
+      },
+    };
+    try {
+      const response = await axios.post(
+        "https://academics.newtonschool.co/api/v1/user/login",
+        {
+          email: loginForm.email,
+          password: loginForm.password,
+          appType: "quora",
+        },
+        config
+      );
+      console.log("response", response);
+      const token = response.data.token;
+      if (token) {
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("userName", response.data.data.name);
+        setIsLoggedIn(true);
+        if (state) {
+          navigate(state.prevPath);
+        }
+        else{
+          navigate('/')
+        }
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setLoginForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    getUser();
+  };
   return (
     <div className="quora_loginPage">
       <div className="quora_loginSection">
@@ -42,7 +100,12 @@ const Login = () => {
               />
               <span className="facebook_loginText">Continue with Facebook</span>
             </div>
-            <span className="Quora_signupWithemail" onClick={()=>setCreatesignupModal(true)}>Sign up With email</span>
+            <span
+              className="Quora_signupWithemail"
+              onClick={() => setCreatesignupModal(true)}
+            >
+              Sign up With email
+            </span>
           </div>
           <div class="login_vertical-line"></div>
           <div className="input_loginSection">
@@ -50,9 +113,10 @@ const Login = () => {
               <span className="login_text">Login</span>
               <hr class="login_horizontal-line" />
             </div>
-            <form className="login_form">
+            <form onSubmit={onSubmit} className="login_form">
               <label htmlFor="email">Email</label>
               <input
+                onChange={onChange}
                 type="email"
                 className="loginInput_Email"
                 name="email"
@@ -61,6 +125,7 @@ const Login = () => {
               <br />
               <label htmlFor="password">Password</label>
               <input
+                onChange={onChange}
                 type="password"
                 className="loginInput_Password"
                 name="password"
@@ -80,7 +145,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Signupmodal/>
+      <Signupmodal />
     </div>
   );
 };

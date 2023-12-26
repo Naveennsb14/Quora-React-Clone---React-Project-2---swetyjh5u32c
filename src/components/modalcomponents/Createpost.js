@@ -47,10 +47,20 @@ export const Createpost = () => {
               placeholder="Say Something..."
             />
             <div className="quora__createPostselectImage">
-            <label for="img" className="quora__selectImage"><IoImagesOutline className="quora__selectImageLogo"/></label>
-            <input type="file" id="img" name="img" accept="image/*" className="quora__otherInputs"></input>
+              <label htmlFor="img" className="quora__selectImage">
+                <IoImagesOutline className="quora__selectImageLogo" />
+              </label>
+              <input
+                type="file"
+                id="img"
+                name="img"
+                accept="image/*"
+                className="quora__otherInputs"
+              />
             </div>
-            <button type="submit" className="quora__createPostbutton">Post</button>
+            <button type="submit" className="quora__createPostbutton">
+              Post
+            </button>
           </form>
         </div>
       </div>
