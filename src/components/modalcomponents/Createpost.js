@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./createpost.css";
 import { createPortal } from "react-dom";
 import { modalforCreatePost } from "../App";
@@ -17,23 +17,36 @@ export const Createpost = () => {
     }
     console.log(event.currentTarget);
   }
-  const token = sessionStorage.getItem('token');
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  console.log("token", token);
 
-  const newPost = async ()=>{
-    const config =  {
+  const newPost = async () => {
+    const config = {
       headers: {
-        
+        Authorization: `Bearer ${token}`,
         projectID: "swetyjh5u",
       },
     };
+    const formData = new FormData();
+    formData.append("title", "postTitle");
+    formData.append("content", "postContent");
+    formData.append("images", "postImage");
     try {
-      axios.post("https://academics.newtonschool.co/api/v1/quora/post/")
-      
+      const response = await axios.post(
+        "https://academics.newtonschool.co/api/v1/quora/post/",
+        formData,
+        config
+      );
+      console.log("response", response);
     } catch (error) {
-      
+      console.log("error", error);
     }
-
-  }
+  };
+  const handleonSubmit = (e) => {
+    e.preventDefault();
+    console.log("Function Ran");
+    newPost();
+  };
   return createPortal(
     createPortalforaddpost && ( // if the state will be true then only it will show the modal
       <div className="quora_createPostmodal" onClick={handleOverlayClick}>
@@ -58,7 +71,11 @@ export const Createpost = () => {
           </div>
 
           <div class="quora__createPostInputhorizontal__line"></div>
-          <form action="" className="quora_createPostFormDetails">
+          <form
+            onSubmit={handleonSubmit}
+            action=""
+            className="quora_createPostFormDetails"
+          >
             <input
               type="text"
               className="quora__createPostInputDetails"

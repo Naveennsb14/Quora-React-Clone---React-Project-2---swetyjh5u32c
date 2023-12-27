@@ -18,7 +18,7 @@ const Timeline = ({details}) => {
         <CgProfile className="quoraprofile_Logo" />
         <div className="quoraProfile_Info">
           <div className="quoraProfile_Nameinfo">
-            <h5 className="quoraProfile_Name">{channel.name}</h5>
+            <h5 className="quoraProfile_Name">{author.name}</h5>
             <span className="quoraProfile_followLink">Follow</span>
           </div>
           <p className="quoraProfile_paragraph">
@@ -33,11 +33,13 @@ const Timeline = ({details}) => {
         <p className="quoraPostSection_paragraph">
          {content}
         </p>
+       {channel && 
         <img
           src={channel.image}
           alt=""
           className="quoraTimeline_image"
         />
+       }
       </div>
       <div className="quora_Voteandcommentsection">
         <div className="quoraVoteandcomment">

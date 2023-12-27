@@ -49,7 +49,7 @@ export const Signupmodal = () => {
       console.log("token", token);
       if (token) {
         sessionStorage.setItem("token", token);
-        // sessionStorage.setItem("name", JSON.stringify(response.data.data.user.name));
+        sessionStorage.setItem("name", JSON.stringify(response.data.data.user.name));
         setIsLoggedIn(true);
         if(state){
           navigate(state.prevPath)

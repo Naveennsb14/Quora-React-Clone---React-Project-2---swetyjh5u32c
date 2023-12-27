@@ -10,7 +10,7 @@ import { IoBookmarksOutline } from "react-icons/io5";
 import { MdOutlineDrafts } from "react-icons/md";
 import { GiNinjaStar } from "react-icons/gi";
 import { IoIosArrowForward } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 export const Profilemodal = () => {
   const { createPortalforuserProfile, setCreatePortaluserProfile } =
     useContext(modalforuserProfile);
@@ -29,7 +29,7 @@ export const Profilemodal = () => {
           <FaRegCircleUser className="quora_profileModalTopSectionLogo" />
           <div className="quora_profileModalTopSectionuserNameandlogo">
             <span className="quora_profileModalTopSectionuserName">
-              John doe
+              {JSON.parse(sessionStorage.getItem('name'))}
             </span>
             <IoIosArrowForward className="quora_profileModalTopSectionuserlogo" />
           </div>
