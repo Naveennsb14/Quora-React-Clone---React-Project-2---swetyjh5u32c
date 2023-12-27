@@ -10,50 +10,61 @@ import { IoBookmarksOutline } from "react-icons/io5";
 import { MdOutlineDrafts } from "react-icons/md";
 import { GiNinjaStar } from "react-icons/gi";
 import { IoIosArrowForward } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 export const Profilemodal = () => {
   const { createPortalforuserProfile, setCreatePortaluserProfile } =
     useContext(modalforuserProfile);
-    
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    navigate("/login");
+  };
+  
+  const navigate = useNavigate();
+
   return (
     createPortalforuserProfile && (
       <div className="quora__profileModal">
         <div className="quora_profileModalTopSection">
-        <FaRegCircleUser className="quora_profileModalTopSectionLogo"/>
-        <div className="quora_profileModalTopSectionuserNameandlogo">
-        <span className="quora_profileModalTopSectionuserName">John Doe</span>
-        <IoIosArrowForward className="quora_profileModalTopSectionuserlogo"/>
-        </div>
-
+          <FaRegCircleUser className="quora_profileModalTopSectionLogo" />
+          <div className="quora_profileModalTopSectionuserNameandlogo">
+            <span className="quora_profileModalTopSectionuserName">
+              John doe
+            </span>
+            <IoIosArrowForward className="quora_profileModalTopSectionuserlogo" />
+          </div>
         </div>
         <div class="quora_profileModalTopSectionhorizontal-line"></div>
         <div className="quora_profileModalNavigationSection">
           <div className="quora_ProfileModaleNavigation">
-          <LuMessageSquarePlus className="quora_profileModalIcon"/>
-          <span className="quora_profileModalNavText">Messages</span>
+            <LuMessageSquarePlus className="quora_profileModalIcon" />
+            <span className="quora_profileModalNavText">Messages</span>
           </div>
           <div className="quora_ProfileModaleNavigation">
-          <IoCreateOutline className="quora_profileModalIcon"/>
-          <span className="quora_profileModalNavText">Create ad</span>
+            <IoCreateOutline className="quora_profileModalIcon" />
+            <span className="quora_profileModalNavText">Create ad</span>
           </div>
           <div className="quora_ProfileModaleNavigation">
-          <FiDollarSign className="quora_profileModalIcon"/>
-          <span className="quora_profileModalNavText">Monetisation</span>
+            <FiDollarSign className="quora_profileModalIcon" />
+            <span className="quora_profileModalNavText">Monetisation</span>
           </div>
           <div className="quora_ProfileModaleNavigation">
-          <IoIosStats className="quora_profileModalIcon"/>
-          <span className="quora_profileModalNavText">Your Content & Stats</span>
+            <IoIosStats className="quora_profileModalIcon" />
+            <span className="quora_profileModalNavText">
+              Your Content & Stats
+            </span>
           </div>
           <div className="quora_ProfileModaleNavigation">
-          <IoBookmarksOutline className="quora_profileModalIcon"/>
-          <span className="quora_profileModalNavText">Bookmarks</span>
+            <IoBookmarksOutline className="quora_profileModalIcon" />
+            <span className="quora_profileModalNavText">Bookmarks</span>
           </div>
           <div className="quora_ProfileModaleNavigation">
-          <MdOutlineDrafts className="quora_profileModalIcon"/>
-          <span className="quora_profileModalNavText">Drafts</span>
+            <MdOutlineDrafts className="quora_profileModalIcon" />
+            <span className="quora_profileModalNavText">Drafts</span>
           </div>
           <div className="quora_ProfileModaleNavigation">
-          <GiNinjaStar className="quora_profileModalIcon"/>
-          <span className="quora_profileModalNavText">Try Quora+</span>
+            <GiNinjaStar className="quora_profileModalIcon" />
+            <span className="quora_profileModalNavText">Try Quora+</span>
           </div>
         </div>
         <div class="quora_profileModalTopSectionhorizontal-line"></div>
@@ -65,7 +76,12 @@ export const Profilemodal = () => {
           <span className="quora_profileModalBottomSectiontext">Settings</span>
           <span className="quora_profileModalBottomSectiontext">Languages</span>
           <span className="quora_profileModalBottomSectiontext">Help</span>
-          <span className="quora_profileModalBottomSectiontext">Logout</span>
+          <span
+            className="quora_profileModalBottomSectiontext"
+            onClick={handleLogout}
+          >
+            Logout
+          </span>
         </div>
       </div>
     )

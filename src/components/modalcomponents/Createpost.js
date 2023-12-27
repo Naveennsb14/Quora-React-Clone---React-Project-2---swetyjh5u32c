@@ -6,6 +6,7 @@ import { RxCross1 } from "react-icons/rx";
 import { LuUserCircle2 } from "react-icons/lu";
 import { MdArrowRight } from "react-icons/md";
 import { IoImagesOutline } from "react-icons/io5";
+import axios from "axios";
 
 export const Createpost = () => {
   const { createPortalforaddpost, setCreateportalforaddpost } =
@@ -15,6 +16,23 @@ export const Createpost = () => {
       setCreateportalforaddpost(false); // it diffrentiates between the parent and the child div so that the child div once clicked wont make state FALSE
     }
     console.log(event.currentTarget);
+  }
+  const token = sessionStorage.getItem('token');
+
+  const newPost = async ()=>{
+    const config =  {
+      headers: {
+        
+        projectID: "swetyjh5u",
+      },
+    };
+    try {
+      axios.post("https://academics.newtonschool.co/api/v1/quora/post/")
+      
+    } catch (error) {
+      
+    }
+
   }
   return createPortal(
     createPortalforaddpost && ( // if the state will be true then only it will show the modal

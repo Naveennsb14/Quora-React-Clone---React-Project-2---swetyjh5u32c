@@ -4,6 +4,7 @@ import { Quora } from "../pages/quora/Quora";
 import "../styles/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Authprovider } from "../pages/authprovider/Authprovider";
+import Authnavigator from "./authnavigator/Authnavigator";
 
 export const modalforCreatePost = createContext();
 export const modalforAddQuestion = createContext();
@@ -22,7 +23,7 @@ function App() {
   const [createSignupModal, setCreatesignupModal] = useState(false);
 
   return (
-    <Authprovider> 
+    <Authprovider>
       <modalforSignup.Provider
         value={{ createSignupModal, setCreatesignupModal }} // context api for signup Modal
       >
@@ -49,9 +50,11 @@ function App() {
                     <Route
                       path="/"
                       element={
-                        <div className="App">
-                          <Quora />
-                        </div>
+                        <Authnavigator>
+                          <div className="App">
+                            <Quora />
+                          </div>
+                        </Authnavigator>
                       }
                     />
                     <Route path="/login" element={<Login />} />

@@ -37,8 +37,8 @@ const Login = () => {
       console.log("response", response);
       const token = response.data.token;
       if (token) {
-        sessionStorage.setItem("token", token);
-        sessionStorage.setItem("userName", response.data.data.name);
+        sessionStorage.setItem("token", JSON.stringify(token));
+        // sessionStorage.setItem("name", JSON.stringify(response.data.data.name));
         setIsLoggedIn(true);
         if (state) {
           navigate(state.prevPath);
