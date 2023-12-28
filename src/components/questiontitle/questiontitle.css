@@ -1,0 +1,53 @@
+.quora__questionTitlesection{
+    background-color: #FFFFFF;
+}
+
+.quora__questiontitle{
+    color: #282829;
+    padding: 4px 16px;
+}
+
+.quora__questiontitleLowerSection{
+    display: flex;
+    justify-content: space-between;
+    color: #636466;
+    margin: 0px 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.quora__questiontitleAnswerSection{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+   
+}
+.quora__questiontitleIconSection{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    border-radius: 20px;
+    &:hover{
+        background-color: #F7F7F7;
+    }
+}
+
+.quora__questiontitleCommentSection{
+    display: flex;
+    gap: 16px;
+}
+
+.quora__questiontitleIcon{
+    font-size: 20px;
+    color: #636466;
+}
+
+.questiontitleText{
+    font-size: 13px;
+    font-weight: 550;
+}
+
+.quora__followText{
+    font-weight: 500;
+}

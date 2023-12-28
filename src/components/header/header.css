@@ -82,6 +82,8 @@ color: #B92B27;
 .qHeader__addQcreateQ{
     padding: 16px;
     border: none;
+    display: flex;
+    gap: 8px;
 }
 
 .addQ{

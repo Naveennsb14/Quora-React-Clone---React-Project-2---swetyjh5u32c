@@ -1,0 +1,23 @@
+.quora__questionComponentSection {
+  margin-top: 60px;
+  max-width: 76%;
+  background-color: #f1f2f2;
+  height: auto;
+  margin: auto;
+  margin-top: 74px;
+  display: flex;
+  gap: 16px;
+}
+
+.quora__questionComponentDetailsSection {
+  flex: 2;
+}
+
+.quora__questionComponentHeaderSection {
+  margin-bottom: 40px;
+  border: 1px solid #dee0e1;
+  border-radius: 2px;
+}
+.quora__questionComponentSideSection {
+  flex: 1;
+}

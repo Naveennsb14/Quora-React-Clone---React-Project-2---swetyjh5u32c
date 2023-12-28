@@ -18,7 +18,7 @@ const Feed = () => {
 
     try {
       const response = await axios.get(
-        "https://academics.newtonschool.co/api/v1/quora/post?limit=100", // fetching the data by provided API aloong with config
+        "https://academics.newtonschool.co/api/v1/quora/post?limit=1000", // fetching the data by provided API aloong with config
         config
       );
       setPostData(response.data.data); // storing the complete api data in state

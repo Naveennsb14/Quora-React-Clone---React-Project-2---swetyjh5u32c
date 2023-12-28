@@ -9,6 +9,17 @@ import { IoImagesOutline } from "react-icons/io5";
 import axios from "axios";
 
 export const Createpost = () => {
+  const [selectedtext, setSelectedtext] = useState({
+    text: "",
+    body: "",
+  });
+  const handleonChange = (e) => {
+    const { value, name } = e.target;
+    setSelectedtext((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   const { createPortalforaddpost, setCreateportalforaddpost } =
     useContext(modalforCreatePost); // for toggling the modal for create post
   function handleOverlayClick(event) {
@@ -24,14 +35,15 @@ export const Createpost = () => {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
-        projectID: "swetyjh5u",
+        projectID: "swetyjh5u32c",
       },
     };
     const formData = new FormData();
     formData.append("title", "postTitle");
-    formData.append("content", "postContent");
-    formData.append("images", "postImage");
+    formData.append("content", selectedtext.body);
+    // formData.append("images", "postImage");
     try {
+      console.log(selectedtext.body);
       const response = await axios.post(
         "https://academics.newtonschool.co/api/v1/quora/post/",
         formData,
@@ -47,6 +59,8 @@ export const Createpost = () => {
     console.log("Function Ran");
     newPost();
   };
+ 
+  console.log(selectedtext);
   return createPortal(
     createPortalforaddpost && ( // if the state will be true then only it will show the modal
       <div className="quora_createPostmodal" onClick={handleOverlayClick}>
@@ -62,7 +76,7 @@ export const Createpost = () => {
           <div className="quora__createPostprofileSection">
             <LuUserCircle2 className="quora__createPostprofileSectionUserLogo" />
             <div className="quora__createPostprofileSectionuserDetails">
-              <span className="quora__createPostprofileuserName">John Doe</span>
+              <span className="quora__createPostprofileuserName">{JSON.parse(sessionStorage.getItem('name'))}</span>
               <div className="createPostprofileuserCredentialsdetails">
                 <span className="quora__credentials">Choose Credentials</span>
                 <MdArrowRight className="quora__rightLogo" />
@@ -77,9 +91,11 @@ export const Createpost = () => {
             className="quora_createPostFormDetails"
           >
             <input
+              name="body"
               type="text"
               className="quora__createPostInputDetails"
               placeholder="Say Something..."
+              onChange={handleonChange}
             />
             <div className="quora__createPostselectImage">
               <label htmlFor="img" className="quora__selectImage">
