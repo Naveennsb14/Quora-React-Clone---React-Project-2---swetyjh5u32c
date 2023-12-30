@@ -1,0 +1,287 @@
+.quora__createSpacecoverBackground {
+  margin-top: 60px;
+  max-width: 100%;
+  background-color: #a56a14;
+  height: 60%;
+}
+
+.quora__createSpacebackgroundprofileSection {
+  max-width: 80%;
+  margin: auto;
+}
+
+.quora__createSpacebackgroundCoverImage {
+  width: 1024px;
+  margin: auto;
+  margin-left: 28px;
+  border-radius: 10px;
+  height: 200px;
+}
+
+.quora__createSpaceMiniImage {
+  height: 120px;
+  border-radius: 40px;
+  border: 1px solid #d9a813;
+  position: absolute;
+  left: 184px;
+  top: 108px;
+}
+
+.quora__createSpaceNameSection {
+  color: #ffffff;
+  padding: 0px 44px;
+}
+
+.quora__createSpaceName{
+    margin-top: 28px;
+    font-size: 28px;
+}
+
+.quora__createSpacecontributorSection {
+  max-width: 1024px;
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+}
+.quora__contributorText {
+  color: #ffffff;
+  font-size: 13px;
+  margin-left: 44px;
+  /* padding: 4px;  */
+}
+
+.quora__createSpaceIconSection {
+  display: flex;
+  gap: 16px;
+  font-size: 24px;
+  color: #ffffff;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.quora__createSpaceshieldIcons {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  /* margin-bottom: 4px; */
+}
+
+.quora__shieldIcon {
+  padding: 2px;
+}
+
+.quora__createSpaceText {
+  font-size: 14px;
+  padding: 4px;
+}
+
+.quora__dropdownIcon {
+  padding: 4px;
+  font-weight: 400;
+}
+
+.quora__createSpaceinviteIcons {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+}
+
+.quora__inviteIcon {
+  padding: 4px;
+}
+.quora__createSpaceinviteText {
+  font-size: 14px;
+  padding: 4px;
+}
+
+.quora__createSpaceAdminandContributorSection{
+    margin: auto;
+    max-width: 1024px;
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+}
+
+.quora__createSpaceLeftside{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quora__createSpaceAdminSection{
+    
+    background-color: #FFFFFF;
+    border: 1px solid #DEE0E1;
+}
+
+
+.quora__createSpaceContributorSection{
+    flex: 1;
+    /* background-color: #d9a813; */
+}
+
+.quora__createSpaceAdminDashboardText{
+    color: #282829;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 12px;
+    margin: 12px 0px;
+}
+
+.quora__createSpaceAdmindashboardHorizontalLine{
+    border: 0.5px solid #DEE0E1;
+}
+
+.quora__createSpaceviews_follow_upvote_commentSection{
+    display: flex;
+    justify-content: space-around;
+}
+
+.quora__createSpaceviewsSection{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}
+
+.createSpace__viewsText{
+    color: #959697;
+    font-size: 13px;
+    font-weight:500;
+}
+
+.createSpace__viewsCount{
+    color: #282829;
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+
+.createSpace__settingSpace{
+    padding: 12px;
+}
+
+.createSpace__settingspaceText{
+    color: #BD951F;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.createSpace__settingspaceTextHorizontalLine{
+    border: 1px solid #DEE0E1;
+    width: 94%;
+    margin: auto;
+}
+
+.createSpace__EditVisuals{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+
+}
+
+.createSpace__EditVisualsIcon{
+    color: #BD951F;
+    font-size: 24px;
+}
+
+.createSpace__EditVisualsText{
+    font-size: 16px;
+}
+
+.createSpace__invite_queue_peope_settings_adminlog{
+    padding: 4px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.createSpace__AdminIconSection{
+    display: flex;
+    flex-direction: column;
+}
+
+.createSpace__AdminIconLogo{
+    color: #6A6B6D;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color: #EFEFEF;
+    padding: 8px;
+}
+
+.createSpace__AdminIconText{
+    font-size: 12px;
+    color: #636466;
+}
+
+.quora__createSpacePostInputSection{
+    background-color: #FFFFFF;
+   border: 1px solid #ffffff;
+   display: flex;
+   gap: 8px;
+   align-items: center;
+   padding: 4px;
+}
+
+.quora__createSpaceUserlogo{
+    color: #636466;
+    font-size: 36px;
+}
+
+.createSpace__CreateSpaceInput{
+    outline: none;
+    background-color: #F7F7F8;
+    border: none;
+    padding: 10px 12px;
+    width: 520px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.createSpace__InboxSection{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    color: #88888A;
+}
+
+.createSpace__inboxlogo{
+    font-weight: bold;
+
+}
+
+.createSpace__inboxText{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.createSpace__storiesSection{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px;
+
+}
+
+.createSpace__storiesImage{
+    width: 100px;
+    height: 100px;
+}
+
+.HeaderText{
+    font-size: 20px;
+    font-weight: bold;
+    color: #636466;
+}
+
+.lowerText{
+    font-size: 15px;
+    color: #636466;
+}
+

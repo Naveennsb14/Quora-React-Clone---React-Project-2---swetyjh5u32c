@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Authprovider } from "../pages/authprovider/Authprovider";
 import Authnavigator from "./authnavigator/Authnavigator";
 import Questioncomponent from "../pages/questioncomponent/Questioncomponent";
+import Createspacepage from "../pages/createspacepage/Createspacepage";
 
 export const modalforCreatePost = createContext();
 export const modalforAddQuestion = createContext();
@@ -61,6 +62,11 @@ function App() {
                     <Route path="/addquestion" element={
                       <Authnavigator>
                         <Questioncomponent/>
+                      </Authnavigator>
+                    }/>
+                    <Route path="/createspace" element={
+                      <Authnavigator>
+                        <Createspacepage/>
                       </Authnavigator>
                     }/>
                     <Route path="/login" element={<Login />} />

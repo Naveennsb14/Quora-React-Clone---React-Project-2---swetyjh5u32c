@@ -28,7 +28,7 @@ export const Createpost = () => {
     }
     console.log(event.currentTarget);
   }
-  const token = JSON.parse(sessionStorage.getItem("token"));
+  const token = sessionStorage.getItem("token");
   console.log("token", token);
 
   const newPost = async () => {
