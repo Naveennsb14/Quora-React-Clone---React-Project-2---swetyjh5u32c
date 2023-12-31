@@ -11,7 +11,42 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { GrInbox } from "react-icons/gr";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 const Cover = () => {
+  const [createSpacedata, setCreatespacedata]=useState();
+  const {userId} = useParams();
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  console.log("token", token);
+  const getcreateSpaceData = async () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        projectID: "swetyjh5u32c",
+      },
+    };
+    try {
+      const response = await axios.get(
+        `https://academics.newtonschool.co/api/v1/quora/channel/${userId}`,
+        config
+      );
+      console.log("response", response.data.data);
+      setCreatespacedata(response.data.data)
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  useEffect((e) => {
+    getcreateSpaceData();
+  }, []);
+
+  const createdAtString = createSpacedata?.createdAt;
+const createdAt = new Date(createdAtString);
+
+const readableDate = createdAt.toLocaleString();
+
   return (
     <div className="quora__createSpacepage">
       <div className="quora__createSpacecoverBackground">
@@ -29,11 +64,11 @@ const Cover = () => {
             />
 
             <div className="quora__createSpaceNameSection">
-              <h1 className="quora__createSpaceName">John Doe's Space</h1>
+              <h1 className="quora__createSpaceName">{createSpacedata?.name}'s Space</h1>
             </div>
             <div className="quora__createSpacecontributorSection">
               <span className="quora__contributorText">
-                1 Contributor - 1 Post in the last month
+                Created At {readableDate}
               </span>
               <div className="quora__createSpaceIconSection">
                 <div className="quora__createSpacemoreIcons">
@@ -138,7 +173,7 @@ const Cover = () => {
             <input
               type="text"
               className="createSpace__CreateSpaceInput"
-              placeholder="Post in Naveen Singh Baghel's Space 3..."
+              placeholder={`Post in ${createSpacedata?.name} ...`}
             />
             <div className="createSpace__InboxSection">
               <GrInbox className="createSpace__inboxlogo" />
@@ -152,12 +187,14 @@ const Cover = () => {
               className="createSpace__storiesImage"
             />
             <span className="HeaderText">No Stories</span>
-            <span className="lowerText">There are no stories in this Space yet.</span>
+            <span className="lowerText">
+              There are no stories in this Space yet.
+            </span>
           </div>
         </div>
         <div className="quora__createSpaceContributorSection">
-            <img src="https://s0.2mdn.net/simgad/5829679842727353805" alt="" />
-            <img src="https://s0.2mdn.net/simgad/5829679842727353805" alt="" />
+          <img src="https://s0.2mdn.net/simgad/5829679842727353805" alt="" />
+          <img src="https://s0.2mdn.net/simgad/5829679842727353805" alt="" />
         </div>
       </div>
     </div>

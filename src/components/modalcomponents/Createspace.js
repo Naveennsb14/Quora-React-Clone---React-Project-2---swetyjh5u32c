@@ -1,12 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { modalforCreateSpace } from "../App";
 import "./createspace.css";
 import { RxCross1 } from "react-icons/rx";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Createspace = () => {
+  const navigate = useNavigate();
+
   const { createPortalforcreatespace, setCreateportalforcreatespace } =
     useContext(modalforCreateSpace);
+
+  const [createspaceText, setCreatespaceText] = useState({
+    name: "",
+    description: "",
+  });
 
   function handleOverlayClick(event) {
     if (event.target === event.currentTarget) {
@@ -14,6 +23,43 @@ const Createspace = () => {
     }
     console.log(event.currentTarget);
   }
+
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  console.log("token", token);
+
+  const postSpace = async (e) => {
+    e.preventDefault();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        projectID: "swetyjh5u32c",
+      },
+    };
+    try {
+      const response = await axios.post(
+        "https://academics.newtonschool.co/api/v1/quora/channel/",
+        {
+          name: createspaceText.name,
+        },
+        config
+      );
+      console.log("response", response);
+      navigate(`/createspace/${response.data.data._id}`);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const handleOnChange = (e) => {
+    const { value, name } = e.target;
+    setCreatespaceText((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  
+  console.log(createspaceText);
+
   return createPortal(
     createPortalforcreatespace && (
       <div className="quora__modalforCreatespace" onClick={handleOverlayClick}>
@@ -37,7 +83,13 @@ const Createspace = () => {
             <span className="quora__createSpaceformsubName">
               This can be changed in Space settings.
             </span>
-            <input type="text" id="name" className="quora__createSpaceformNameinput" />
+            <input
+              name="name"
+              type="text"
+              id="name"
+              className="quora__createSpaceformNameinput"
+              onChange={handleOnChange}
+            />
             <label
               htmlFor="brief"
               className="quora__createSpaceformBriefdescription"
@@ -47,8 +99,19 @@ const Createspace = () => {
             <span className="quora__createSpaceformbriefsubText">
               Include a few keywords to show people what to expect if they join.
             </span>
-            <input type="text" id="brief" className="quora__createSpaceformBriefdescriptionInput" />
-            <button className="quora__createSpaceformCreate_btn">Create</button>
+            <input
+              name="description"
+              type="text"
+              id="brief"
+              className="quora__createSpaceformBriefdescriptionInput"
+              onChange={handleOnChange}
+            />
+            <button
+              className="quora__createSpaceformCreate_btn"
+              onClick={postSpace}
+            >
+              Create
+            </button>
           </form>
         </div>
       </div>

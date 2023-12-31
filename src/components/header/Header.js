@@ -10,6 +10,7 @@ import { Createpost } from "../modalcomponents/Createpost";
 import { useContext, useState } from "react";
 import { modalforAddQuestion, modalforCreatePost, modalforuserProfile } from "../App";
 import Addquestion from "../modalcomponents/Addquestion";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const { createPortalforaddpost, setCreateportalforaddpost } =

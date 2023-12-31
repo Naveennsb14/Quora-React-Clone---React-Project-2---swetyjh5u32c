@@ -64,7 +64,7 @@ function App() {
                         <Questioncomponent/>
                       </Authnavigator>
                     }/>
-                    <Route path="/createspace" element={
+                    <Route path="/createspace/:userId" element={
                       <Authnavigator>
                         <Createspacepage/>
                       </Authnavigator>
