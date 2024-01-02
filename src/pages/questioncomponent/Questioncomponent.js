@@ -3,8 +3,12 @@ import "./questioncomponent.css";
 import { Header } from "../../components/header/Header";
 import { Questiontitle } from "../../components/questiontitle/Questiontitle";
 import Questiontimeline from "../../components/questiontimeline/Questiontimeline";
+import { useParams } from "react-router-dom";
 
 const Questioncomponent = () => {
+
+  const {userId}=useParams();
+
   return (
     <>
       <Header />

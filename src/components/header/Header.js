@@ -13,16 +13,22 @@ import Addquestion from "../modalcomponents/Addquestion";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate=useNavigate();
   const { createPortalforaddpost, setCreateportalforaddpost } =
     useContext(modalforCreatePost);
   const { createPortalforaddquestion, setCreateportalforaddquestion } =
     useContext(modalforAddQuestion);
     const { createPortalforuserProfile, setCreatePortaluserProfile } =
     useContext(modalforuserProfile);
+
+    const HandleNavigate=()=>{
+      navigate("/");
+    }
   return (
     <div className="qHeader">
       <div className="qHeader__content">
         <img
+        onClick={HandleNavigate}
           src="/images/quora-new-logo.jpg"
           alt="logo"
           className="quora__logo"

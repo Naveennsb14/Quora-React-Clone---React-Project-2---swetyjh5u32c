@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import "./addquestion.css";
 import { modalforAddQuestion } from "../App";
@@ -7,10 +7,26 @@ import { CgProfile } from "react-icons/cg";
 import { MdArrowRight } from "react-icons/md";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Addquestion = () => {
+  const navigate = useNavigate();
   const { createPortalforaddquestion, setCreateportalforaddquestion } =
     useContext(modalforAddQuestion);
+
+  const [addquestiontext, setAddquestiontext] = useState({
+    text: "",
+    body: "",
+  });
+
+  const handleonChange = (e) => {
+    const { value, name } = e.target;
+    setAddquestiontext((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   function handleOverlayClick(event) {
     if (event.target === event.currentTarget) {
@@ -18,6 +34,43 @@ const Addquestion = () => {
     }
     console.log(event.currentTarget);
   }
+
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  console.log("token", token);
+
+  const newQuestion = async (e) => {
+    e.preventDefault();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        projectID: "swetyjh5u32c",
+      },
+    };
+    const formData = new FormData();
+    formData.append("title", "PostTitle");
+    formData.append("content", addquestiontext.body);
+
+    try {
+      console.log(addquestiontext);
+      const response = await axios.post(
+        "https://academics.newtonschool.co/api/v1/quora/post/",
+        formData,
+        config
+      );
+      console.log("response", response);
+      navigate(`/addquestion/${response.data.data._id}`)
+      setCreateportalforaddquestion(false)
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  // const handleonSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("AddQuestion Ran");
+  //   newQuestion();
+    
+  // };
   return createPortal(
     createPortalforaddquestion && (
       <div className="quora_AddquestionModal" onClick={handleOverlayClick}>
@@ -59,9 +112,11 @@ const Addquestion = () => {
           <form action="">
             <div className="quora__addQuestionModalInputSection">
               <input
+                name="body"
                 type="text"
                 className="quora__addQuestionDetails"
                 placeholder='Start your question with "What", "How", "Why", etc.'
+                onChange={handleonChange}
               />
             </div>
             <div class="quora__addQuestionModalInputSectionhorizontal-line"></div>
@@ -74,7 +129,7 @@ const Addquestion = () => {
               >
                 Cancel
               </button>
-              <button type="submit" className="quoraAddquestionModalAdd_btn">
+              <button type="submit" className="quoraAddquestionModalAdd_btn" onClick={newQuestion}>
                 Add question
               </button>
             </div>

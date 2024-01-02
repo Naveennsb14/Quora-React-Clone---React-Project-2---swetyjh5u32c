@@ -59,7 +59,7 @@ function App() {
                         </Authnavigator>
                       }
                     />
-                    <Route path="/addquestion" element={
+                    <Route path="/addquestion/:userId" element={
                       <Authnavigator>
                         <Questioncomponent/>
                       </Authnavigator>
