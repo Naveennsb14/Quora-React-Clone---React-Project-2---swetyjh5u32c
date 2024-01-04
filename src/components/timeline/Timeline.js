@@ -6,11 +6,16 @@ import { FaRegComment } from "react-icons/fa6";
 import { PiShareFatThin } from "react-icons/pi";
 import { MdMoreHoriz } from "react-icons/md";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Commentsection from "../commentsection/Commentsection";
 
 const Timeline = ({details}) => {
 
   const {author, channel, commentCount, content, likeCount, title, _id} = details;
+  const [showCommentSection, setShowCommentSection] = useState(false);
+  const toggleCommentSection = () => {
+    setShowCommentSection((prev) => !prev);
+  };
   
   return (
     <div className="quora_timeLine">
@@ -52,7 +57,7 @@ const Timeline = ({details}) => {
             <BiDownvote className="quoravoteandcomment_Icon"/>
           </div>
           <div className="quora_comment">
-          <FaRegComment className="quoravoteandcomment_Icon"/>
+          <FaRegComment className="quoravoteandcomment_Icon" onClick={toggleCommentSection}/>
           <span className="comment_text">{commentCount}</span>
           </div>
           <div className="quora_Share">
@@ -61,9 +66,14 @@ const Timeline = ({details}) => {
           </div>
         </div>
         <div className="quora_More">
-          <MdMoreHoriz className="quoraMore_Icon"/>
+          <MdMoreHoriz className="quoraMore_Icon" />
         </div>
+        
       </div>
+      {showCommentSection && (
+              <Commentsection/>
+            
+          )}
     </div>
   );
 };

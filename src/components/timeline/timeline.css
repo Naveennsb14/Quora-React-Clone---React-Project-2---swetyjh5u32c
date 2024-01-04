@@ -5,6 +5,8 @@
     height: auto;
     display: flex;
     flex-direction: column;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
 }
 .quoraprofileSection_details{
     padding: 8px;
@@ -107,6 +109,7 @@ cursor: pointer;
     color: #636466;
     font-size: large;
     cursor: pointer;
+   
 }
 
 .upVote_text{

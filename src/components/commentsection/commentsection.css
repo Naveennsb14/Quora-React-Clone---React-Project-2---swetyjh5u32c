@@ -1,0 +1,112 @@
+.quora__lowerCommentprofileSection {
+  background-color: #f1f2f2;
+  display: flex;
+  align-items: center;
+}
+
+.quora__lowerCommentprofileLogo {
+  color: #8f9092;
+  font-size: 32px;
+  padding: 4px 4px;
+  margin: 4px;
+}
+
+.quora__lowerCommentInputSection {
+  padding: 10px 10px;
+  font-size: 14px;
+  color: #949494;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  margin: 4px;
+  width: 392px;
+}
+
+.quora__lowerCommmentbuttonSection {
+  margin: 4px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background-color: #2e69ff;
+  border: none;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  &:hover {
+    background-color: #1a5aff;
+  }
+}
+
+.quora__addedCommentprofileSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: -16px;
+}
+
+.quora__adddedCommentuserName {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.quora__addedCommentDetails {
+  margin: 4px;
+  padding-left: 40px;
+  font-size: 15px;
+  /* margin-bottom: 8px; */
+}
+
+.quora__addedCommentText{
+    color: #282829;
+}
+
+.quora__addedCommentUpVotedownVoteAndMoreSection {
+  display: flex;
+  align-items: center;
+}
+
+.quora__addedCommentupVoteSection {
+  display: flex;
+  align-items: center;
+  background-color: #efefef;
+  padding: 6px;
+  border: 1px solid #d7d9da;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 8px;
+  margin-left: 40px;
+}
+
+.quora__addedCommentupVoteSection{
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.quora__addedCommentupVoteIcon{
+    color: #636466;
+    font-size: large;
+    cursor: pointer;
+}
+
+.quora__adedCommentUpVotedigit{
+    font-size: 13px;
+    color: #636466;
+}
+
+.quora__addedCommentdownVoteSection{
+    display: flex;
+  align-items: center;
+  background-color: #efefef;
+  padding: 6px;
+  border: 1px solid #d7d9da;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.quora__addedCommentdownVoteIcon{
+    color: #636466;
+    font-size: large;
+}
+
+
+
