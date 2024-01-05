@@ -2,6 +2,7 @@ import "./commentsection.css";
 import { CgProfile } from "react-icons/cg";
 import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
+import { useParams } from "react-router-dom";
 
 const Commentsection = () => {
   return (
@@ -36,12 +37,12 @@ const Commentsection = () => {
       </div>
       <div className="quora__addedCommentUpVotedownVoteAndMoreSection">
         <div className="quora__addedCommentupVoteSection">
-          <BiUpvote  className="quora__addedCommentupVoteIcon"/>
+          <BiUpvote className="quora__addedCommentupVoteIcon" />
           <span className="quora__adedCommentUpVotedigit">22</span>
         </div>
         <div className="quora__addedCommentdownVoteSection">
-            <BiDownvote className="quora__addedCommentdownVoteIcon"/>
-          </div>
+          <BiDownvote className="quora__addedCommentdownVoteIcon" />
+        </div>
       </div>
     </div>
   );

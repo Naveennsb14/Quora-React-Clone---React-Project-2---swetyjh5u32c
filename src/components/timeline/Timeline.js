@@ -8,14 +8,41 @@ import { MdMoreHoriz } from "react-icons/md";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Commentsection from "../commentsection/Commentsection";
+import { useParams } from "react-router-dom";
 
 const Timeline = ({details}) => {
+  const {userId} = useParams();
+  // console.log('userId', userId);
 
   const {author, channel, commentCount, content, likeCount, title, _id} = details;
   const [showCommentSection, setShowCommentSection] = useState(false);
+  const [getallComments, setGetallComments] = useState();
   const toggleCommentSection = () => {
     setShowCommentSection((prev) => !prev);
   };
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  const getComments = async () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        projectID: "swetyjh5u32c", // passing the project id in header in key value form
+      },
+    };
+    try {
+      const response = await axios.get(
+        `https://academics.newtonschool.co/api/v1/quora/post/${_id}/comments`, // fetching the data by provided API aloong with config
+        config
+      );
+      console.log("commentResponse", response);
+      setGetallComments(response.data.data);
+      
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  console.log('comments fetched successfully', getallComments);
+  
+
   
   return (
     <div className="quora_timeLine">
@@ -57,7 +84,7 @@ const Timeline = ({details}) => {
             <BiDownvote className="quoravoteandcomment_Icon"/>
           </div>
           <div className="quora_comment">
-          <FaRegComment className="quoravoteandcomment_Icon" onClick={toggleCommentSection}/>
+          <FaRegComment className="quoravoteandcomment_Icon" onClick={()=>{toggleCommentSection(); getComments();}}/>
           <span className="comment_text">{commentCount}</span>
           </div>
           <div className="quora_Share">
