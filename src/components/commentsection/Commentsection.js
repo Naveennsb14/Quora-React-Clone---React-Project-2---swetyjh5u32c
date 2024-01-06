@@ -4,34 +4,19 @@ import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 
-const Commentsection = () => {
+
+const Commentsection = ({comments}) => {
   return (
     <div className="quora__lowercommentSection">
-      <div className="quora__lowerCommentprofileSection">
-        <CgProfile className="quora__lowerCommentprofileLogo" />
-        <form action="">
-          <input
-            type="text"
-            className="quora__lowerCommentInputSection"
-            placeholder="Add a comment..."
-          />
-          <button className="quora__lowerCommmentbuttonSection" type="submit">
-            Add comment
-          </button>
-        </form>
-      </div>
+      
       <div className="quora__addedCommentSection">
         <div className="quora__addedCommentprofileSection">
           <CgProfile className="quora__lowerCommentprofileLogo" />
-          <span className="quora__adddedCommentuserName">John Doe</span>
+          <span className="quora__adddedCommentuserName">{comments.author}</span>
         </div>
         <div className="quora__addedCommentDetails">
           <p className="quora__addedCommentText">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
-            sunt accusantium repellendus suscipit quod iure rem nostrum
-            recusandae obcaecati facere, nihil quia labore praesentium quaerat
-            eveniet laboriosam velit dolore aperiam in culpa earum magni.
-            Repudiandae dolore voluptatibus eligendi hic debitis.
+            {comments.content}
           </p>
         </div>
       </div>

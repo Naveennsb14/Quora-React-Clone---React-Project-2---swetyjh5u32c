@@ -10,18 +10,21 @@ import { useEffect, useState } from "react";
 import Commentsection from "../commentsection/Commentsection";
 import { useParams } from "react-router-dom";
 
-const Timeline = ({details}) => {
-  const {userId} = useParams();
+const Timeline = ({ details }) => {
+  const { userId } = useParams();
   // console.log('userId', userId);
 
-  const {author, channel, commentCount, content, likeCount, title, _id} = details;
+  const { author, channel, commentCount, content, likeCount, title, _id } =
+    details;
   const [showCommentSection, setShowCommentSection] = useState(false);
-  const [getallComments, setGetallComments] = useState();
+  const [getallComments, setGetallComments] = useState(); // for getting all the comments
+  const [getInput, setGetInput] = useState(""); // for getting the input in comment box
   const toggleCommentSection = () => {
     setShowCommentSection((prev) => !prev);
   };
   const token = JSON.parse(sessionStorage.getItem("token"));
   const getComments = async () => {
+    // calling the api for fetching all comments in UI
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -35,15 +38,47 @@ const Timeline = ({details}) => {
       );
       console.log("commentResponse", response);
       setGetallComments(response.data.data);
-      
     } catch (error) {
       console.log("error", error);
     }
   };
-  console.log('comments fetched successfully', getallComments);
-  
+  console.log("comments fetched successfully", getallComments);
 
-  
+  const postComments = async (e) => {
+    // calling the api for posting the comments in UI
+    e.preventDefault();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        projectID: "swetyjh5u32c", // passing the project id in header in key value form
+      },
+    };
+
+    try {
+      const res = await axios.post(
+        `https://academics.newtonschool.co/api/v1/quora/comment/${_id}`,
+        {
+          content: getInput.comment,
+        },
+        config
+      );
+      console.log("result", res);
+      getComments();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handelOnchange = (e) => {
+    const { name, value } = e.target;
+    setGetInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  console.log(getInput);
+
   return (
     <div className="quora_timeLine">
       <div className="quoraprofileSection_details">
@@ -59,48 +94,67 @@ const Timeline = ({details}) => {
         </div>
       </div>
       <div className="quoraPostSection">
-        <h3 className="quoraPostSection_header">
-          {title}
-        </h3>
-        <p className="quoraPostSection_paragraph">
-         {content}
-        </p>
-       {channel && 
-        <img
-          src={channel.image}
-          alt=""
-          className="quoraTimeline_image"
-        />
-       }
+        <h3 className="quoraPostSection_header">{title}</h3>
+        <p className="quoraPostSection_paragraph">{content}</p>
+        {channel && (
+          <img src={channel.image} alt="" className="quoraTimeline_image" />
+        )}
       </div>
       <div className="quora_Voteandcommentsection">
         <div className="quoraVoteandcomment">
           <div className="quoraUpvote">
             <BiUpvote className="quoravoteandcomment_Icon" />
-            <span className="upVote_text">Upvote- <span className="totalupVote">{likeCount}</span></span>
+            <span className="upVote_text">
+              Upvote- <span className="totalupVote">{likeCount}</span>
+            </span>
           </div>
           <div className="downVote"></div>
           <div className="quoraDownvote">
-            <BiDownvote className="quoravoteandcomment_Icon"/>
+            <BiDownvote className="quoravoteandcomment_Icon" />
           </div>
           <div className="quora_comment">
-          <FaRegComment className="quoravoteandcomment_Icon" onClick={()=>{toggleCommentSection(); getComments();}}/>
-          <span className="comment_text">{commentCount}</span>
+            <FaRegComment
+              className="quoravoteandcomment_Icon"
+              onClick={() => {
+                toggleCommentSection();
+                getComments();
+              }}
+            />
+            <span className="comment_text">{commentCount}</span>
           </div>
           <div className="quora_Share">
-          <PiShareFatThin className="quoravoteandcomment_Icon"/>
-          <span className="share_text">165</span>
+            <PiShareFatThin className="quoravoteandcomment_Icon" />
+            <span className="share_text">165</span>
           </div>
         </div>
         <div className="quora_More">
           <MdMoreHoriz className="quoraMore_Icon" />
         </div>
-        
       </div>
-      {showCommentSection && (
-              <Commentsection/>
-            
-          )}
+      <div className="quora__lowerCommentprofileSection">
+        <CgProfile className="quora__lowerCommentprofileLogo" />
+        <form action="" onSubmit={postComments}>
+          <input
+            name="comment"
+            type="text"
+            className="quora__lowerCommentInputSection"
+            placeholder="Add a comment..."
+            onChange={handelOnchange}
+          />
+          <button className="quora__lowerCommmentbuttonSection" type="submit">
+            Add comment
+          </button>
+        </form>
+      </div>
+      {showCommentSection &&
+        getallComments?.map((fetchedComments) => {
+          return (
+            <Commentsection
+              comments={fetchedComments}
+              key={fetchedComments._id}
+            />
+          );
+        })}
     </div>
   );
 };
