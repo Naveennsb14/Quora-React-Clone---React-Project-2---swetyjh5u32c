@@ -16,15 +16,21 @@ const Timeline = ({ details }) => {
 
   const { author, channel, commentCount, content, likeCount, title, _id } =
     details;
-  const [showCommentSection, setShowCommentSection] = useState(false);
+  const [showCommentSection, setShowCommentSection] = useState(false); // state for conditionally rendering the comment box
+  const [showAction, setshowAction] = useState(false); // state for conditionally rendering the update and delete UI
   const [getallComments, setGetallComments] = useState(); // for getting all the comments
   const [getInput, setGetInput] = useState(""); // for getting the input in comment box
   const toggleCommentSection = () => {
     setShowCommentSection((prev) => !prev);
   };
+
+  const toggleAction = () => {
+    setshowAction((prev) => !prev);
+  };
   const token = JSON.parse(sessionStorage.getItem("token"));
+
+  // calling the api for fetching all comments in UI
   const getComments = async () => {
-    // calling the api for fetching all comments in UI
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -36,16 +42,16 @@ const Timeline = ({ details }) => {
         `https://academics.newtonschool.co/api/v1/quora/post/${_id}/comments`, // fetching the data by provided API aloong with config
         config
       );
-      console.log("commentResponse", response);
+      // console.log("commentResponse", response);
       setGetallComments(response.data.data);
     } catch (error) {
       console.log("error", error);
     }
   };
-  console.log("comments fetched successfully", getallComments);
+  // console.log("comments fetched successfully", getallComments);
 
+  // calling the api for posting the comments in UI
   const postComments = async (e) => {
-    // calling the api for posting the comments in UI
     e.preventDefault();
     const config = {
       headers: {
@@ -64,6 +70,73 @@ const Timeline = ({ details }) => {
       );
       console.log("result", res);
       getComments();
+      setShowCommentSection(true);
+      setGetInput("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // calling the api for deleting the post
+  const deletePost = async () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        projectID: "swetyjh5u32c", // passing the project id in header in key value form
+      },
+    };
+    try {
+      const deleted = await axios.delete(
+        `https://academics.newtonschool.co/api/v1/quora/post/${_id}`,
+        config
+      );
+      console.log("Post deleted successfully", deleted);
+      window.location.reload(); // refresh the page after sucessfully deletion
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //calling this api for upvoting the post
+  const upVotepost = async () => {
+    const body = {
+      appType: "Quora",
+    };
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        projectID: "swetyjh5u32c", // passing the project id in header in key value form
+      },
+    };
+    try {
+      const upVote = await axios.post(
+        `https://academics.newtonschool.co/api/v1/quora/like/${_id}`,
+        body,
+        config
+      );
+      console.log("post upvoted successfully", upVote);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // calling this API for downVoting the post
+  const downVotepost = async () => {
+    // const body = {
+    //   appType: "Quora",
+    // };
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        projectID: "swetyjh5u32c", // passing the project id in header in key value form
+      },
+    };
+    try {
+      const downVote = await axios.delete(
+        `https://academics.newtonschool.co/api/v1/quora/like/${_id}`,
+        config
+      );
+      console.log("post downvoted successfully", downVote);
     } catch (error) {
       console.log(error);
     }
@@ -77,7 +150,7 @@ const Timeline = ({ details }) => {
     }));
   };
 
-  console.log(getInput);
+  // console.log(getInput);
 
   return (
     <div className="quora_timeLine">
@@ -102,14 +175,14 @@ const Timeline = ({ details }) => {
       </div>
       <div className="quora_Voteandcommentsection">
         <div className="quoraVoteandcomment">
-          <div className="quoraUpvote">
+          <div className="quoraUpvote" onClick={upVotepost}>
             <BiUpvote className="quoravoteandcomment_Icon" />
             <span className="upVote_text">
               Upvote- <span className="totalupVote">{likeCount}</span>
             </span>
           </div>
           <div className="downVote"></div>
-          <div className="quoraDownvote">
+          <div className="quoraDownvote" onClick={downVotepost}>
             <BiDownvote className="quoravoteandcomment_Icon" />
           </div>
           <div className="quora_comment">
@@ -127,8 +200,16 @@ const Timeline = ({ details }) => {
             <span className="share_text">165</span>
           </div>
         </div>
+        {showAction && (
+          <div className="quora__deleteAndupdatesection">
+            <span className="quora__deleteOption" onClick={deletePost}>
+              Delete
+            </span>
+            <span className="quora__updateOption">Update</span>
+          </div>
+        )}
         <div className="quora_More">
-          <MdMoreHoriz className="quoraMore_Icon" />
+          <MdMoreHoriz className="quoraMore_Icon" onClick={toggleAction} />
         </div>
       </div>
       <div className="quora__lowerCommentprofileSection">

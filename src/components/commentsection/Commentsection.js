@@ -29,6 +29,7 @@ const Commentsection = ({comments}) => {
           <BiDownvote className="quora__addedCommentdownVoteIcon" />
         </div>
       </div>
+      <hr className="quora__commentsectionHorizontalLine"/>
     </div>
   );
 };

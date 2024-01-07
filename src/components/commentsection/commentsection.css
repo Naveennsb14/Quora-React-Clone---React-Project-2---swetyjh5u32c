@@ -108,5 +108,9 @@
     font-size: large;
 }
 
+.quora__commentsectionHorizontalLine{
+  border: 0.5px solid #DEE0E1;
+}
+
 
 
