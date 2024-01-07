@@ -36,7 +36,7 @@ const Feed = () => {
     <div className="feed-bar">
       <Postbox />
       {postData.length>0 && postData.map((post)=>{
-        return <Timeline details={post} key={post._id}/>
+        return <Timeline getPostList={getPostList} details={post} key={post._id}/>
       })}
     </div>
   );

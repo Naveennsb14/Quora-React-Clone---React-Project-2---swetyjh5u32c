@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import Commentsection from "../commentsection/Commentsection";
 import { useParams } from "react-router-dom";
 
-const Timeline = ({ details }) => {
+const Timeline = ({ details, getPostList }) => {
   const { userId } = useParams();
   // console.log('userId', userId);
 
@@ -68,7 +68,7 @@ const Timeline = ({ details }) => {
         },
         config
       );
-      console.log("result", res);
+      // console.log("comments added successfully", res);
       getComments();
       setShowCommentSection(true);
       setGetInput("");
@@ -90,8 +90,8 @@ const Timeline = ({ details }) => {
         `https://academics.newtonschool.co/api/v1/quora/post/${_id}`,
         config
       );
-      console.log("Post deleted successfully", deleted);
-      window.location.reload(); // refresh the page after sucessfully deletion
+      getPostList(); // calling the main post api again so that page dont get refreshed as well as we get the updated data
+      // console.log("Post deleted successfully", deleted);
     } catch (error) {
       console.log(error);
     }
@@ -114,7 +114,8 @@ const Timeline = ({ details }) => {
         body,
         config
       );
-      console.log("post upvoted successfully", upVote);
+      getPostList(); // calling the main post api again so that page dont get refreshed as well as we get the updated data
+      // console.log("post upvoted successfully", upVote);
     } catch (error) {
       console.log(error);
     }
@@ -136,7 +137,8 @@ const Timeline = ({ details }) => {
         `https://academics.newtonschool.co/api/v1/quora/like/${_id}`,
         config
       );
-      console.log("post downvoted successfully", downVote);
+      getPostList(); // calling the main post api again so that page dont get refreshed as well as we get the updated data
+      // console.log("post downvoted successfully", downVote);
     } catch (error) {
       console.log(error);
     }
@@ -231,6 +233,7 @@ const Timeline = ({ details }) => {
         getallComments?.map((fetchedComments) => {
           return (
             <Commentsection
+              getComments={getComments}
               comments={fetchedComments}
               key={fetchedComments._id}
             />
