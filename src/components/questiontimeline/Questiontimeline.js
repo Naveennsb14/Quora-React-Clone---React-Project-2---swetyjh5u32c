@@ -6,6 +6,7 @@ import { FaRegComment } from "react-icons/fa6";
 import { PiShareFatThin } from "react-icons/pi";
 import { MdMoreHoriz } from "react-icons/md";
 import { useParams } from "react-router-dom";
+import { CgProfile } from "react-icons/cg";
 
 const Questiontimeline = () => {
 
@@ -53,6 +54,20 @@ const Questiontimeline = () => {
         <div className="quora_More">
           <MdMoreHoriz className="quoraMore_Icon" />
         </div>
+      </div><div className="quora__lowerCommentprofileSection">
+        <CgProfile className="quora__lowerCommentprofileLogo" />
+        <form action="" >
+          <input
+            name="comment"
+            type="text"
+            className="quora__lowerCommentInputSection"
+            placeholder="Add a comment..."
+            // onChange={handelOnchange}
+          />
+          <button className="quora__lowerCommmentbuttonSectionquestionPage" type="submit">
+            Add comment
+          </button>
+        </form>
       </div>
     </div>
   );

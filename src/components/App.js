@@ -13,6 +13,7 @@ export const modalforAddQuestion = createContext();
 export const modalforCreateSpace = createContext();
 export const modalforuserProfile = createContext();
 export const modalforSignup = createContext();
+export const postAddrefresh=createContext();
 
 function App() {
   const [createPortalforaddpost, setCreateportalforaddpost] = useState(false);
@@ -23,9 +24,13 @@ function App() {
   const [createPortalforuserProfile, setCreatePortaluserProfile] =
     useState(false);
   const [createSignupModal, setCreatesignupModal] = useState(false);
+  const [postcalled, setPostcalled]=useState(null)
 
   return (
     <Authprovider>
+      <postAddrefresh.Provider
+      value={{postcalled,setPostcalled}} // context api for calling the post data form DB
+      >
       <modalforSignup.Provider
         value={{ createSignupModal, setCreatesignupModal }} // context api for signup Modal
       >
@@ -77,6 +82,7 @@ function App() {
           </modalforCreateSpace.Provider>
         </modalforuserProfile.Provider>
       </modalforSignup.Provider>
+      </postAddrefresh.Provider>
     </Authprovider>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./createpost.css";
 import { createPortal } from "react-dom";
-import { modalforCreatePost } from "../App";
+import { modalforCreatePost, postAddrefresh } from "../App";
 import { RxCross1 } from "react-icons/rx";
 import { LuUserCircle2 } from "react-icons/lu";
 import { MdArrowRight } from "react-icons/md";
@@ -9,6 +9,7 @@ import { IoImagesOutline } from "react-icons/io5";
 import axios from "axios";
 
 export const Createpost = () => {
+  const{postcalled, setPostcalled}=useContext(postAddrefresh);
   const [selectedtext, setSelectedtext] = useState({
     text: "",
     body: "",
@@ -28,8 +29,11 @@ export const Createpost = () => {
     }
     console.log(event.currentTarget);
   }
-  const token = sessionStorage.getItem("token");
+  const token = JSON.parse(sessionStorage.getItem("token"));
   console.log("token", token);
+
+
+  // Calling the API for posting The post to DB
 
   const newPost = async () => {
     const config = {
@@ -50,6 +54,7 @@ export const Createpost = () => {
         config
       );
       console.log("response", response);
+      setPostcalled(response); // storing the response in state so that we can use it in dependency array
     } catch (error) {
       console.log("error", error);
     }
@@ -58,6 +63,7 @@ export const Createpost = () => {
     e.preventDefault();
     console.log("Function Ran");
     newPost();
+    setCreateportalforaddpost(false);
   };
  
   console.log(selectedtext);

@@ -3,12 +3,15 @@ import "./feed.css";
 import Postbox from "../postbox/Postbox";
 import Timeline from "../timeline/Timeline";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { postAddrefresh } from "../App";
 
 const Feed = () => {
 
   const [postData, setPostData]= useState([]); // for storing the timeline data which we will receive from api
+  const{postcalled, setPostcalled}=useContext(postAddrefresh);
 
+  // calling the API to get all the Post from DB
   const getPostList = async () => {
     const config = {
       headers: {
@@ -29,8 +32,9 @@ const Feed = () => {
   };
 
   useEffect(() => {
+    setPostcalled(null); // setting the state to null so that whenever the postcalled state changes  the useeffect hook run again
     getPostList();
-  }, []);
+  }, [postcalled]);
 
   return (
     <div className="feed-bar">
