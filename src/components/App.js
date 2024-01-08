@@ -13,7 +13,8 @@ export const modalforAddQuestion = createContext();
 export const modalforCreateSpace = createContext();
 export const modalforuserProfile = createContext();
 export const modalforSignup = createContext();
-export const postAddrefresh=createContext();
+export const modalforAddAnswer = createContext();
+export const postAddrefresh = createContext();
 
 function App() {
   const [createPortalforaddpost, setCreateportalforaddpost] = useState(false);
@@ -24,65 +25,80 @@ function App() {
   const [createPortalforuserProfile, setCreatePortaluserProfile] =
     useState(false);
   const [createSignupModal, setCreatesignupModal] = useState(false);
-  const [postcalled, setPostcalled]=useState(null)
+  const [createportalforaddanswer, setCreateportalforaddanswer] =
+    useState(false);
+  const [postcalled, setPostcalled] = useState(null);
 
   return (
     <Authprovider>
-      <postAddrefresh.Provider
-      value={{postcalled,setPostcalled}} // context api for calling the post data form DB
+      <modalforAddAnswer.Provider
+        value={{ createportalforaddanswer, setCreateportalforaddanswer }}
       >
-      <modalforSignup.Provider
-        value={{ createSignupModal, setCreatesignupModal }} // context api for signup Modal
-      >
-        <modalforuserProfile.Provider
-          value={{ createPortalforuserProfile, setCreatePortaluserProfile }} // context api for user Modal
+        <postAddrefresh.Provider
+          value={{ postcalled, setPostcalled }} // context api for calling the post data form DB
         >
-          <modalforCreateSpace.Provider
-            value={{
-              createPortalforcreatespace,
-              setCreateportalforcreatespace,
-            }} // context api for create space
+          <modalforSignup.Provider
+            value={{ createSignupModal, setCreatesignupModal }} // context api for signup Modal
           >
-            <modalforAddQuestion.Provider // context api for add question
-              value={{
-                createPortalforaddquestion,
-                setCreateportalforaddquestion,
-              }}
+            <modalforuserProfile.Provider
+              value={{ createPortalforuserProfile, setCreatePortaluserProfile }} // context api for user Modal
             >
-              <modalforCreatePost.Provider // context api for create post
-                value={{ createPortalforaddpost, setCreateportalforaddpost }}
+              <modalforCreateSpace.Provider
+                value={{
+                  createPortalforcreatespace,
+                  setCreateportalforcreatespace,
+                }} // context api for create space
               >
-                <BrowserRouter>
-                  <Routes>
-                    <Route
-                      path="/"
-                      element={
-                        <Authnavigator>
-                          <div className="App">
-                            <Quora />
-                          </div>
-                        </Authnavigator>
-                      }
-                    />
-                    <Route path="/addquestion/:userId" element={
-                      <Authnavigator>
-                        <Questioncomponent/>
-                      </Authnavigator>
-                    }/>
-                    <Route path="/createspace/:userId" element={
-                      <Authnavigator>
-                        <Createspacepage/>
-                      </Authnavigator>
-                    }/>
-                    <Route path="/login" element={<Login />} />
-                  </Routes>
-                </BrowserRouter>
-              </modalforCreatePost.Provider>
-            </modalforAddQuestion.Provider>
-          </modalforCreateSpace.Provider>
-        </modalforuserProfile.Provider>
-      </modalforSignup.Provider>
-      </postAddrefresh.Provider>
+                <modalforAddQuestion.Provider // context api for add question
+                  value={{
+                    createPortalforaddquestion,
+                    setCreateportalforaddquestion,
+                  }}
+                >
+                  <modalforCreatePost.Provider // context api for create post
+                    value={{
+                      createPortalforaddpost,
+                      setCreateportalforaddpost,
+                    }}
+                  >
+                    <BrowserRouter>
+                      <Routes>
+                        <Route
+                          path="/"
+                          element={
+                            <Authnavigator>
+                              <div className="App">
+                                <Quora />
+                              </div>
+                            </Authnavigator>
+                          }
+                        />
+                        <Route
+                          path="/addquestion/:userId"
+                          element={
+                            <Authnavigator>
+                              <Questioncomponent />
+                            </Authnavigator>
+                          }
+                        />
+                        <Route
+                          path="/createspace/:userId"
+                          element={
+                            <Authnavigator>
+                              <Createspacepage />
+                            </Authnavigator>
+                          }
+                        />
+                        <Route path="/login" element={<Login />} />
+                      </Routes>
+                    </BrowserRouter>
+                  </modalforCreatePost.Provider>
+                </modalforAddQuestion.Provider>
+              </modalforCreateSpace.Provider>
+            </modalforuserProfile.Provider>
+          </modalforSignup.Provider>
+        </postAddrefresh.Provider>
+      </modalforAddAnswer.Provider>
     </Authprovider>
   );
 }

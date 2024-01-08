@@ -9,7 +9,11 @@ import { BiDownvote } from "react-icons/bi";
 import { IoIosMore } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useContext } from "react";
+import { modalforAddAnswer } from "../App";
+import Addanswer from "../modalcomponents/Addanswer";
 export const Questiontitle = () => {
+  const {createportalforaddanswer, setCreateportalforaddanswer}=useContext(modalforAddAnswer)
   const [getonequestion, setGetoneQuestion] = useState();
   const { userId } = useParams();
   console.log(userId);
@@ -63,7 +67,7 @@ export const Questiontitle = () => {
         <div className="quora__questiontitleAnswerSection">
           <div className="quora__questiontitleIconSection">
             <BsPencilSquare className="quora__questiontitleIcon" />
-            <span className="questiontitleText">Answer</span>
+            <span className="questiontitleText" onClick={()=>setCreateportalforaddanswer(true)}>Answer</span>
           </div>
           <div className="quora__questiontitleIconSection">
             <BiWifi2 className="quora__questiontitleIcon" />
@@ -91,6 +95,7 @@ export const Questiontitle = () => {
           </div>
         </div>
       </div>
+      <Addanswer/>
     </div>
   );
 };
