@@ -47,7 +47,7 @@ export const Createpost = () => {
     formData.append("content", selectedtext.body);
     // formData.append("images", "postImage");
     try {
-      console.log(selectedtext.body);
+      // console.log(selectedtext.body);
       const response = await axios.post(
         "https://academics.newtonschool.co/api/v1/quora/post/",
         formData,

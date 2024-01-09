@@ -1,0 +1,64 @@
+.quora__editquestioncontainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0); */
+  display: flex;
+  pointer-events: auto;
+  justify-content: center;
+  align-items: center;
+  z-index: 12;
+}
+
+.quora__editquestionSection {
+  background-color: #ffffff;
+  width: 540px;
+  height: 340px;
+  border: 1px solid #dee0e1;
+  border-radius: 5px;
+}
+
+.quora__editquestionSectionInnercontainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.quora__editquestioncrosslogo {
+  font-size: 20px;
+  color: #656668;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.quora__editquestionText{
+    padding: 12px;
+    color: #282829;
+}
+
+.quora__editquestionInput{
+    margin: 8px;
+    width: 508px;
+    padding: 8px;
+    font-size: 16px;
+    color: #939598;
+    outline: none;
+    border: 1px solid #98999a;
+}
+
+.quora__editquestionSubmitbtn{
+    padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  background-color: #96b4ff;
+  cursor: pointer;
+  position: relative;
+  bottom: -144px;
+  left: 458px;
+
+  &:hover {
+    background-color: #2e69ff;
+  }
+}

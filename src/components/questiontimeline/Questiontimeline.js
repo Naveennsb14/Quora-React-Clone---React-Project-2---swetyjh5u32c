@@ -7,15 +7,20 @@ import { PiShareFatThin } from "react-icons/pi";
 import { MdMoreHoriz } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+import { postAddrefresh } from "../App";
+
 
 const Questiontimeline = () => {
   const token = JSON.parse(sessionStorage.getItem("token"));
   const { userId } = useParams();
   const [answers, setAnswers] = useState();
+  const {postcalled, setPostcalled} = useContext(postAddrefresh)
+  
 
+  //caliing the API to get all answers 
   const getAnswers = async () => {
     const config = {
       headers: {
@@ -30,14 +35,17 @@ const Questiontimeline = () => {
       );
       console.log("AnswerResponse", response.data.data);
       setAnswers(response.data.data);
+      setPostcalled(null)
     } catch (error) {
       console.log("error", error);
     }
   };
 
+  
+
   useEffect(() => {
     getAnswers();
-  }, []);
+  }, [postcalled]);
 
   const timestamp = answers?.createdAt;
 const date = new Date(timestamp);

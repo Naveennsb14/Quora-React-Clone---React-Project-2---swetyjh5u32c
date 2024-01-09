@@ -6,6 +6,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { postAddrefresh } from "../App";
 
+
 const Feed = () => {
 
   const [postData, setPostData]= useState([]); // for storing the timeline data which we will receive from api
@@ -42,6 +43,7 @@ const Feed = () => {
       {postData.length>0 && postData.map((post)=>{
         return <Timeline getPostList={getPostList} details={post} key={post._id}/>
       })}
+      
     </div>
   );
 };

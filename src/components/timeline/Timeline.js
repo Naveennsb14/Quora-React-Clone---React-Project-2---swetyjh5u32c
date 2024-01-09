@@ -6,13 +6,17 @@ import { FaRegComment } from "react-icons/fa6";
 import { PiShareFatThin } from "react-icons/pi";
 import { MdMoreHoriz } from "react-icons/md";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Commentsection from "../commentsection/Commentsection";
 import { useParams } from "react-router-dom";
+import { modalforEditQuestion } from "../App";
+import Editquestion from "../modalcomponents/Editquestion";
 
 const Timeline = ({ details, getPostList }) => {
   const { userId } = useParams();
   // console.log('userId', userId);
+  const { createportalforeditquestion, setCreateportalforeditquestion } =
+      useContext(modalforEditQuestion);
 
   const { author, channel, commentCount, content, likeCount, title, _id } =
     details;
@@ -97,6 +101,7 @@ const Timeline = ({ details, getPostList }) => {
     }
   };
 
+
   //calling this api for upvoting the post
   const upVotepost = async () => {
     const body = {
@@ -155,6 +160,9 @@ const Timeline = ({ details, getPostList }) => {
   // console.log(getInput);
 
   return (
+    <>
+
+    
     <div className="quora_timeLine">
       <div className="quoraprofileSection_details">
         <CgProfile className="quoraprofile_Logo" />
@@ -207,7 +215,7 @@ const Timeline = ({ details, getPostList }) => {
             <span className="quora__deleteOption" onClick={deletePost}>
               Delete
             </span>
-            <span className="quora__updateOption">Update</span>
+            <span className="quora__updateOption" onClick={() => setCreateportalforeditquestion(true)}>Edit</span>
           </div>
         )}
         <div className="quora_More">
@@ -239,7 +247,10 @@ const Timeline = ({ details, getPostList }) => {
             />
           );
         })}
+        
     </div>
+    <Editquestion/>
+    </>
   );
 };
 
