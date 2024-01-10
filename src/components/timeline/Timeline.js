@@ -16,7 +16,7 @@ const Timeline = ({ details, getPostList }) => {
   const { userId } = useParams();
   // console.log('userId', userId);
   const { createportalforeditquestion, setCreateportalforeditquestion } =
-      useContext(modalforEditQuestion);
+    useContext(modalforEditQuestion);
 
   const { author, channel, commentCount, content, likeCount, title, _id } =
     details;
@@ -101,7 +101,6 @@ const Timeline = ({ details, getPostList }) => {
     }
   };
 
-
   //calling this api for upvoting the post
   const upVotepost = async () => {
     const body = {
@@ -157,99 +156,106 @@ const Timeline = ({ details, getPostList }) => {
     }));
   };
 
+  const handleEdit = (postId) => {
+    setCreateportalforeditquestion(true);
+    console.log('testing',postId);
+  };
+
   // console.log(getInput);
 
   return (
     <>
-
-    
-    <div className="quora_timeLine">
-      <div className="quoraprofileSection_details">
-        <CgProfile className="quoraprofile_Logo" />
-        <div className="quoraProfile_Info">
-          <div className="quoraProfile_Nameinfo">
-            <h5 className="quoraProfile_Name">{author.name}</h5>
-            <span className="quoraProfile_followLink">Follow</span>
+      <div className="quora_timeLine">
+        <div className="quoraprofileSection_details">
+          <CgProfile className="quoraprofile_Logo" />
+          <div className="quoraProfile_Info">
+            <div className="quoraProfile_Nameinfo">
+              <h5 className="quoraProfile_Name">{author.name}</h5>
+              <span className="quoraProfile_followLink">Follow</span>
+            </div>
+            <p className="quoraProfile_paragraph">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
           </div>
-          <p className="quoraProfile_paragraph">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
         </div>
-      </div>
-      <div className="quoraPostSection">
-        <h3 className="quoraPostSection_header">{title}</h3>
-        <p className="quoraPostSection_paragraph">{content}</p>
-        {channel && (
-          <img src={channel.image} alt="" className="quoraTimeline_image" />
-        )}
-      </div>
-      <div className="quora_Voteandcommentsection">
-        <div className="quoraVoteandcomment">
-          <div className="quoraUpvote" onClick={upVotepost}>
-            <BiUpvote className="quoravoteandcomment_Icon" />
-            <span className="upVote_text">
-              Upvote- <span className="totalupVote">{likeCount}</span>
-            </span>
+        <div className="quoraPostSection">
+          <h3 className="quoraPostSection_header">{title}</h3>
+          <p className="quoraPostSection_paragraph">{content}</p>
+          {channel && (
+            <img src={channel.image} alt="" className="quoraTimeline_image" />
+          )}
+        </div>
+        <div className="quora_Voteandcommentsection">
+          <div className="quoraVoteandcomment">
+            <div className="quoraUpvote" onClick={upVotepost}>
+              <BiUpvote className="quoravoteandcomment_Icon" />
+              <span className="upVote_text">
+                Upvote- <span className="totalupVote">{likeCount}</span>
+              </span>
+            </div>
+            <div className="downVote"></div>
+            <div className="quoraDownvote" onClick={downVotepost}>
+              <BiDownvote className="quoravoteandcomment_Icon" />
+            </div>
+            <div className="quora_comment">
+              <FaRegComment
+                className="quoravoteandcomment_Icon"
+                onClick={() => {
+                  toggleCommentSection();
+                  getComments();
+                }}
+              />
+              <span className="comment_text">{commentCount}</span>
+            </div>
+            <div className="quora_Share">
+              <PiShareFatThin className="quoravoteandcomment_Icon" />
+              <span className="share_text">165</span>
+            </div>
           </div>
-          <div className="downVote"></div>
-          <div className="quoraDownvote" onClick={downVotepost}>
-            <BiDownvote className="quoravoteandcomment_Icon" />
+          {showAction && (
+            <div className="quora__deleteAndupdatesection">
+              <span className="quora__deleteOption" onClick={deletePost}>
+                Delete
+              </span>
+              <span
+                className="quora__updateOption"
+                onClick={() => handleEdit(_id)}
+              >
+                Edit
+              </span>
+            </div>
+          )}
+          <div className="quora_More">
+            <MdMoreHoriz className="quoraMore_Icon" onClick={toggleAction} />
           </div>
-          <div className="quora_comment">
-            <FaRegComment
-              className="quoravoteandcomment_Icon"
-              onClick={() => {
-                toggleCommentSection();
-                getComments();
-              }}
+        </div>
+        <div className="quora__lowerCommentprofileSection">
+          <CgProfile className="quora__lowerCommentprofileLogo" />
+          <form action="" onSubmit={postComments}>
+            <input
+              name="comment"
+              type="text"
+              className="quora__lowerCommentInputSection"
+              placeholder="Add a comment..."
+              onChange={handelOnchange}
             />
-            <span className="comment_text">{commentCount}</span>
-          </div>
-          <div className="quora_Share">
-            <PiShareFatThin className="quoravoteandcomment_Icon" />
-            <span className="share_text">165</span>
-          </div>
+            <button className="quora__lowerCommmentbuttonSection" type="submit">
+              Add comment
+            </button>
+          </form>
         </div>
-        {showAction && (
-          <div className="quora__deleteAndupdatesection">
-            <span className="quora__deleteOption" onClick={deletePost}>
-              Delete
-            </span>
-            <span className="quora__updateOption" onClick={() => setCreateportalforeditquestion(true)}>Edit</span>
-          </div>
-        )}
-        <div className="quora_More">
-          <MdMoreHoriz className="quoraMore_Icon" onClick={toggleAction} />
-        </div>
+        {showCommentSection &&
+          getallComments?.map((fetchedComments) => {
+            return (
+              <Commentsection
+                getComments={getComments}
+                comments={fetchedComments}
+                key={fetchedComments._id}
+              />
+            );
+          })}
       </div>
-      <div className="quora__lowerCommentprofileSection">
-        <CgProfile className="quora__lowerCommentprofileLogo" />
-        <form action="" onSubmit={postComments}>
-          <input
-            name="comment"
-            type="text"
-            className="quora__lowerCommentInputSection"
-            placeholder="Add a comment..."
-            onChange={handelOnchange}
-          />
-          <button className="quora__lowerCommmentbuttonSection" type="submit">
-            Add comment
-          </button>
-        </form>
-      </div>
-      {showCommentSection &&
-        getallComments?.map((fetchedComments) => {
-          return (
-            <Commentsection
-              getComments={getComments}
-              comments={fetchedComments}
-              key={fetchedComments._id}
-            />
-          );
-        })}
-        
-    </div>
-    <Editquestion id={_id}/>
+      <Editquestion id={_id} />
     </>
   );
 };

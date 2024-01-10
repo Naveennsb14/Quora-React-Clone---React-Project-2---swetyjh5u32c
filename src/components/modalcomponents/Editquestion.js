@@ -10,7 +10,7 @@ const Editquestion = ({id}) => {
   const { createportalforeditquestion, setCreateportalforeditquestion } =
     useContext(modalforEditQuestion);
   const { userId } = useParams();
-  console.log('userId',id);
+  
   const [editquestiontext, setEditquestiontext] = useState({
     text: "",
     body: "",
@@ -22,6 +22,7 @@ const Editquestion = ({id}) => {
 
   const updatePost = async (e) => {
     e.preventDefault();
+    console.log('userId',id);
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
