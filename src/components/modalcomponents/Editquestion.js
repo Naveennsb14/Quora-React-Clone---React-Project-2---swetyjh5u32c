@@ -6,7 +6,7 @@ import { RxCross1 } from "react-icons/rx";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const Editquestion = ({id}) => {
+const Editquestion = ({id, postdata}) => {
   const { createportalforeditquestion, setCreateportalforeditquestion } =
     useContext(modalforEditQuestion);
   const { userId } = useParams();
@@ -19,6 +19,7 @@ const Editquestion = ({id}) => {
   //caliing the API for updating the post to DB
   const token = JSON.parse(sessionStorage.getItem("token"));
   console.log("token", token);
+  
 
   const updatePost = async (e) => {
     e.preventDefault();
@@ -35,11 +36,13 @@ const Editquestion = ({id}) => {
 
     try {
       const updateResponse = await axios.patch(
-        `https://academics.newtonschool.co/api/v1/quora/post/${id}`,
+        `https://academics.newtonschool.co/api/v1/quora/post/${sessionStorage.getItem("postId")}`,
         formData,
         config
       );
       console.log('post updated successfully', updateResponse)
+      setCreateportalforeditquestion(false);
+      postdata();
     } catch (error) {
         console.log("error", error);
     }

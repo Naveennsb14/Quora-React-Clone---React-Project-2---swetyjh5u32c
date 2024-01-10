@@ -158,7 +158,8 @@ const Timeline = ({ details, getPostList }) => {
 
   const handleEdit = (postId) => {
     setCreateportalforeditquestion(true);
-    console.log('testing',postId);
+    sessionStorage.setItem("postId", postId);
+    console.log("testing", postId);
   };
 
   // console.log(getInput);
@@ -255,7 +256,7 @@ const Timeline = ({ details, getPostList }) => {
             );
           })}
       </div>
-      <Editquestion id={_id} />
+      <Editquestion id={_id} postdata={getPostList}/>
     </>
   );
 };
