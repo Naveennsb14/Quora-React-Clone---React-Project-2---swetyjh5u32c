@@ -6,11 +6,11 @@ import { RxCross1 } from "react-icons/rx";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const Editquestion = () => {
+const Editquestion = ({id}) => {
   const { createportalforeditquestion, setCreateportalforeditquestion } =
     useContext(modalforEditQuestion);
   const { userId } = useParams();
-  console.log('userId',userId);
+  console.log('userId',id);
   const [editquestiontext, setEditquestiontext] = useState({
     text: "",
     body: "",
@@ -34,7 +34,7 @@ const Editquestion = () => {
 
     try {
       const updateResponse = await axios.patch(
-        `https://academics.newtonschool.co/api/v1/quora/post/${userId}`,
+        `https://academics.newtonschool.co/api/v1/quora/post/${id}`,
         formData,
         config
       );

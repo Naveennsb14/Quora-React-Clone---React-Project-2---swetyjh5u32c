@@ -249,7 +249,7 @@ const Timeline = ({ details, getPostList }) => {
         })}
         
     </div>
-    <Editquestion/>
+    <Editquestion id={_id}/>
     </>
   );
 };
