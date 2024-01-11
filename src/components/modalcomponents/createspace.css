@@ -24,6 +24,23 @@
   border-radius: 5px;
 }
 
+.quora__childmodalforcreatespaceDark{
+  display: flex;
+  position: fixed;
+  z-index: 11;
+  justify-content: space-between;
+  background-color: #181818;
+  pointer-events: auto;
+  width: 640px;
+  height: 480px;
+  border: 1px solid #262626;
+  border-radius: 5px;
+}
+
+.quora_AddchildQuestionDark{
+  color: #D5D6D6;
+}
+
 .quora__createSpaceHeaderSection {
   display: flex;
   flex-direction: column;
@@ -37,10 +54,22 @@
   padding: 8px 2px;
 }
 
+.quora__createSpaceTextDark{
+  font-weight: bold;
+  padding: 8px 2px;
+  color: #D5D6D6;
+}
+
 .quora__createSpacesubText {
   font-size: 14px;
   padding: 2px;
   color: #636466;
+}
+
+.quora__createSpacesubTextDark{
+  font-size: 14px;
+  padding: 2px;
+  color: #9FA0A0
 }
 
 .quora__createSpaceformContainer {
@@ -55,6 +84,12 @@
   padding: 2px;
   font-weight: bold;
   color: #282829;
+}
+
+.quora__createSpaceformNameDark{
+  padding: 2px;
+  font-weight: bold;
+  color: #D5D6D6;
 }
 
 .quora__createSpaceformsubName {
@@ -75,8 +110,28 @@
   margin-bottom: 48px;
 }
 
+.quora__createSpaceformNameinputDark{
+  margin: 2px;
+  padding: 12px;
+  width: 560px;
+  border: 1px solid #98999a;
+  background-color: #262626;
+  color: #D5D6D6;
+  &:focus {
+    outline: none;
+    border: 1px solid #2e69ff;
+  }
+  margin-bottom: 48px;
+}
+
 .quora__createSpaceformBriefdescription {
   color: #282829;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.quora__createSpaceformBriefdescriptionDark{
+  color: #D5D6D6;
   font-weight: bold;
   padding: 2px;
 }
@@ -92,6 +147,20 @@
   padding: 12px;
   width: 560px;
   border: 1px solid #98999a;
+  &:focus {
+    outline: none;
+    border: 1px solid #2e69ff;
+  }
+  margin-bottom: 48px;
+}
+
+.quora__createSpaceformBriefdescriptionInputDark{
+  margin: 2px;
+  padding: 12px;
+  width: 560px;
+  border: 1px solid #98999a;
+  background-color: #262626;
+  color: #D5D6D6;
   &:focus {
     outline: none;
     border: 1px solid #2e69ff;

@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+.quora__lowerCommentprofileSectionDark{
+  background-color: #202020;
+  display: flex;
+  align-items: center;
+}
+
 .quora__lowerCommentprofileLogo {
   color: #8f9092;
   font-size: 32px;
@@ -15,6 +21,18 @@
   padding: 10px 10px;
   font-size: 14px;
   color: #949494;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  margin: 4px;
+  width: 392px;
+}
+
+.quora__lowerCommentInputSectionDark{
+  padding: 10px 10px;
+  font-size: 14px;
+  color: #D5D6D6;
+  background-color: #282829;
   outline: none;
   border: none;
   border-radius: 20px;

@@ -22,11 +22,36 @@
   border-radius: 5px;
 }
 
+.quora_AddchildquestionModalDark{
+    position: fixed;
+    z-index: 11;
+    background-color: #181818;
+    pointer-events: auto;
+    width: 760px;
+    height: 480px;
+    border: 1px solid #414142;
+    border-radius: 5px;
+}
+
 .quora_AddquestionModalCrossLogo {
   font-size: 20px;
   color: #656668;
   padding: 12px;
   cursor: pointer;
+}
+
+.quora_AddquestionModalCrossLogoDark{
+    font-size: 20px;
+  color: #D5D6D6;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.quora_AddquestionModalCrossLogoDark{
+    font-size: 20px;
+    color: #D5D6D6;
+    padding: 12px;
+    cursor: pointer;
 }
 
 .quoraAddquestionModalHeaderSection {
@@ -39,9 +64,29 @@
   left: 45%;
 }
 
+.quoraAddquestionModalHeaderSectionDark{
+    margin: auto;
+  font-weight: bold;
+  color: #D5D6D6;
+  font-size: 14px;
+  position: absolute;
+  top: 48px;
+  left: 45%;
+}
+
 .quoraquestionTipsDetails {
   width: 80%;
   background-color: #ebf0ff;
+  left: 40px;
+  position: absolute;
+  left: 52px;
+  top: 72px;
+  padding: 24px;
+}
+
+.quoraquestionTipsDetailsDark{
+    width: 80%;
+  background-color: #131313;
   left: 40px;
   position: absolute;
   left: 52px;
@@ -96,14 +141,34 @@
     border-radius: 20px;
 }
 
+.quora__addQuestionModalprofileSectionPublicDark{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #262626;
+    border: 1px solid #DADADA;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
 .quora__addQuestionModalprofileSectionPublicusersLogo{
     color: #636466;
+}
+
+.quora__addQuestionModalprofileSectionPublicusersLogoDark{
+    color: #D5D6D6;
 }
 
 .quora__addQuestionModalprofileSectionPublicText{
     font-size: 12px;
     font-weight: bold;
     color: #636466;
+}
+
+.quora__addQuestionModalprofileSectionPublicTextDark{
+    font-size: 12px;
+    font-weight: bold;
+    color: #D5D6D6;
 }
 
 .quora__addQuestionModalprofileSectionarrowLogo{
@@ -125,6 +190,16 @@
     border: none;
 }
 
+.quora__addQuestionDetailsDark{
+    width: 710px;
+    padding: 8px;
+    font-size: 16px;
+    color: #D5D6D6;
+    outline: none;
+    border: none;
+    background-color: #282829;
+}
+
 .quora__addQuestionModalInputSectionhorizontal-line{
     width: 94%; /* Adjust the width as needed */
     height: 1px; /* Adjust the height as needed */
@@ -133,6 +208,10 @@
     top: 314px;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.quora__addQuestionModalInputSectionhorizontalDark{
+    display: none;
 }
 
 .quora__addQuestionModalInputSectionsecondhorizontal-line{
@@ -164,6 +243,20 @@
     font-weight: bold;
     &:hover{
         background-color: #F7F7F7;
+    }
+}
+
+.quoraAddquestionModalCancel_btnDark{
+    color: #D5D6D6;
+    padding: 12px 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: #262626;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover{
+        background-color: #F7F7F7;
+        color: #262626;
     }
 }
 

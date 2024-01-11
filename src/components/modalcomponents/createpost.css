@@ -9,6 +9,17 @@
   border-radius: 5px;
 }
 
+.quora_childPostmodalDark {
+  position: fixed;
+  z-index: 11;
+  background-color: #262626;
+  pointer-events: auto;
+  width: 760px;
+  height: 480px;
+  border: 1px solid #414142;
+  border-radius: 5px;
+}
+
 .quora_createPostmodal {
   position: fixed;
   top: 0;
@@ -31,6 +42,16 @@
   pointer-events: auto;
   width: 760px;
   height: 480px;
+}
+
+.quoraAddquestionModalHeaderSectionDark {
+  margin: auto;
+  font-weight: bold;
+  color: #d5d6d6;
+  font-size: 14px;
+  position: absolute;
+  top: 48px;
+  left: 45%;
 }
 
 .quora__createPostInputSectionhorizontal-line {
@@ -59,12 +80,19 @@
   display: flex;
   flex-direction: column;
 }
+.quora__createPostprofileSectionuserDetailsDark{
+  background-color: #262626;
+}
 
 .quora__createPostprofileuserName {
   font-size: 14px;
   font-weight: bold;
 }
-
+.quora__createPostprofileuserNameDark{
+  font-size: 14px;
+  font-weight: bold;
+  color: #d5d6d6;
+}
 .createPostprofileuserCredentialsdetails {
   display: flex;
   align-items: center;
@@ -72,6 +100,16 @@
   border: 1px solid #6e6f71;
   padding: 4px 8px;
   border-radius: 20px;
+}
+
+.createPostprofileuserCredentialsdetailsDark{
+  display: flex;
+  align-items: center;
+  background-color: #262626;
+  border: 1px solid #414142;
+  padding: 4px 8px;
+  border-radius: 20px;
+  color: #d5d6d6;
 }
 
 .quora__credentials {
@@ -97,6 +135,19 @@
   border: none;
   outline: none;
   color: #747475;
+}
+
+.quora__createPostInputDetailsDark{
+  position: absolute;
+  top: 140px;
+  left: 10px;
+  width: 94%;
+  padding: 12px;
+  font-size: medium;
+  border: none;
+  outline: none;
+  color: #d5d6d6;
+  background-color: #262626;
 }
 
 .quora__createPostselectImage {
@@ -130,3 +181,6 @@
   }
 }
 
+.quora__otherInputsDark{
+  color: #2e69ff;
+}

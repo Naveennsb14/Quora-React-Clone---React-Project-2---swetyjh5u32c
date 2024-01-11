@@ -8,11 +8,30 @@
   z-index: 0;
   
 }
+
+.quora__sidebarDark{
+  margin-top: 54px;
+  flex: 1 1;
+  background-color: #181818;
+  color: #d5d5d5;
+  cursor: pointer;
+  margin-right: 10rem;
+  z-index: 0;
+}
 .quora__sidebarlist {
   list-style: none;
   position: fixed;
   & :hover {
     background-color: #e4e6e6;
+    border-radius: 4px;
+  }
+}
+
+.quora__sidebarlistDark{
+  list-style: none;
+  position: fixed;
+  & :hover {
+    background-color: #1D1D1D;
     border-radius: 4px;
   }
 }

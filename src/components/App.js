@@ -16,8 +16,11 @@ export const modalforSignup = createContext();
 export const modalforAddAnswer = createContext();
 export const modalforEditQuestion = createContext();
 export const postAddrefresh = createContext();
+export const toggleTheme =createContext();
 
 function App() {
+  let themeState=sessionStorage.getItem('themeMode')
+  console.log('themeState', themeState);
   const [createPortalforaddpost, setCreateportalforaddpost] = useState(false);
   const [createPortalforaddquestion, setCreateportalforaddquestion] =
     useState(false);
@@ -31,9 +34,14 @@ function App() {
   const [createportalforeditquestion, setCreateportalforeditquestion] =
     useState(false);
   const [postcalled, setPostcalled] = useState(null);
+  const [darkMode, setDarkMode]=useState(false);
+
+  
+
 
   return (
-    <Authprovider>
+      <Authprovider>
+    <toggleTheme.Provider value={{darkMode, setDarkMode}}>
       <modalforEditQuestion.Provider
         value={{ createportalforeditquestion, setCreateportalforeditquestion }}
       >
@@ -109,6 +117,7 @@ function App() {
           </postAddrefresh.Provider>
         </modalforAddAnswer.Provider>
       </modalforEditQuestion.Provider>
+    </toggleTheme.Provider>
     </Authprovider>
   );
 }

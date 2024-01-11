@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./questioncomponent.css";
 import { Header } from "../../components/header/Header";
 import { Questiontitle } from "../../components/questiontitle/Questiontitle";
 import Questiontimeline from "../../components/questiontimeline/Questiontimeline";
 import { useParams } from "react-router-dom";
-
+import { toggleTheme } from "../../components/App";
 
 const Questioncomponent = () => {
-  
-
-  const {userId}=useParams();
+  const { darkMode, setDarkMode } = useContext(toggleTheme);
+  const { userId } = useParams();
 
   return (
-    <>
+    <div
+      className={darkMode ? "quora__mainContainerDark" : "quora__mainContainer"}
+    >
       <Header />
       <div className="quora__questionComponentSection">
         <div className="quora__questionComponentDetailsSection">
@@ -34,7 +35,7 @@ const Questioncomponent = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -9,7 +9,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Commentsection from "../commentsection/Commentsection";
 import { useParams } from "react-router-dom";
-import { modalforEditQuestion } from "../App";
+import { modalforEditQuestion, toggleTheme } from "../App";
 import Editquestion from "../modalcomponents/Editquestion";
 
 const Timeline = ({ details, getPostList }) => {
@@ -17,6 +17,8 @@ const Timeline = ({ details, getPostList }) => {
   // console.log('userId', userId);
   const { createportalforeditquestion, setCreateportalforeditquestion } =
     useContext(modalforEditQuestion);
+
+    const {darkMode, setDarkMode}= useContext(toggleTheme)
 
   const { author, channel, commentCount, content, likeCount, title, _id } =
     details;
@@ -32,6 +34,8 @@ const Timeline = ({ details, getPostList }) => {
     setshowAction((prev) => !prev);
   };
   const token = JSON.parse(sessionStorage.getItem("token"));
+
+  
 
   // calling the api for fetching all comments in UI
   const getComments = async () => {
@@ -166,20 +170,20 @@ const Timeline = ({ details, getPostList }) => {
 
   return (
     <>
-      <div className="quora_timeLine">
+      <div className={darkMode?"quora_timeLineDark":"quora_timeLine"}>
         <div className="quoraprofileSection_details">
-          <CgProfile className="quoraprofile_Logo" />
+          <CgProfile className={darkMode?"quoraprofile_LogoDark":"quoraprofile_Logo"} />
           <div className="quoraProfile_Info">
             <div className="quoraProfile_Nameinfo">
-              <h5 className="quoraProfile_Name">{author.name}</h5>
+              <h5 className={darkMode?"quoraProfile_NameDark":"quoraProfile_Name"}>{author.name}</h5>
               <span className="quoraProfile_followLink">Follow</span>
             </div>
-            <p className="quoraProfile_paragraph">
+            <p className={darkMode?"quoraProfile_paragraphDark":"quoraProfile_paragraph"}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
           </div>
         </div>
-        <div className="quoraPostSection">
+        <div className={darkMode?"quoraPostSectionDark":"quoraPostSection"}>
           <h3 className="quoraPostSection_header">{title}</h3>
           <p className="quoraPostSection_paragraph">{content}</p>
           {channel && (
@@ -188,29 +192,29 @@ const Timeline = ({ details, getPostList }) => {
         </div>
         <div className="quora_Voteandcommentsection">
           <div className="quoraVoteandcomment">
-            <div className="quoraUpvote" onClick={upVotepost}>
-              <BiUpvote className="quoravoteandcomment_Icon" />
-              <span className="upVote_text">
-                Upvote- <span className="totalupVote">{likeCount}</span>
+            <div className={darkMode?"quoraUpvoteDark":"quoraUpvote"} onClick={upVotepost}>
+              <BiUpvote className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"} />
+              <span className={darkMode?"upVote_textDark":"upVote_text"}>
+                Upvote- <span className={darkMode?"totalupVoteDark":"totalupVote"}>{likeCount}</span>
               </span>
             </div>
-            <div className="downVote"></div>
-            <div className="quoraDownvote" onClick={downVotepost}>
-              <BiDownvote className="quoravoteandcomment_Icon" />
+            <div className={darkMode?"downVoteDark":"downVote"}></div>
+            <div className={darkMode?"quoraDownvoteDark":"quoraDownvote" }onClick={downVotepost}>
+              <BiDownvote className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"}/>
             </div>
             <div className="quora_comment">
               <FaRegComment
-                className="quoravoteandcomment_Icon"
+                className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"}
                 onClick={() => {
                   toggleCommentSection();
                   getComments();
                 }}
               />
-              <span className="comment_text">{commentCount}</span>
+              <span className={darkMode?"comment_textDark":"comment_text"}>{commentCount}</span>
             </div>
             <div className="quora_Share">
-              <PiShareFatThin className="quoravoteandcomment_Icon" />
-              <span className="share_text">165</span>
+              <PiShareFatThin className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"}/>
+              <span className={darkMode?"share_textDark":"share_text"}>165</span>
             </div>
           </div>
           {showAction && (
@@ -230,13 +234,13 @@ const Timeline = ({ details, getPostList }) => {
             <MdMoreHoriz className="quoraMore_Icon" onClick={toggleAction} />
           </div>
         </div>
-        <div className="quora__lowerCommentprofileSection">
+        <div className={darkMode?"quora__lowerCommentprofileSectionDark":"quora__lowerCommentprofileSection"}>
           <CgProfile className="quora__lowerCommentprofileLogo" />
           <form action="" onSubmit={postComments}>
             <input
               name="comment"
               type="text"
-              className="quora__lowerCommentInputSection"
+              className={darkMode?"quora__lowerCommentInputSectionDark":"quora__lowerCommentInputSection"}
               placeholder="Add a comment..."
               onChange={handelOnchange}
             />

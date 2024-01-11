@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./createpost.css";
 import { createPortal } from "react-dom";
-import { modalforCreatePost, postAddrefresh } from "../App";
+import { modalforCreatePost, postAddrefresh, toggleTheme } from "../App";
 import { RxCross1 } from "react-icons/rx";
 import { LuUserCircle2 } from "react-icons/lu";
 import { MdArrowRight } from "react-icons/md";
@@ -23,6 +23,7 @@ export const Createpost = () => {
   };
   const { createPortalforaddpost, setCreateportalforaddpost } =
     useContext(modalforCreatePost); // for toggling the modal for create post
+    const {darkMode, setDarkMode}= useContext(toggleTheme)
   function handleOverlayClick(event) {
     if (event.target === event.currentTarget) {
       setCreateportalforaddpost(false); // it diffrentiates between the parent and the child div so that the child div once clicked wont make state FALSE
@@ -70,20 +71,20 @@ export const Createpost = () => {
   return createPortal(
     createPortalforaddpost && ( // if the state will be true then only it will show the modal
       <div className="quora_createPostmodal" onClick={handleOverlayClick}>
-        <div className="quora_childPostmodal">
-          <div className="quora_AddchildQuestion">
+        <div className={darkMode?"quora_childPostmodalDark":"quora_childPostmodal"}>
+          <div className={darkMode?"quora_AddchildQuestionDark":"quora_AddchildQuestion"}>
             <RxCross1
-              className="quora_AddquestionModalCrossLogo"
+              className={darkMode?"quora_AddquestionModalCrossLogoDark":"quora_AddquestionModalCrossLogo"}
               onClick={handleOverlayClick}
             />
           </div>
-          <div className="quoraAddquestionModalHeaderSection">Create Post</div>
-          <div class="quora__createPostInputSectionhorizontal-line"></div>
+          <div className={darkMode?"quoraAddquestionModalHeaderSectionDark":"quoraAddquestionModalHeaderSection"}>Create Post</div>
+          <div class={darkMode?"quora__createPostInputSectionhorizontal-lineDark":"quora__createPostInputSectionhorizontal-line"}></div>
           <div className="quora__createPostprofileSection">
             <LuUserCircle2 className="quora__createPostprofileSectionUserLogo" />
-            <div className="quora__createPostprofileSectionuserDetails">
-              <span className="quora__createPostprofileuserName">{JSON.parse(sessionStorage.getItem('name'))}</span>
-              <div className="createPostprofileuserCredentialsdetails">
+            <div className={darkMode?"quora__createPostprofileSectionuserDetailsDark":"quora__createPostprofileSectionuserDetails"}>
+              <span className={darkMode?"quora__createPostprofileuserNameDark":"quora__createPostprofileuserName"}>{JSON.parse(sessionStorage.getItem('name'))}</span>
+              <div className={darkMode?"createPostprofileuserCredentialsdetailsDark":"createPostprofileuserCredentialsdetails"}>
                 <span className="quora__credentials">Choose Credentials</span>
                 <MdArrowRight className="quora__rightLogo" />
               </div>
@@ -99,7 +100,7 @@ export const Createpost = () => {
             <input
               name="body"
               type="text"
-              className="quora__createPostInputDetails"
+              className={darkMode?"quora__createPostInputDetailsDark":"quora__createPostInputDetails"}
               placeholder="Say Something..."
               onChange={handleonChange}
             />
@@ -112,7 +113,7 @@ export const Createpost = () => {
                 id="img"
                 name="img"
                 accept="image/*"
-                className="quora__otherInputs"
+                className={darkMode?"quora__otherInputsDark":"quora__otherInputs"}
               />
             </div>
             <button type="submit" className="quora__createPostbutton">

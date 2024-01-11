@@ -8,6 +8,17 @@
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
+
+.quora_timeLineDark {
+  margin-top: 10px;
+  max-width: 600px;
+  background-color: #202020;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #414141;
+  border-radius: 4px;
+}
 .quoraprofileSection_details {
   padding: 8px;
   display: flex;
@@ -16,6 +27,11 @@
 
 .quoraprofile_Logo {
   color: #8f9092;
+  font-size: 28px;
+}
+
+.quoraprofile_LogoDark {
+  color: #d5d6d6;
   font-size: 28px;
 }
 
@@ -29,6 +45,10 @@
   gap: 16px;
 }
 
+.quoraProfile_NameDark {
+  color: #cacbcb;
+}
+
 .quoraProfile_followLink {
   color: #2e69ff;
   font-size: 12px;
@@ -39,6 +59,16 @@
   color: #636466;
   margin-top: 4px;
   font-size: 12px;
+}
+
+.quoraProfile_paragraphDark {
+  color: #b1b3b6;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.quoraPostSectionDark {
+  color: #d5d6d6;
 }
 .quoraPostSection_header {
   margin: 8px;
@@ -81,6 +111,18 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
+.quoraUpvoteDark {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-right: -36px;
+  background-color: #393939;
+  padding: 8px;
+  border: 1px solid #3c3c3d;
+  border-radius: 20px;
+  cursor: pointer;
+}
 .quoraDownvote {
   display: flex;
   align-items: center;
@@ -92,10 +134,29 @@
   cursor: pointer;
 }
 
+.quoraDownvoteDark{
+  display: flex;
+  align-items: center;
+  background-color: #393939;
+  cursor: pointer;
+  padding: 4px 8px;
+  border: 1px solid #3c3c3d;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.quoravoteandcomment_IconDark {
+  color: #2e69ff;
+}
+
 .quora_comment {
   display: flex;
   gap: 6px;
   align-items: center;
+}
+
+.comment_textDark{
+  color: #D5D6D6;
 }
 
 .quora_Share {
@@ -116,8 +177,19 @@
   color: #636466;
 }
 
+.upVote_textDark {
+  color: #b0b2b4;
+  font-size: small;
+  font-weight: bold;
+}
+
 .totalupVote {
   color: #636466;
+  font-weight: lighter;
+}
+
+.totalupVoteDark {
+  color: #b0b2b4;
   font-weight: lighter;
 }
 
@@ -129,6 +201,12 @@
 
 .share_text {
   color: #636466;
+  font-size: small;
+  cursor: pointer;
+}
+
+.share_textDark{
+  color: #D5D6D6;
   font-size: small;
   cursor: pointer;
 }
@@ -158,9 +236,9 @@
   padding: 8px;
   cursor: pointer;
   color: #717172;
-  &:hover{
+  &:hover {
     text-decoration: underline;
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
   }
 }
 
@@ -168,8 +246,8 @@
   padding: 8px;
   cursor: pointer;
   color: #717172;
-  &:hover{
+  &:hover {
     text-decoration: underline;
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
   }
 }

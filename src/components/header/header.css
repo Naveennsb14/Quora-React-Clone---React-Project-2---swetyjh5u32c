@@ -7,6 +7,13 @@
     width: 100%;
     
 }
+.qHeader__dark{
+    background-color: #262626;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
 .qHeader__content{
     max-width: 80%;
     height: 60px;
@@ -23,6 +30,13 @@
     cursor: pointer;
 
 }
+.quora__logodark{
+    width: 100px;
+    height: 28px;
+    margin-right: -40px;
+    cursor: pointer;
+    background-color: #262626;
+}
 
 .qHeader__icons{
     display: flex;
@@ -32,6 +46,15 @@
     gap: 14px;
     cursor: pointer;
     
+}
+
+.qHeader__iconsDark{
+    display: flex;
+    font-size: 30px;
+    color: #D5D6D6;
+    font-weight: bolder;
+    gap: 14px;
+    cursor: pointer;
 }
 .qHeader__icon:hover{
 color: #B92B27;
@@ -43,6 +66,8 @@ color: #B92B27;
     /* position: absolute */
 
 }
+
+
 .qHeader__searchlogo{
     font-size: x-large;
     position: relative;
@@ -67,6 +92,23 @@ color: #B92B27;
     }
 }
 
+.qHeader__inputboxDark{
+    width: 320px;
+    color: #8F9092;
+    border: 1px solid #8F9092;
+    height: 36px;
+    padding: auto;
+    padding-left: 28px;
+    border-radius: 4px;
+    background-color: #262626;
+    color: #D5D6D6;
+
+    &:focus {
+        border: 1px solid #2E69FF;
+        outline: none;
+    }
+}
+
 
 .qHeader__Rem{
     display: flex;
@@ -76,6 +118,12 @@ color: #B92B27;
     font-size: 32px;
     margin: auto;
     color: #8F9092;
+    cursor: pointer;
+}
+.qHeader__userlogoDark{
+    font-size: 32px;
+    margin: auto;
+    color: #D5D6D6;
     cursor: pointer;
 }
 

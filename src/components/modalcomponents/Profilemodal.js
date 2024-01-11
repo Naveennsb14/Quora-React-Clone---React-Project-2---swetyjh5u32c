@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./profilemodal.css";
-import { modalforuserProfile } from "../App";
+import { modalforuserProfile, toggleTheme } from "../App";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { LuMessageSquarePlus } from "react-icons/lu";
 import { IoCreateOutline } from "react-icons/io5";
@@ -14,70 +14,85 @@ import { json, useNavigate } from "react-router-dom";
 export const Profilemodal = () => {
   const { createPortalforuserProfile, setCreatePortaluserProfile } =
     useContext(modalforuserProfile);
+  const { darkMode, setDarkMode } = useContext(toggleTheme);
+  console.log('darkMode',darkMode);
+
+  const handleToggle = () => {
+    setDarkMode((prev) => {
+      return !prev;
+    });
+    console.log('themeMode', darkMode);
+    if(darkMode===true){
+      sessionStorage.setItem('themeMode',true)
+    }else{
+      sessionStorage.setItem('themeMode', false)
+    }
+    // sessionStorage.setItem('themeMode')
+  };
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
     navigate("/login");
   };
-  
+
   const navigate = useNavigate();
 
   return (
     createPortalforuserProfile && (
-      <div className="quora__profileModal">
-        <div className="quora_profileModalTopSection">
-          <FaRegCircleUser className="quora_profileModalTopSectionLogo" />
+      <div className={darkMode?"quora__profileModalDark":"quora__profileModal"}>
+        <div className={darkMode?"quora_profileModalTopSectionDark":"quora_profileModalTopSection"}>
+          <FaRegCircleUser className={darkMode?"quora_profileModalTopSectionLogoDark":"quora_profileModalTopSectionLogo"} />
           <div className="quora_profileModalTopSectionuserNameandlogo">
-            <span className="quora_profileModalTopSectionuserName">
-              {JSON.parse(sessionStorage.getItem('name'))}
+            <span className={darkMode?"quora_profileModalTopSectionuserNameDark":"quora_profileModalTopSectionuserName"}>
+              {JSON.parse(sessionStorage.getItem("name"))}
             </span>
             <IoIosArrowForward className="quora_profileModalTopSectionuserlogo" />
           </div>
         </div>
         <div class="quora_profileModalTopSectionhorizontal-line"></div>
-        <div className="quora_profileModalNavigationSection">
-          <div className="quora_ProfileModaleNavigation">
-            <LuMessageSquarePlus className="quora_profileModalIcon" />
-            <span className="quora_profileModalNavText">Messages</span>
+        <div className={darkMode?"quora_profileModalNavigationSectionDark":"quora_profileModalNavigationSection"}>
+          <div className={darkMode?"quora_ProfileModaleNavigationDark":"quora_ProfileModaleNavigation"}>
+            <LuMessageSquarePlus className={darkMode?"quora_profileModalIconDark":"quora_profileModalIcon" }/>
+            <span className={darkMode?"quora_profileModalNavTextDark":"quora_profileModalNavText"}>Messages</span>
           </div>
-          <div className="quora_ProfileModaleNavigation">
-            <IoCreateOutline className="quora_profileModalIcon" />
-            <span className="quora_profileModalNavText">Create ad</span>
+          <div className={darkMode?"quora_ProfileModaleNavigationDark":"quora_ProfileModaleNavigation"}>
+            <IoCreateOutline className={darkMode?"quora_profileModalIconDark":"quora_profileModalIcon"} />
+            <span className={darkMode?"quora_profileModalNavTextDark":"quora_profileModalNavText"}>Create ad</span>
           </div>
-          <div className="quora_ProfileModaleNavigation">
-            <FiDollarSign className="quora_profileModalIcon" />
-            <span className="quora_profileModalNavText">Monetisation</span>
+          <div className={darkMode?"quora_ProfileModaleNavigationDark":"quora_ProfileModaleNavigation"}>
+            <FiDollarSign className={darkMode?"quora_profileModalIconDark":"quora_profileModalIcon"} />
+            <span className={darkMode?"quora_profileModalNavTextDark":"quora_profileModalNavText"}>Monetisation</span>
           </div>
-          <div className="quora_ProfileModaleNavigation">
-            <IoIosStats className="quora_profileModalIcon" />
-            <span className="quora_profileModalNavText">
+          <div className={darkMode?"quora_ProfileModaleNavigationDark":"quora_ProfileModaleNavigation"}>
+            <IoIosStats className={darkMode?"quora_profileModalIconDark":"quora_profileModalIcon"}/>
+            <span className={darkMode?"quora_profileModalNavTextDark":"quora_profileModalNavText"}>
               Your Content & Stats
             </span>
           </div>
-          <div className="quora_ProfileModaleNavigation">
-            <IoBookmarksOutline className="quora_profileModalIcon" />
-            <span className="quora_profileModalNavText">Bookmarks</span>
+          <div className={darkMode?"quora_ProfileModaleNavigationDark":"quora_ProfileModaleNavigation"}>
+            <IoBookmarksOutline className={darkMode?"quora_profileModalIconDark":"quora_profileModalIcon"} />
+            <span className={darkMode?"quora_profileModalNavTextDark":"quora_profileModalNavText"}>Bookmarks</span>
           </div>
-          <div className="quora_ProfileModaleNavigation">
-            <MdOutlineDrafts className="quora_profileModalIcon" />
-            <span className="quora_profileModalNavText">Drafts</span>
+          <div className={darkMode?"quora_ProfileModaleNavigationDark":"quora_ProfileModaleNavigation"}>
+            <MdOutlineDrafts className={darkMode?"quora_profileModalIconDark":"quora_profileModalIcon"} />
+            <span className={darkMode?"quora_profileModalNavTextDark":"quora_profileModalNavText"}>Drafts</span>
           </div>
-          <div className="quora_ProfileModaleNavigation">
-            <GiNinjaStar className="quora_profileModalIcon" />
-            <span className="quora_profileModalNavText">Try Quora+</span>
+          <div className={darkMode?"quora_ProfileModaleNavigationDark":"quora_ProfileModaleNavigation"}>
+            <GiNinjaStar className={darkMode?"quora_profileModalIconDark":"quora_profileModalIcon"} />
+            <span className={darkMode?"quora_profileModalNavTextDark":"quora_profileModalNavText"}>Try Quora+</span>
           </div>
         </div>
         <div class="quora_profileModalTopSectionhorizontal-line"></div>
         <div className="quora_profileModalBottomSection">
-          <div className="quora_profileModalToggleMode">
-            <span className="quora_profileModalBottomtext">Dark mode</span>
-            <span className="quora_profileModalToggleModebutton">OFF</span>
+          <div className={darkMode?"quora_profileModalToggleModeDark":"quora_profileModalToggleMode"} onClick={handleToggle}>
+            <span className={darkMode?"quora_profileModalBottomtextDark":"quora_profileModalBottomtext"}>Dark mode</span>
+            <span className={darkMode?"quora_profileModalToggleModebuttonDark":"quora_profileModalToggleModebutton"}>{darkMode?"ON":"OFF"}</span>
           </div>
-          <span className="quora_profileModalBottomSectiontext">Settings</span>
-          <span className="quora_profileModalBottomSectiontext">Languages</span>
-          <span className="quora_profileModalBottomSectiontext">Help</span>
+          <span className={darkMode?"quora_profileModalBottomSectiontextDark":"quora_profileModalBottomSectiontext"}>Settings</span>
+          <span className={darkMode?"quora_profileModalBottomSectiontextDark":"quora_profileModalBottomSectiontext"}>Languages</span>
+          <span className={darkMode?"quora_profileModalBottomSectiontextDark":"quora_profileModalBottomSectiontext"}>Help</span>
           <span
-            className="quora_profileModalBottomSectiontext"
+            className={darkMode?"quora_profileModalBottomSectiontextDark":"quora_profileModalBottomSectiontext"}
             onClick={handleLogout}
           >
             Logout

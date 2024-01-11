@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { createPortal } from "react-dom";
-import { modalforCreateSpace } from "../App";
+import { modalforCreateSpace, toggleTheme } from "../App";
 import "./createspace.css";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
@@ -16,6 +16,8 @@ const Createspace = () => {
     name: "",
     description: "",
   });
+
+  const {darkMode, setDarkMode}= useContext(toggleTheme)
 
   function handleOverlayClick(event) {
     if (event.target === event.currentTarget) {
@@ -63,21 +65,21 @@ const Createspace = () => {
   return createPortal(
     createPortalforcreatespace && (
       <div className="quora__modalforCreatespace" onClick={handleOverlayClick}>
-        <div className="quora__childmodalforcreatespace">
-          <div className="quora_AddchildQuestion">
+        <div className={darkMode?"quora__childmodalforcreatespaceDark":"quora__childmodalforcreatespace"}>
+          <div className={darkMode?"quora_AddchildQuestionDark":"quora_AddchildQuestion"}>
             <RxCross1
-              className="quora_AddquestionModalCrossLogo"
+              className={darkMode?"quora_AddquestionModalCrossLogoDark":"quora_AddquestionModalCrossLogo"}
               onClick={handleOverlayClick}
             />
           </div>
           <div className="quora__createSpaceHeaderSection">
-            <span className="quora__createSpaceText">Create a Space</span>
-            <span className="quora__createSpacesubText">
+            <span className={darkMode?"quora__createSpaceTextDark":"quora__createSpaceText"}>Create a Space</span>
+            <span className={darkMode?"quora__createSpacesubTextDark":"quora__createSpacesubText"}>
               Share your interests, curate content, host discussions and more.
             </span>
           </div>
           <form action="" className="quora__createSpaceformContainer">
-            <label htmlFor="name" className="quora__createSpaceformName">
+            <label htmlFor="name" className={darkMode?"quora__createSpaceformNameDark":"quora__createSpaceformName"}>
               Name*
             </label>
             <span className="quora__createSpaceformsubName">
@@ -87,12 +89,12 @@ const Createspace = () => {
               name="name"
               type="text"
               id="name"
-              className="quora__createSpaceformNameinput"
+              className={darkMode?"quora__createSpaceformNameinputDark":"quora__createSpaceformNameinput"}
               onChange={handleOnChange}
             />
             <label
               htmlFor="brief"
-              className="quora__createSpaceformBriefdescription"
+              className={darkMode?"quora__createSpaceformBriefdescriptionDark":"quora__createSpaceformBriefdescription"}
             >
               Brief description
             </label>
@@ -103,7 +105,7 @@ const Createspace = () => {
               name="description"
               type="text"
               id="brief"
-              className="quora__createSpaceformBriefdescriptionInput"
+              className={darkMode?"quora__createSpaceformBriefdescriptionInputDark":"quora__createSpaceformBriefdescriptionInput"}
               onChange={handleOnChange}
             />
             <button

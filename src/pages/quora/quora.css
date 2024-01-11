@@ -1,6 +1,13 @@
 .quora{
     width: 100%;
     min-width: fit-content;
+    background-color: #F1F2F2;
+}
+
+.quora__dark{
+    width: 100%;
+    min-width: fit-content;
+    background-color: #181818;
 }
 
 .quora__contents{

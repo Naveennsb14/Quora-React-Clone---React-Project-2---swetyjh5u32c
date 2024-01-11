@@ -8,33 +8,46 @@ import { IoIosSearch } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
 import { Createpost } from "../modalcomponents/Createpost";
 import { useContext, useState } from "react";
-import { modalforAddQuestion, modalforCreatePost, modalforuserProfile } from "../App";
+import {
+  modalforAddQuestion,
+  modalforCreatePost,
+  modalforuserProfile,
+  toggleTheme,
+} from "../App";
 import Addquestion from "../modalcomponents/Addquestion";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const { createPortalforaddpost, setCreateportalforaddpost } =
     useContext(modalforCreatePost);
   const { createPortalforaddquestion, setCreateportalforaddquestion } =
     useContext(modalforAddQuestion);
-    const { createPortalforuserProfile, setCreatePortaluserProfile } =
+  const { createPortalforuserProfile, setCreatePortaluserProfile } =
     useContext(modalforuserProfile);
 
-    const HandleNavigate=()=>{
-      navigate("/");
-    }
+  const { darkMode, setDarkMode } = useContext(toggleTheme);
+
+  const handleToggle = () => {
+    setDarkMode((prev) => {
+      return !prev;
+    });
+  };
+
+  const HandleNavigate = () => {
+    navigate("/");
+  };
   return (
-    <div className="qHeader">
+    <div className={darkMode ? "qHeader__dark" : "qHeader"}>
       <div className="qHeader__content">
         <img
-        onClick={HandleNavigate}
+          onClick={HandleNavigate}
           src="/images/quora-new-logo.jpg"
           alt="logo"
-          className="quora__logo"
+          className={darkMode ? "quora__logodark" : "quora__logo"}
         />
 
-        <div className="qHeader__icons">
+        <div className={darkMode?"qHeader__iconsDark":"qHeader__icons"}>
           <div className="qHeader__icon">
             <MdHome />
           </div>
@@ -56,11 +69,16 @@ export const Header = () => {
           <input
             type="text"
             placeholder="Search Quora"
-            className="qHeader__inputbox"
+            className={darkMode ? "qHeader__inputboxDark" : "qHeader__inputbox"}
           />
         </div>
         <div className="qHeader__Rem">
-          <RxAvatar className="qHeader__userlogo" onClick={()=>setCreatePortaluserProfile(!createPortalforuserProfile)}/>
+          <RxAvatar
+            className={darkMode?"qHeader__userlogoDark":"qHeader__userlogo"}
+            onClick={() =>
+              setCreatePortaluserProfile(!createPortalforuserProfile)
+            }
+          />
           <div className="qHeader__addQcreateQ">
             <button
               className="addQ"

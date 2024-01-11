@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import "./addquestion.css";
-import { modalforAddQuestion } from "../App";
+import { modalforAddQuestion, toggleTheme } from "../App";
 import { RxCross1 } from "react-icons/rx";
 import { CgProfile } from "react-icons/cg";
 import { MdArrowRight } from "react-icons/md";
@@ -14,6 +14,7 @@ const Addquestion = () => {
   const navigate = useNavigate();
   const { createPortalforaddquestion, setCreateportalforaddquestion } =
     useContext(modalforAddQuestion);
+    const {darkMode, setDarkMode}= useContext(toggleTheme)
 
   const [addquestiontext, setAddquestiontext] = useState({
     text: "",
@@ -74,15 +75,15 @@ const Addquestion = () => {
   return createPortal(
     createPortalforaddquestion && (
       <div className="quora_AddquestionModal" onClick={handleOverlayClick}>
-        <div className="quora_AddchildquestionModal">
+        <div className={darkMode?"quora_AddchildquestionModalDark":"quora_AddchildquestionModal"}>
           <div className="quora_AddchildQuestion">
             <RxCross1
-              className="quora_AddquestionModalCrossLogo"
+              className={darkMode?"quora_AddquestionModalCrossLogoDark":"quora_AddquestionModalCrossLogo"}
               onClick={handleOverlayClick}
             />
           </div>
-          <div className="quoraAddquestionModalHeaderSection">Add Question</div>
-          <div className="quoraquestionTipsDetails">
+          <div className={darkMode?"quoraAddquestionModalHeaderSectionDark":"quoraAddquestionModalHeaderSection"}>Add Question</div>
+          <div className={darkMode?"quoraquestionTipsDetailsDark":"quoraquestionTipsDetails"}>
             <span className="quoraquestionTips">
               Tips on getting good answers quickly
             </span>
@@ -101,9 +102,9 @@ const Addquestion = () => {
           <div className="quora__addQuestionModalprofileSection">
             <CgProfile className="quora__addQuestionModalprofileSectionuserLogo" />
             <MdArrowRight className="quora__addQuestionModalprofileSectionrightLogo" />
-            <div className="quora__addQuestionModalprofileSectionPublic">
-              <HiOutlineUsers className="quora__addQuestionModalprofileSectionPublicusersLogo" />
-              <span className="quora__addQuestionModalprofileSectionPublicText">
+            <div className={darkMode?"quora__addQuestionModalprofileSectionPublicDark":"quora__addQuestionModalprofileSectionPublic"}>
+              <HiOutlineUsers className={darkMode?"quora__addQuestionModalprofileSectionPublicusersLogoDark":"quora__addQuestionModalprofileSectionPublicusersLogo"} />
+              <span className={darkMode?"quora__addQuestionModalprofileSectionPublicTextDark":"quora__addQuestionModalprofileSectionPublicText"}>
                 Public
               </span>
               <IoIosArrowDown className="quora__addQuestionModalprofileSectionarrowLogo" />
@@ -114,17 +115,17 @@ const Addquestion = () => {
               <input
                 name="body"
                 type="text"
-                className="quora__addQuestionDetails"
+                className={darkMode?"quora__addQuestionDetailsDark":"quora__addQuestionDetails"}
                 placeholder='Start your question with "What", "How", "Why", etc.'
                 onChange={handleonChange}
               />
             </div>
-            <div class="quora__addQuestionModalInputSectionhorizontal-line"></div>
-            <div class="quora__addQuestionModalInputSectionsecondhorizontal-line"></div>
+            <div class={darkMode?"quora__addQuestionModalInputSectionhorizontalDark":"quora__addQuestionModalInputSectionhorizontal-line"}></div>
+            <div class={darkMode?"quora__addQuestionModalInputSectionhorizontalDark":"quora__addQuestionModalInputSectionhorizontal-line"}></div>
 
             <div className="quora__addQuestionModalButtonSection">
               <button
-                className="quoraAddquestionModalCancel_btn"
+                className={darkMode?"quoraAddquestionModalCancel_btnDark":"quoraAddquestionModalCancel_btn"}
                 onClick={handleOverlayClick}
               >
                 Cancel

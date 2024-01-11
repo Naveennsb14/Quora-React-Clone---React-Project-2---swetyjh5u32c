@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { modalforCreateSpace } from "../App";
+import { modalforCreateSpace, toggleTheme } from "../App";
 import Createspace from "../modalcomponents/Createspace";
 import "./sidebar.css";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -7,10 +7,14 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 const Sidebar = () => {
   const { createPortalforcreatespace, setCreateportalforcreatespace } =
     useContext(modalforCreateSpace);
+  const { darkMode, setDarkMode } = useContext(toggleTheme);
   return (
-    <div className="quora__sidebar">
-      <ul className="quora__sidebarlist">
-        <div className="sidebarlist" onClick={()=>setCreateportalforcreatespace(true)}>
+    <div className={darkMode ? "quora__sidebarDark" : "quora__sidebar"}>
+      <ul className={darkMode ? "quora__sidebarlistDark" : "quora__sidebarlist"}>
+        <div
+          className="sidebarlist"
+          onClick={() => setCreateportalforcreatespace(true)}
+        >
           <IoIosAddCircleOutline className="sidebar__spacelogo" />
           <li className="sidebar_listnavigation">Create Space</li>
         </div>
@@ -71,7 +75,7 @@ const Sidebar = () => {
           <li className="sidebar_listnavigation">Science</li>
         </div>
       </ul>
-      <Createspace/>
+      <Createspace />
     </div>
   );
 };
