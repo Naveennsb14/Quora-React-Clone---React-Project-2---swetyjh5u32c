@@ -15,7 +15,7 @@ const Questioncomponent = () => {
       className={darkMode ? "quora__mainContainerDark" : "quora__mainContainer"}
     >
       <Header />
-      <div className="quora__questionComponentSection">
+      <div className={darkMode?"quora__questionComponentSectionDark":"quora__questionComponentSection"}>
         <div className="quora__questionComponentDetailsSection">
           <div className="quora__questionComponentHeaderSection">
             <Questiontitle />

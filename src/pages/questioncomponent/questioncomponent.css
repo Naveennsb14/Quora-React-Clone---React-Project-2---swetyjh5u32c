@@ -1,11 +1,27 @@
-
+.quora__mainContainerDark{
+  width: 100%;
+  height: 90.6vh;
+  background-color: #181818;
+}
 .quora__questionComponentSection {
-  margin-top: 60px;
+  /* margin-top: 60px; */
   max-width: 76%;
   background-color: #f1f2f2;
   height: auto;
   margin: auto;
-  margin-top: 74px;
+  margin-top: 60px;
+  display: flex;
+  gap: 16px;
+}
+
+
+.quora__questionComponentSectionDark{
+  /* margin-top: 60px; */
+  max-width: 76%;
+  background-color: #181818;
+  height: auto;
+  margin: auto;
+  margin-top: 60px;
   display: flex;
   gap: 16px;
 }

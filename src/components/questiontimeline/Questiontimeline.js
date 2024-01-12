@@ -10,7 +10,7 @@ import { CgProfile } from "react-icons/cg";
 import { useContext, useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-import { postAddrefresh } from "../App";
+import { postAddrefresh, toggleTheme } from "../App";
 
 
 const Questiontimeline = () => {
@@ -18,7 +18,7 @@ const Questiontimeline = () => {
   const { userId } = useParams();
   const [answers, setAnswers] = useState();
   const {postcalled, setPostcalled} = useContext(postAddrefresh)
-  
+  const {darkMode, setDarkMode}= useContext(toggleTheme)
 
   //caliing the API to get all answers 
   const getAnswers = async () => {
@@ -56,30 +56,30 @@ const normalDate = date.toDateString();
   return (
     <>
       {answers?.map((result) => (
-        <div key={result._id} className="quora__addquestionTimelineContainer">
+        <div key={result._id} className={darkMode?"quora__addquestionTimelineContainerDark":"quora__addquestionTimelineContainer"}>
           <div className="quora__addquestionProfileDetails">
             <FaRegCircleUser className="quora__addquestionprofileLogo" />
             <div className="quora__addquestionprofileSection">
-              <span className="quora__addquestionprofileName">John Doe</span>
-              <span className="quora__addquestionprofileheading">
+              <span className={darkMode?"quora__addquestionprofileNameDark":"quora__addquestionprofileName"}>John Doe</span>
+              <span className={darkMode?"quora__addquestionprofileheadingDark":"quora__addquestionprofileheading"}>
                 {normalDate}
               </span>
             </div>
           </div>
-          <div className="quora__addquestionSummary">
+          <div className={darkMode?"quora__addquestionSummaryDark":"quora__addquestionSummary"}>
           {result.content}
           </div>
           <div className="quora_Voteandcommentsection">
             <div className="quoraVoteandcomment">
-              <div className="quoraUpvote">
-                <BiUpvote className="quoravoteandcomment_Icon" />
-                <span className="upVote_text">
-                  Upvote- <span className="totalupVote">5</span>
+              <div className={darkMode?"quoraUpvoteDark":"quoraUpvote"}>
+                <BiUpvote className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon" }/>
+                <span className={darkMode?"upVote_textDark":"upVote_text"}>
+                  Upvote- <span className={darkMode?"totalupVoteDark":"totalupVote"}>5</span>
                 </span>
               </div>
               <div className="downVote"></div>
-              <div className="quoraDownvote">
-                <BiDownvote className="quoravoteandcomment_Icon" />
+              <div className={darkMode?"quoraDownvoteDark":"quoraDownvote"}>
+                <BiDownvote className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"} />
               </div>
               <div className="quora_comment">
                 <FaRegComment className="quoravoteandcomment_Icon" />

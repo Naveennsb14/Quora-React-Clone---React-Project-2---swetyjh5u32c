@@ -12,10 +12,12 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { GrInbox } from "react-icons/gr";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toggleTheme } from "../App";
 const Cover = () => {
   const [createSpacedata, setCreatespacedata]=useState();
+  const {darkMode, setDarkMode}= useContext(toggleTheme)
   const {userId} = useParams();
   const token = JSON.parse(sessionStorage.getItem("token"));
   console.log("token", token);
@@ -48,7 +50,7 @@ const createdAt = new Date(createdAtString);
 const readableDate = createdAt.toLocaleString();
 
   return (
-    <div className="quora__createSpacepage">
+    <div className={darkMode?"quora__createSpacepageDark":"quora__createSpacepage"}>
       <div className="quora__createSpacecoverBackground">
         <div className="quora__createSpacebackgroundSection">
           <div className="quora__createSpacebackgroundprofileSection">
@@ -93,26 +95,26 @@ const readableDate = createdAt.toLocaleString();
       </div>
       <div className="quora__createSpaceAdminandContributorSection">
         <div className="quora__createSpaceLeftside">
-          <div className="quora__createSpaceAdminSection">
-            <span className="quora__createSpaceAdminDashboardText">
+          <div className={darkMode?"quora__createSpaceAdminSectionDark":"quora__createSpaceAdminSection"}>
+            <span className={darkMode?"quora__createSpaceAdminDashboardTextDark":"quora__createSpaceAdminDashboardText"}>
               Admin dashboard
             </span>
             <hr className="quora__createSpaceAdmindashboardHorizontalLine" />
             <div className="quora__createSpaceviews_follow_upvote_commentSection">
               <div className="quora__createSpaceviewsSection">
-                <span className="createSpace__viewsText">Views</span>
+                <span className={darkMode?"createSpace__viewsTextDark":"createSpace__viewsText"}>Views</span>
                 <span className="createSpace__viewsCount">5</span>
               </div>
               <div className="quora__createSpaceviewsSection">
-                <span className="createSpace__viewsText">Follows</span>
+                <span className={darkMode?"createSpace__viewsTextDark":"createSpace__viewsText"}>Follows</span>
                 <span className="createSpace__viewsCount">1</span>
               </div>
               <div className="quora__createSpaceviewsSection">
-                <span className="createSpace__viewsText">Upvotes</span>
+                <span className={darkMode?"createSpace__viewsTextDark":"createSpace__viewsText"}>Upvotes</span>
                 <span className="createSpace__viewsCount">0</span>
               </div>
               <div className="quora__createSpaceviewsSection">
-                <span className="createSpace__viewsText">Comments</span>
+                <span className={darkMode?"createSpace__viewsTextDark":"createSpace__viewsText"}>Comments</span>
                 <span className="createSpace__viewsCount">0</span>
               </div>
             </div>
@@ -126,53 +128,53 @@ const readableDate = createdAt.toLocaleString();
             <hr className="createSpace__settingspaceTextHorizontalLine" />
             <div className="createSpace__EditVisuals">
               <IoIosCheckmarkCircleOutline className="createSpace__EditVisualsIcon" />
-              <span className="createSpace__EditVisualsText">
+              <span className={darkMode?"createSpace__EditVisualsTextDark":"createSpace__EditVisualsText"}>
                 Edit visuals of your Space
               </span>
             </div>
             <hr className="createSpace__settingspaceTextHorizontalLine" />
             <div className="createSpace__EditVisuals">
               <IoIosCheckmarkCircleOutline className="createSpace__EditVisualsIcon" />
-              <span className="createSpace__EditVisualsText">
+              <span className={darkMode?"createSpace__EditVisualsTextDark":"createSpace__EditVisualsText"}>
                 Invite people to follow your Space
               </span>
             </div>
             <hr className="createSpace__settingspaceTextHorizontalLine" />
             <div className="createSpace__EditVisuals">
               <IoIosCheckmarkCircleOutline className="createSpace__EditVisualsIcon" />
-              <span className="createSpace__EditVisualsText">
+              <span className={darkMode?"createSpace__EditVisualsTextDark":"createSpace__EditVisualsText"}>
                 Share your Space to feed
               </span>
             </div>
             <hr className="quora__createSpaceAdmindashboardHorizontalLine" />
             <div className="createSpace__invite_queue_peope_settings_adminlog">
               <div className="createSpace__AdminIconSection">
-                <LuUserPlus2 className="createSpace__AdminIconLogo" />
+                <LuUserPlus2 className={darkMode?"createSpace__AdminIconLogoDark":"createSpace__AdminIconLogo"} />
                 <span className="createSpace__AdminIconText">Invite</span>
               </div>
               <div className="createSpace__AdminIconSection">
-                <LuUsers2 className="createSpace__AdminIconLogo" />
+                <LuUsers2 className={darkMode?"createSpace__AdminIconLogoDark":"createSpace__AdminIconLogo"}  />
                 <span className="createSpace__AdminIconText">People</span>
               </div>
               <div className="createSpace__AdminIconSection">
-                <GoClock className="createSpace__AdminIconLogo" />
+                <GoClock className={darkMode?"createSpace__AdminIconLogoDark":"createSpace__AdminIconLogo"}  />
                 <span className="createSpace__AdminIconText">Queue</span>
               </div>
               <div className="createSpace__AdminIconSection">
-                <IoSettingsOutline className="createSpace__AdminIconLogo" />
+                <IoSettingsOutline className={darkMode?"createSpace__AdminIconLogoDark":"createSpace__AdminIconLogo"} />
                 <span className="createSpace__AdminIconText">Settings</span>
               </div>
               <div className="createSpace__AdminIconSection">
-                <TfiMenuAlt className="createSpace__AdminIconLogo" />
+                <TfiMenuAlt className={darkMode?"createSpace__AdminIconLogoDark":"createSpace__AdminIconLogo"} />
                 <span className="createSpace__AdminIconText">Admin log</span>
               </div>
             </div>
           </div>
-          <div className="quora__createSpacePostInputSection">
+          <div className={darkMode?"quora__createSpacePostInputSectionDark":"quora__createSpacePostInputSection"}>
             <HiOutlineUserCircle className="quora__createSpaceUserlogo" />
             <input
               type="text"
-              className="createSpace__CreateSpaceInput"
+              className={darkMode?"createSpace__CreateSpaceInputDark":"createSpace__CreateSpaceInput"}
               placeholder={`Post in ${createSpacedata?.name} ...`}
             />
             <div className="createSpace__InboxSection">

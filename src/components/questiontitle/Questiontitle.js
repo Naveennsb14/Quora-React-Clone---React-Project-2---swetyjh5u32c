@@ -10,10 +10,11 @@ import { IoIosMore } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
-import { modalforAddAnswer } from "../App";
+import { modalforAddAnswer, toggleTheme } from "../App";
 import Addanswer from "../modalcomponents/Addanswer";
 export const Questiontitle = () => {
   const {createportalforaddanswer, setCreateportalforaddanswer}=useContext(modalforAddAnswer)
+  const {darkMode, setDarkMode}= useContext(toggleTheme)
   const [getonequestion, setGetoneQuestion] = useState();
   const { userId } = useParams();
   console.log(userId);
@@ -61,22 +62,22 @@ export const Questiontitle = () => {
   }, []);
 
   return (
-    <div className="quora__questionTitlesection">
-      <h2 className="quora__questiontitle">{getonequestion?.content}</h2>
+    <div className={darkMode?"quora__questionTitlesectionDark":"quora__questionTitlesection"}>
+      <h2 className={darkMode?"quora__questiontitleDark":"quora__questiontitle"}>{getonequestion?.content}</h2>
       <div className="quora__questiontitleLowerSection">
         <div className="quora__questiontitleAnswerSection">
-          <div className="quora__questiontitleIconSection">
-            <BsPencilSquare className="quora__questiontitleIcon" />
+          <div className={darkMode?"quora__questiontitleIconSectionDark":"quora__questiontitleIconSection"}>
+            <BsPencilSquare className={darkMode?"quora__questiontitleIconDark":"quora__questiontitleIcon"}  />
             <span className="questiontitleText" onClick={()=>setCreateportalforaddanswer(true)}>Answer</span>
           </div>
-          <div className="quora__questiontitleIconSection">
-            <BiWifi2 className="quora__questiontitleIcon" />
+          <div className={darkMode?"quora__questiontitleIconSectionDark":"quora__questiontitleIconSection"}>
+            <BiWifi2 className={darkMode?"quora__questiontitleIconDark":"quora__questiontitleIcon"} />
             <span className="questiontitleText">
               Follow - <span className="quora__followText">2.3K</span>
             </span>
           </div>
-          <div className="quora__questiontitleIconSection">
-            <RiUserShared2Line className="quora__questiontitleIcon" />
+          <div className={darkMode?"quora__questiontitleIconSectionDark":"quora__questiontitleIconSection"}>
+            <RiUserShared2Line className={darkMode?"quora__questiontitleIconDark":"quora__questiontitleIcon"}  />
             <span className="questiontitleText">Request</span>
           </div>
         </div>

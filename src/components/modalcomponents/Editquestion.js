@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./editquestion.css";
 import { createPortal } from "react-dom";
-import { modalforEditQuestion } from "../App";
+import { modalforEditQuestion, toggleTheme } from "../App";
 import { RxCross1 } from "react-icons/rx";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -10,7 +10,7 @@ const Editquestion = ({id, postdata}) => {
   const { createportalforeditquestion, setCreateportalforeditquestion } =
     useContext(modalforEditQuestion);
   const { userId } = useParams();
-  
+  const {darkMode, setDarkMode}= useContext(toggleTheme)
   const [editquestiontext, setEditquestiontext] = useState({
     text: "",
     body: "",
@@ -70,18 +70,18 @@ const Editquestion = ({id, postdata}) => {
         className="quora__editquestioncontainer"
         onClick={handleOverlayClick}
       >
-        <div className="quora__editquestionSection">
+        <div className={darkMode?"quora__editquestionSectionDark":"quora__editquestionSection"}>
           <div className="quora__editquestionSectionInnercontainer">
             <RxCross1
-              className="quora__editquestioncrosslogo"
+              className={darkMode?"quora__editquestioncrosslogoDark":"quora__editquestioncrosslogo"}
               onClick={handleOverlayClick}
             />
-            <h3 className="quora__editquestionText">Edit question</h3>
+            <h3 className={darkMode?"quora__editquestionTextDark":"quora__editquestionText"}>Edit question</h3>
             <form action="">
               <input
                 name="body"
                 type="text"
-                className="quora__editquestionInput"
+                className={darkMode?"quora__editquestionInputDark":"quora__editquestionInput"}
                 onChange={handleonChange}
               />
               <button className="quora__editquestionSubmitbtn" onClick={updatePost}>Save</button>

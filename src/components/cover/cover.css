@@ -1,3 +1,7 @@
+.quora__createSpacepageDark{
+    background-color: #181818;
+}
+
 .quora__createSpacecoverBackground {
   margin-top: 60px;
   max-width: 100%;
@@ -25,6 +29,7 @@
   position: absolute;
   left: 184px;
   top: 108px;
+  z-index: 0;
 }
 
 .quora__createSpaceNameSection {
@@ -118,6 +123,11 @@
     border: 1px solid #DEE0E1;
 }
 
+.quora__createSpaceAdminSectionDark{
+    background-color: #282829;
+    border: 1px solid #414141;
+}
+
 
 .quora__createSpaceContributorSection{
     flex: 1;
@@ -126,6 +136,14 @@
 
 .quora__createSpaceAdminDashboardText{
     color: #282829;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 12px;
+    margin: 12px 0px;
+}
+
+.quora__createSpaceAdminDashboardTextDark{
+    color: #DEE0E1;
     font-weight: bold;
     font-size: 14px;
     padding: 12px;
@@ -153,6 +171,11 @@
     font-weight:500;
 }
 
+.createSpace__viewsTextDark{
+    color: #d5d5d5;
+    font-size: 13px;
+    font-weight:500;
+}
 .createSpace__viewsCount{
     color: #282829;
     font-weight: bold;
@@ -193,6 +216,11 @@
     font-size: 16px;
 }
 
+.createSpace__EditVisualsTextDark{
+    font-size: 16px;
+    color: #d5d5d5;
+}
+
 .createSpace__invite_queue_peope_settings_adminlog{
     padding: 4px;
     display: flex;
@@ -213,6 +241,14 @@
     padding: 8px;
 }
 
+.createSpace__AdminIconLogoDark{
+    color: #d5d5d5;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color: #3A3A3A;
+    padding: 8px;
+}
+
 .createSpace__AdminIconText{
     font-size: 12px;
     color: #636466;
@@ -221,6 +257,15 @@
 .quora__createSpacePostInputSection{
     background-color: #FFFFFF;
    border: 1px solid #ffffff;
+   display: flex;
+   gap: 8px;
+   align-items: center;
+   padding: 4px;
+}
+
+.quora__createSpacePostInputSectionDark{
+    background-color: #262626;
+   border: 1px solid #414141;
    display: flex;
    gap: 8px;
    align-items: center;
@@ -240,6 +285,17 @@
     width: 520px;
     font-size: 15px;
     border-radius: 5px;
+}
+
+.createSpace__CreateSpaceInputDark{
+    outline: none;
+    background-color: #181818;
+    border: none;
+    padding: 10px 12px;
+    width: 520px;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #d5d5d5;
 }
 
 .createSpace__InboxSection{
