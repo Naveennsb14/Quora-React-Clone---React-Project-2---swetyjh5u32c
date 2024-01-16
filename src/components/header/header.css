@@ -162,3 +162,14 @@ color: #B92B27;
         background-color: #A82723;
     }
 }
+
+@media screen and (max-width:600px){
+    .quora__logo {
+        width: 100px;
+        height: 28px;
+        margin-right: -40px;
+        cursor: pointer;
+        display: none;
+    }
+    
+}

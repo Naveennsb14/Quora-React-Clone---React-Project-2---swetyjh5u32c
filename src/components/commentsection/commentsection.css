@@ -65,6 +65,12 @@
   font-size: 13px;
 }
 
+.quora__adddedCommentuserNameDark{
+  font-weight: bold;
+  font-size: 13px;
+  color: #DEE0E1;
+}
+
 .quora__addedCommentDetails {
   margin: 4px;
   padding-left: 40px;
@@ -74,6 +80,10 @@
 
 .quora__addedCommentText{
     color: #282829;
+}
+
+.quora__addedCommentTextDark{
+  color: #D5D6D6;
 }
 
 .quora__addedCommentUpVotedownVoteAndMoreSection {

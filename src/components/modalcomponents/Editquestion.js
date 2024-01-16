@@ -18,7 +18,7 @@ const Editquestion = ({id, postdata}) => {
 
   //caliing the API for updating the post to DB
   const token = JSON.parse(sessionStorage.getItem("token"));
-  console.log("token", token);
+  // console.log("token", token);
   
 
   const updatePost = async (e) => {
@@ -62,7 +62,7 @@ const Editquestion = ({id, postdata}) => {
       [name]: value,
     }));
   };
-  console.log("EditQuestiontext", editquestiontext);
+  // console.log("EditQuestiontext", editquestiontext);
 
   return createPortal(
     createportalforeditquestion && (

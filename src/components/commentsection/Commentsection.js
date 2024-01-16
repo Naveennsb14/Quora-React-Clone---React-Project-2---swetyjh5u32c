@@ -5,9 +5,12 @@ import { BiDownvote } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
+import { useContext } from "react";
+import { toggleTheme } from "../App";
 
 
 const Commentsection = ({comments, getComments}) => {
+  const {darkMode, setDarkMode} = useContext(toggleTheme)
   const token = JSON.parse(sessionStorage.getItem("token"));
   //api for deleting the comments in UI
   const deleteComments = async () => {
@@ -35,10 +38,10 @@ const Commentsection = ({comments, getComments}) => {
       <div className="quora__addedCommentSection">
         <div className="quora__addedCommentprofileSection">
           <CgProfile className="quora__lowerCommentprofileLogo" />
-          <span className="quora__adddedCommentuserName">{comments.author}</span>
+          <span className={darkMode?'quora__adddedCommentuserNameDark': "quora__adddedCommentuserName"}>{comments.author}</span>
         </div>
         <div className="quora__addedCommentDetails">
-          <p className="quora__addedCommentText">
+          <p className={darkMode?"quora__addedCommentTextDark":"quora__addedCommentText"}>
             {comments.content}
           </p>
         </div>

@@ -4,10 +4,12 @@ import { BsPencilSquare } from "react-icons/bs";
 import { LuPencil } from "react-icons/lu";
 import "./postbox.css";
 import { useContext } from "react";
-import { toggleTheme } from "../App";
+import { modalforAddQuestion, toggleTheme } from "../App";
 
 const Postbox = () => {
   const {darkMode, setDarkMode}= useContext(toggleTheme)
+  const { createPortalforaddquestion, setCreateportalforaddquestion } =
+    useContext(modalforAddQuestion);
   return (
     <div className={darkMode?"quora_postboxDark":"quora_postbox"}>
       <div className="quora__AskPost">
@@ -17,6 +19,7 @@ const Postbox = () => {
             type="text"
             className={darkMode?"quora_feedUserInputDark":"quora_feedUserInput"}
             placeholder="What do you want to ask or share?"
+            onClick={() => setCreateportalforaddquestion(true)}
           />
         </div>
       </div>

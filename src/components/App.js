@@ -19,7 +19,7 @@ export const postAddrefresh = createContext();
 export const toggleTheme =createContext();
 
 function App() {
-  let themeState=sessionStorage.getItem('themeMode')
+  let themeState=JSON.parse(sessionStorage.getItem('themeMode'))|| false;
   console.log('themeState', themeState);
   const [createPortalforaddpost, setCreateportalforaddpost] = useState(false);
   const [createPortalforaddquestion, setCreateportalforaddquestion] =
@@ -34,7 +34,7 @@ function App() {
   const [createportalforeditquestion, setCreateportalforeditquestion] =
     useState(false);
   const [postcalled, setPostcalled] = useState(null);
-  const [darkMode, setDarkMode]=useState(false);
+  const [darkMode, setDarkMode]=useState(themeState); //for dark mode functionality
 
   
 

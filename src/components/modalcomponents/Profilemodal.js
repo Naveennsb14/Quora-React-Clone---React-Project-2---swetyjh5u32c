@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./profilemodal.css";
 import { modalforuserProfile, toggleTheme } from "../App";
 import { FaRegCircleUser } from "react-icons/fa6";
@@ -17,18 +17,19 @@ export const Profilemodal = () => {
   const { darkMode, setDarkMode } = useContext(toggleTheme);
   console.log('darkMode',darkMode);
 
+
+
   const handleToggle = () => {
     setDarkMode((prev) => {
       return !prev;
     });
     console.log('themeMode', darkMode);
-    if(darkMode===true){
-      sessionStorage.setItem('themeMode',true)
-    }else{
-      sessionStorage.setItem('themeMode', false)
-    }
     // sessionStorage.setItem('themeMode')
   };
+
+  useEffect(()=>{
+    sessionStorage.setItem('themeMode', JSON.stringify(darkMode));
+  },[darkMode]) // if the state of dark mode gets changes then only the value will be updated in sessionStorage
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");

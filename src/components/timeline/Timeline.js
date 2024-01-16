@@ -20,7 +20,7 @@ const Timeline = ({ details, getPostList }) => {
 
     const {darkMode, setDarkMode}= useContext(toggleTheme)
 
-  const { author, channel, commentCount, content, likeCount, title, _id } =
+  const { author, channel, commentCount, content, likeCount, title, _id, createdAt } =
     details;
   const [showCommentSection, setShowCommentSection] = useState(false); // state for conditionally rendering the comment box
   const [showAction, setshowAction] = useState(false); // state for conditionally rendering the update and delete UI
@@ -35,7 +35,11 @@ const Timeline = ({ details, getPostList }) => {
   };
   const token = JSON.parse(sessionStorage.getItem("token"));
 
-  
+  const dateString = createdAt
+const dateObject = new Date(dateString);
+
+const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+const readableDate = dateObject.toLocaleDateString('en-US', options);
 
   // calling the api for fetching all comments in UI
   const getComments = async () => {
@@ -179,7 +183,7 @@ const Timeline = ({ details, getPostList }) => {
               <span className="quoraProfile_followLink">Follow</span>
             </div>
             <p className={darkMode?"quoraProfile_paragraphDark":"quoraProfile_paragraph"}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              {readableDate}
             </p>
           </div>
         </div>
