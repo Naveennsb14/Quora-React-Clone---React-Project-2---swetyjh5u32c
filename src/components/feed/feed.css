@@ -1,6 +1,10 @@
-.quora__feed{
-    flex: 4;
-    background-color: #FFFFFF;
-    padding: 8px;
-    
+.quora__feed {
+  flex: 4;
+  background-color: #ffffff;
+  padding: 8px;
+}
+@media screen and (max-width: 600px) {
+  .feed-bar {
+    width: 100vw;
+  }
 }

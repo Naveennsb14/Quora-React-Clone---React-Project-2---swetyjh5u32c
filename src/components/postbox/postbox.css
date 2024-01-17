@@ -126,6 +126,6 @@
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         border-radius: 4px;
-        max-width: 60%;
+        /* max-width: 60%; */
     }
   }
