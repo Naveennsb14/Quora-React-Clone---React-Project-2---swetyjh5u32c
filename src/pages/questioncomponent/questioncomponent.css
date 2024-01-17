@@ -38,3 +38,26 @@
 .quora__questionComponentSideSection {
   flex: 1;
 }
+
+@media screen and (max-width:600px) {
+  .quora__questionComponentSideSection {
+    /* flex: 1 1; */
+    display: none;
+}
+.quora__questionComponentSection {
+  background-color: #f1f2f2;
+  height: auto;
+  margin: auto;
+  margin-top: 60px;
+  display: flex;
+  gap: 16px;
+}
+
+}
+
+@media screen and (max-width:768px) {
+  .quora__questionComponentSideSection {
+    flex: 1 1;
+    display: none;
+}
+}

@@ -58,6 +58,15 @@
     gap: 14px;
     cursor: pointer;
 }
+
+.quoraListItem .active{
+    color: #B92B27;
+}
+
+.quora__span{
+    color: #8F9092;
+}
+
 .qHeader__icon:hover{
 color: #B92B27;
 }
@@ -183,5 +192,36 @@ color: #B92B27;
     .qHeader__input {
         display: flex;
         margin-left: -24px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .quora__logo {
+        width: 100px;
+        height: 28px;
+        margin-right: 64px;
+        cursor: pointer;
+    }
+    
+    .qHeader__input {
+        display: flex;
+        margin-left: -18px;
+        /* position: absolute; */
+    }
+    .qHeader__userlogo {
+        font-size: 32px;
+        margin: auto;
+        color: #8F9092;
+        cursor: pointer;
+        padding: 4px;
+    }
+    .qHeader__inputbox {
+        width: 92px;
+        color: #8F9092;
+        border: 1px solid #8F9092;
+        height: 36px;
+        padding: auto;
+        padding-left: 28px;
+        border-radius: 4px;
     }
 }

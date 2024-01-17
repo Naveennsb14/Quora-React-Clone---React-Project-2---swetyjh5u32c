@@ -93,3 +93,33 @@
     background-color: #2e69ff;
   }
 }
+
+@media screen and (max-width:600px) {
+  .quora__editquestionSection {
+    background-color: #ffffff;
+    width: 375px;
+    height: 268px;
+    border: 1px solid #dee0e1;
+    border-radius: 5px;
+}
+.quora__editquestionInput {
+  margin: 8px;
+  width: 340px;
+  padding: 8px;
+  font-size: 16px;
+  color: #939598;
+  outline: none;
+  border: 1px solid #98999a;
+}
+.quora__editquestionSubmitbtn {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  background-color: #96b4ff;
+  cursor: pointer;
+  position: relative;
+  bottom: -74px;
+  left: 294px;
+}
+}

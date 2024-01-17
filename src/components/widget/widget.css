@@ -11,3 +11,11 @@
         display: none;
     }
 }
+
+@media screen and (max-width:768px) {
+    .quora_widget {
+        margin-top: 54px;
+        flex: 2 1;
+        display: none;
+    }
+}

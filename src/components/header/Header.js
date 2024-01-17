@@ -15,7 +15,7 @@ import {
   toggleTheme,
 } from "../App";
 import Addquestion from "../modalcomponents/Addquestion";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -48,21 +48,41 @@ export const Header = () => {
         />
 
         <div className={darkMode?"qHeader__iconsDark":"qHeader__icons"}>
+          <div  className="quoraListItem active">
+          <NavLink className="quora__span" to="/">
           <div className="qHeader__icon">
             <MdHome />
           </div>
+          </NavLink>
+          </div>
+          <div className="quoraListItem active">
+          <NavLink className="quora__span" to="/following">
           <div className="qHeader__icon">
             <FaRegListAlt />
           </div>
+          </NavLink>
+          </div>
+          <div className="quoraListItem active">
+          <NavLink className="quora__span" to="/answer">
           <div className="qHeader__icon">
             <BsPencilSquare />
           </div>
+          </NavLink>
+          </div>
+          <div className="quoraListItem active">
+          <NavLink className="quora__span" to="/space">
           <div className="qHeader__icon">
             <LuUsers />
           </div>
+          </NavLink>
+          </div>
+         <div className="quoraListItem active">
+         <NavLink className="quora__span" to="/notifications">
           <div className="qHeader__icon">
             <IoNotificationsOutline />
           </div>
+          </NavLink>
+         </div>
         </div>
         <div className="qHeader__input">
           <IoIosSearch className="qHeader__searchlogo" />

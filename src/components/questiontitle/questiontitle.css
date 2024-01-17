@@ -1,80 +1,104 @@
-.quora__questionTitlesection{
-    background-color: #FFFFFF;
-    padding: 8px 0px;
+.quora__questionTitlesection {
+  background-color: #ffffff;
+  padding: 8px 0px;
 }
 
-.quora__questionTitlesectionDark{
+.quora__questionTitlesectionDark {
+  background-color: #262626;
+  padding: 8px 0px;
+}
+
+.quora__questiontitle {
+  color: #282829;
+  padding: 4px 16px;
+}
+
+.quora__questiontitleDark {
+  color: #d5d5d5;
+  padding: 4px 16px;
+}
+.quora__questiontitleLowerSection {
+  display: flex;
+  justify-content: space-between;
+  color: #636466;
+  margin: 0px 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.quora__questiontitleAnswerSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.quora__questiontitleIconSection {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 20px;
+  &:hover {
+    background-color: #f7f7f7;
+  }
+}
+
+.quora__questiontitleIconSectionDark {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #d5d5d5;
+  padding: 8px;
+  border-radius: 20px;
+  &:hover {
     background-color: #262626;
-    padding: 8px 0px;
+  }
 }
 
-.quora__questiontitle{
-    color: #282829;
-    padding: 4px 16px;
+.quora__questiontitleCommentSection {
+  display: flex;
+  gap: 16px;
 }
 
-.quora__questiontitleDark{
-    color: #d5d5d5;
-    padding: 4px 16px;
+.quora__questiontitleIcon {
+  font-size: 20px;
+  color: #636466;
 }
-.quora__questiontitleLowerSection{
+
+.quora__questiontitleIconDark {
+  font-size: 20px;
+  color: #d5d5d5;
+}
+
+.questiontitleText {
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.quora__followText {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 600px) {
+  .quora__questionComponentSection {
+    max-width: 100%;
+    background-color: #f1f2f2;
+    height: auto;
+    margin-top: 196px;
     display: flex;
+    gap: 16px;
+  }
+  .quora__questiontitleLowerSection {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     color: #636466;
     margin: 0px 8px;
     padding: 8px;
     cursor: pointer;
-}
-
-.quora__questiontitleAnswerSection{
+  }
+  .quora__questiontitleCommentSection {
     display: flex;
-    align-items: center;
+    justify-content: center;
     gap: 16px;
-   
-}
-.quora__questiontitleIconSection{
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 8px;
-    border-radius: 20px;
-    &:hover{
-        background-color: #F7F7F7;
-    }
-}
-
-.quora__questiontitleIconSectionDark{
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #d5d5d5;
-    padding: 8px;
-    border-radius: 20px;
-    &:hover{
-        background-color: #262626;
-    }
-}
-
-.quora__questiontitleCommentSection{
-    display: flex;
-    gap: 16px;
-}
-
-.quora__questiontitleIcon{
-    font-size: 20px;
-    color: #636466;
-}
-
-.quora__questiontitleIconDark{
-    font-size: 20px;
-    color: #d5d5d5;
-}
-
-.questiontitleText{
-    font-size: 13px;
-    font-weight: 550;
-}
-
-.quora__followText{
-    font-weight: 500;
+  }
 }

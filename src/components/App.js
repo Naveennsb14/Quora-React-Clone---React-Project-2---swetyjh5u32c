@@ -108,7 +108,11 @@ function App() {
                             }
                           />
                           <Route path="/login" element={<Login />} />
-                          <Route path="/underconstruction" element={<Underconstruction />} />
+                          <Route path="/following" element={<Underconstruction />} />
+                          <Route path="/answer" element={<Underconstruction />} />
+                          <Route path="/space" element={<Underconstruction />} />
+                          <Route path="/notifications" element={<Underconstruction />} />
+
                         </Routes>
                       </BrowserRouter>
                     </modalforCreatePost.Provider>
