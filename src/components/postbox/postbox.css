@@ -111,3 +111,21 @@
     background-color: #DEE0E1; /* Adjust the color of the line */
     margin: 0 auto; /* Center the line horizontally */
   }
+
+  @media screen and (max-width:600px) {
+    .quora_postbox {
+        margin-top: 174px;
+        padding: 4px;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+    }
+    .quora_postbox {
+        margin-top: 174px;
+        padding: 4px;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+        max-width: 60%;
+    }
+  }

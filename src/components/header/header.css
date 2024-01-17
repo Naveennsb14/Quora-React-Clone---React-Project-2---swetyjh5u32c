@@ -164,12 +164,25 @@ color: #B92B27;
 }
 
 @media screen and (max-width:600px){
-    .quora__logo {
-        width: 100px;
-        height: 28px;
-        margin-right: -40px;
-        cursor: pointer;
-        display: none;
+    .qHeader {
+        background-color: #FFFFFF;
+        max-width: 62%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999999;
     }
-    
+    .qHeader__content {
+        max-width: 30%;
+        height: 184px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .qHeader__input {
+        display: flex;
+        margin-left: -24px;
+    }
 }

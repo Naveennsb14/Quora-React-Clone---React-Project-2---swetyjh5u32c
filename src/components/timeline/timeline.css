@@ -252,3 +252,17 @@
     background-color: #f7f7f7;
   }
 }
+
+@media screen and (max-width:600px) {
+  .quora_timeLine {
+    margin-top: 10px;
+    max-width: 600px;
+    background-color: #ffffff;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    max-width: 61%;
+}
+}

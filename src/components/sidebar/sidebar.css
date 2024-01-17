@@ -58,3 +58,16 @@
   padding: 8px 2px;
   font-weight: lighter;
 }
+
+@media screen and (max-width:600px) {
+  .quora__sidebar {
+    margin-top: 54px;
+    flex: 1 1;
+    background-color: #f1f2f2;
+    color: #636466;
+    cursor: pointer;
+    margin-right: 10rem;
+    z-index: 0;
+    display: none;
+}
+}

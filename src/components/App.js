@@ -7,6 +7,7 @@ import { Authprovider } from "../pages/authprovider/Authprovider";
 import Authnavigator from "./authnavigator/Authnavigator";
 import Questioncomponent from "../pages/questioncomponent/Questioncomponent";
 import Createspacepage from "../pages/createspacepage/Createspacepage";
+import Underconstruction from "../pages/underconstruction/Underconstruction";
 
 export const modalforCreatePost = createContext();
 export const modalforAddQuestion = createContext();
@@ -107,6 +108,7 @@ function App() {
                             }
                           />
                           <Route path="/login" element={<Login />} />
+                          <Route path="/underconstruction" element={<Underconstruction />} />
                         </Routes>
                       </BrowserRouter>
                     </modalforCreatePost.Provider>
