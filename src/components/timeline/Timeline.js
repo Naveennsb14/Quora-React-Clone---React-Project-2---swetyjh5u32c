@@ -9,7 +9,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Commentsection from "../commentsection/Commentsection";
 import { useParams } from "react-router-dom";
-import { modalforEditQuestion, toggleTheme } from "../App";
+import { modalforEditQuestion, searchTerm, toggleTheme } from "../App";
 import Editquestion from "../modalcomponents/Editquestion";
 
 const Timeline = ({ details, getPostList }) => {
@@ -18,10 +18,19 @@ const Timeline = ({ details, getPostList }) => {
   const { createportalforeditquestion, setCreateportalforeditquestion } =
     useContext(modalforEditQuestion);
 
-    const {darkMode, setDarkMode}= useContext(toggleTheme)
+  const { darkMode, setDarkMode } = useContext(toggleTheme);
+  const { query, setQuery } = useContext(searchTerm);
 
-  const { author, channel, commentCount, content, likeCount, title, _id, createdAt } =
-    details;
+  const {
+    author,
+    channel,
+    commentCount,
+    content,
+    likeCount,
+    title,
+    _id,
+    createdAt,
+  } = details;
   const [showCommentSection, setShowCommentSection] = useState(false); // state for conditionally rendering the comment box
   const [showAction, setshowAction] = useState(false); // state for conditionally rendering the update and delete UI
   const [getallComments, setGetallComments] = useState(); // for getting all the comments
@@ -35,11 +44,19 @@ const Timeline = ({ details, getPostList }) => {
   };
   const token = JSON.parse(sessionStorage.getItem("token"));
 
-  const dateString = createdAt
-const dateObject = new Date(dateString);
+  const dateString = createdAt;
+  const dateObject = new Date(dateString);
 
-const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
-const readableDate = dateObject.toLocaleDateString('en-US', options);
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZoneName: "short",
+  };
+  const readableDate = dateObject.toLocaleDateString("en-US", options);
 
   // calling the api for fetching all comments in UI
   const getComments = async () => {
@@ -156,6 +173,29 @@ const readableDate = dateObject.toLocaleDateString('en-US', options);
     }
   };
 
+  //calling the API for implementing the Searching functionality
+  const searchData = async (result) => {
+    console.log('result',result);
+    const config = {
+      headers: {
+        projectID: "swetyjh5u32c",
+      },
+    };
+    try {
+      const searchpost = await axios.get(
+        `https://academics.newtonschool.co/api/v1/quora/post?search=${JSON.stringify({ content: query, title: query })}`,
+        config
+      );
+      console.log("Searching done successfully", searchpost);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  useEffect((e) => {
+    searchData(query);
+    setQuery(undefined)
+  },[query]);
+
   const handelOnchange = (e) => {
     const { name, value } = e.target;
     setGetInput((prev) => ({
@@ -174,20 +214,34 @@ const readableDate = dateObject.toLocaleDateString('en-US', options);
 
   return (
     <>
-      <div className={darkMode?"quora_timeLineDark":"quora_timeLine"}>
+      <div className={darkMode ? "quora_timeLineDark" : "quora_timeLine"}>
         <div className="quoraprofileSection_details">
-          <CgProfile className={darkMode?"quoraprofile_LogoDark":"quoraprofile_Logo"} />
+          <CgProfile
+            className={darkMode ? "quoraprofile_LogoDark" : "quoraprofile_Logo"}
+          />
           <div className="quoraProfile_Info">
             <div className="quoraProfile_Nameinfo">
-              <h5 className={darkMode?"quoraProfile_NameDark":"quoraProfile_Name"}>{author.name}</h5>
+              <h5
+                className={
+                  darkMode ? "quoraProfile_NameDark" : "quoraProfile_Name"
+                }
+              >
+                {author.name}
+              </h5>
               <span className="quoraProfile_followLink">Follow</span>
             </div>
-            <p className={darkMode?"quoraProfile_paragraphDark":"quoraProfile_paragraph"}>
+            <p
+              className={
+                darkMode
+                  ? "quoraProfile_paragraphDark"
+                  : "quoraProfile_paragraph"
+              }
+            >
               {readableDate}
             </p>
           </div>
         </div>
-        <div className={darkMode?"quoraPostSectionDark":"quoraPostSection"}>
+        <div className={darkMode ? "quoraPostSectionDark" : "quoraPostSection"}>
           <h3 className="quoraPostSection_header">{title}</h3>
           <p className="quoraPostSection_paragraph">{content}</p>
           {channel && (
@@ -196,29 +250,64 @@ const readableDate = dateObject.toLocaleDateString('en-US', options);
         </div>
         <div className="quora_Voteandcommentsection">
           <div className="quoraVoteandcomment">
-            <div className={darkMode?"quoraUpvoteDark":"quoraUpvote"} onClick={upVotepost}>
-              <BiUpvote className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"} />
-              <span className={darkMode?"upVote_textDark":"upVote_text"}>
-                Upvote- <span className={darkMode?"totalupVoteDark":"totalupVote"}>{likeCount}</span>
+            <div
+              className={darkMode ? "quoraUpvoteDark" : "quoraUpvote"}
+              onClick={upVotepost}
+            >
+              <BiUpvote
+                className={
+                  darkMode
+                    ? "quoravoteandcomment_IconDark"
+                    : "quoravoteandcomment_Icon"
+                }
+              />
+              <span className={darkMode ? "upVote_textDark" : "upVote_text"}>
+                Upvote-{" "}
+                <span className={darkMode ? "totalupVoteDark" : "totalupVote"}>
+                  {likeCount}
+                </span>
               </span>
             </div>
-            <div className={darkMode?"downVoteDark":"downVote"}></div>
-            <div className={darkMode?"quoraDownvoteDark":"quoraDownvote" }onClick={downVotepost}>
-              <BiDownvote className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"}/>
+            <div className={darkMode ? "downVoteDark" : "downVote"}></div>
+            <div
+              className={darkMode ? "quoraDownvoteDark" : "quoraDownvote"}
+              onClick={downVotepost}
+            >
+              <BiDownvote
+                className={
+                  darkMode
+                    ? "quoravoteandcomment_IconDark"
+                    : "quoravoteandcomment_Icon"
+                }
+              />
             </div>
             <div className="quora_comment">
               <FaRegComment
-                className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"}
+                className={
+                  darkMode
+                    ? "quoravoteandcomment_IconDark"
+                    : "quoravoteandcomment_Icon"
+                }
                 onClick={() => {
                   toggleCommentSection();
                   getComments();
                 }}
               />
-              <span className={darkMode?"comment_textDark":"comment_text"}>{commentCount}</span>
+              <span className={darkMode ? "comment_textDark" : "comment_text"}>
+                {commentCount}
+              </span>
             </div>
             <div className="quora_Share">
-              <PiShareFatThin className={darkMode?"quoravoteandcomment_IconDark":"quoravoteandcomment_Icon"}/>
-              <span className={darkMode?"share_textDark":"share_text"}>165</span>
+              <PiShareFatThin
+                className={
+                  darkMode
+                    ? "quoravoteandcomment_IconDark"
+                    : "quoravoteandcomment_Icon"
+                }
+              />
+              <span className={darkMode ? "share_textDark" : "share_text"}>
+                165
+              </span>
             </div>
           </div>
           {showAction && (
@@ -238,13 +327,23 @@ const readableDate = dateObject.toLocaleDateString('en-US', options);
             <MdMoreHoriz className="quoraMore_Icon" onClick={toggleAction} />
           </div>
         </div>
-        <div className={darkMode?"quora__lowerCommentprofileSectionDark":"quora__lowerCommentprofileSection"}>
+        <div
+          className={
+            darkMode
+              ? "quora__lowerCommentprofileSectionDark"
+              : "quora__lowerCommentprofileSection"
+          }
+        >
           <CgProfile className="quora__lowerCommentprofileLogo" />
           <form action="" onSubmit={postComments}>
             <input
               name="comment"
               type="text"
-              className={darkMode?"quora__lowerCommentInputSectionDark":"quora__lowerCommentInputSection"}
+              className={
+                darkMode
+                  ? "quora__lowerCommentInputSectionDark"
+                  : "quora__lowerCommentInputSection"
+              }
               placeholder="Add a comment..."
               onChange={handelOnchange}
             />
@@ -264,7 +363,7 @@ const readableDate = dateObject.toLocaleDateString('en-US', options);
             );
           })}
       </div>
-      <Editquestion id={_id} postdata={getPostList}/>
+      <Editquestion id={_id} postdata={getPostList} />
     </>
   );
 };

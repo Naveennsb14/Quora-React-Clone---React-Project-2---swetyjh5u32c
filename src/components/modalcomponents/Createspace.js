@@ -35,6 +35,7 @@ const Createspace = () => {
       headers: {
         Authorization: `Bearer ${token}`,
         projectID: "swetyjh5u32c",
+        "content-type": "multipart/form-data",
       },
     };
     try {

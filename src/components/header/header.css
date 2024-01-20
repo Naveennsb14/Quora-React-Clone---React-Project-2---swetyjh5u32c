@@ -73,7 +73,7 @@ color: #B92B27;
 
 .qHeader__input{
     display: flex;
-    margin-left: -80px;
+    margin-left: -62px;
     /* position: absolute */
 
 }
@@ -89,7 +89,7 @@ color: #B92B27;
 }
 
 .qHeader__inputbox {
-    width: 320px;
+    width: 240px;
     color: #8F9092;
     border: 1px solid #8F9092;
     height: 36px;
@@ -103,8 +103,21 @@ color: #B92B27;
     }
 }
 
+
+.search__quora{
+    background-color: #B92B27;
+    padding: 4px 12px;
+    border-radius: 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    &:hover{
+        background-color: #A82723;
+    }
+}
 .qHeader__inputboxDark{
-    width: 320px;
+    width: 240px;
     color: #8F9092;
     border: 1px solid #8F9092;
     height: 36px;

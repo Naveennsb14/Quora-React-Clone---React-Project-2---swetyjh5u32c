@@ -12,6 +12,7 @@ const Feed = () => {
   const [postData, setPostData]= useState([]); // for storing the timeline data which we will receive from api
   const{postcalled, setPostcalled}=useContext(postAddrefresh);
 
+
   // calling the API to get all the Post from DB
   const getPostList = async () => {
     const config = {

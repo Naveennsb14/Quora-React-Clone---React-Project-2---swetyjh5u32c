@@ -12,6 +12,7 @@ import {
   modalforAddQuestion,
   modalforCreatePost,
   modalforuserProfile,
+  searchTerm,
   toggleTheme,
 } from "../App";
 import Addquestion from "../modalcomponents/Addquestion";
@@ -25,8 +26,11 @@ export const Header = () => {
     useContext(modalforAddQuestion);
   const { createPortalforuserProfile, setCreatePortaluserProfile } =
     useContext(modalforuserProfile);
+  const { query, setQuery } = useContext(searchTerm);
+  console.log('searchTerm',query);
 
   const { darkMode, setDarkMode } = useContext(toggleTheme);
+  const [inputSearch, setInputSearch]=useState("");
 
   const handleToggle = () => {
     setDarkMode((prev) => {
@@ -37,6 +41,13 @@ export const Header = () => {
   const HandleNavigate = () => {
     navigate("/");
   };
+
+  const handleKeyword = (e)=>{
+    console.log('handlekeyword',e.target.value);
+    const {value}=e.target;
+    setInputSearch(value)
+
+  }
   return (
     <div className={darkMode ? "qHeader__dark" : "qHeader"}>
       <div className="qHeader__content">
@@ -47,42 +58,42 @@ export const Header = () => {
           className={darkMode ? "quora__logodark" : "quora__logo"}
         />
 
-        <div className={darkMode?"qHeader__iconsDark":"qHeader__icons"}>
-          <div  className="quoraListItem active">
-          <NavLink className="quora__span" to="/">
-          <div className="qHeader__icon">
-            <MdHome />
-          </div>
-          </NavLink>
+        <div className={darkMode ? "qHeader__iconsDark" : "qHeader__icons"}>
+          <div className="quoraListItem active">
+            <NavLink className="quora__span" to="/">
+              <div className="qHeader__icon">
+                <MdHome />
+              </div>
+            </NavLink>
           </div>
           <div className="quoraListItem active">
-          <NavLink className="quora__span" to="/following">
-          <div className="qHeader__icon">
-            <FaRegListAlt />
-          </div>
-          </NavLink>
-          </div>
-          <div className="quoraListItem active">
-          <NavLink className="quora__span" to="/answer">
-          <div className="qHeader__icon">
-            <BsPencilSquare />
-          </div>
-          </NavLink>
+            <NavLink className="quora__span" to="/following">
+              <div className="qHeader__icon">
+                <FaRegListAlt />
+              </div>
+            </NavLink>
           </div>
           <div className="quoraListItem active">
-          <NavLink className="quora__span" to="/space">
-          <div className="qHeader__icon">
-            <LuUsers />
+            <NavLink className="quora__span" to="/answer">
+              <div className="qHeader__icon">
+                <BsPencilSquare />
+              </div>
+            </NavLink>
           </div>
-          </NavLink>
+          <div className="quoraListItem active">
+            <NavLink className="quora__span" to="/space">
+              <div className="qHeader__icon">
+                <LuUsers />
+              </div>
+            </NavLink>
           </div>
-         <div className="quoraListItem active">
-         <NavLink className="quora__span" to="/notifications">
-          <div className="qHeader__icon">
-            <IoNotificationsOutline />
+          <div className="quoraListItem active">
+            <NavLink className="quora__span" to="/notifications">
+              <div className="qHeader__icon">
+                <IoNotificationsOutline />
+              </div>
+            </NavLink>
           </div>
-          </NavLink>
-         </div>
         </div>
         <div className="qHeader__input">
           <IoIosSearch className="qHeader__searchlogo" />
@@ -90,11 +101,15 @@ export const Header = () => {
             type="text"
             placeholder="Search Quora"
             className={darkMode ? "qHeader__inputboxDark" : "qHeader__inputbox"}
+            onChange={handleKeyword}
           />
+        </div>
+        <div className="quora__searchBtn">
+          <button className="search__quora" onClick={()=>setQuery(inputSearch)}>Search</button>
         </div>
         <div className="qHeader__Rem">
           <RxAvatar
-            className={darkMode?"qHeader__userlogoDark":"qHeader__userlogo"}
+            className={darkMode ? "qHeader__userlogoDark" : "qHeader__userlogo"}
             onClick={() =>
               setCreatePortaluserProfile(!createPortalforuserProfile)
             }
