@@ -1,0 +1,7 @@
+.quora__searchResult{
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
