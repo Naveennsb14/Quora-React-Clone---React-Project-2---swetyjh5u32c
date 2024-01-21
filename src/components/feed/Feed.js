@@ -27,7 +27,7 @@ const Feed = () => {
         config
       );
       setPostData(response.data.data); // storing the complete api data in state
-      console.log("response", response.data.data);
+      // console.log("response", response.data.data);
     } catch (error) {
       console.log("error", error);
     }

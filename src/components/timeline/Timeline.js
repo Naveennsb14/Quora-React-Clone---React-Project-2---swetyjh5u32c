@@ -20,6 +20,7 @@ const Timeline = ({ details, getPostList }) => {
 
   const { darkMode, setDarkMode } = useContext(toggleTheme);
   const { query, setQuery } = useContext(searchTerm);
+  const [textSearch, setTextSearch]=useState("");
 
   const {
     author,
@@ -174,27 +175,28 @@ const Timeline = ({ details, getPostList }) => {
   };
 
   //calling the API for implementing the Searching functionality
-  const searchData = async (result) => {
-    console.log('result',result);
-    const config = {
-      headers: {
-        projectID: "swetyjh5u32c",
-      },
-    };
-    try {
-      const searchpost = await axios.get(
-        `https://academics.newtonschool.co/api/v1/quora/post?search=${JSON.stringify({ content: query, title: query })}`,
-        config
-      );
-      console.log("Searching done successfully", searchpost);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-  useEffect((e) => {
-    searchData(query);
-    setQuery(undefined)
-  },[query]);
+  // const searchData = async () => {
+  //   const config = {
+  //     headers: {
+  //       projectID: "swetyjh5u32c",
+  //     },
+  //   };
+  //   try {
+  //     const searchpost = await axios.get(
+  //       `https://academics.newtonschool.co/api/v1/quora/post?search=${JSON.stringify({ content: query, title: query })}`,
+  //       config
+  //     );
+  //     // console.log("Searching done successfully", searchpost);
+  //     setTextSearch(searchpost.data.data)
+  //     console.log('searchdata', textSearch);
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   searchData();
+  // },[query]);
+
 
   const handelOnchange = (e) => {
     const { name, value } = e.target;
@@ -214,7 +216,8 @@ const Timeline = ({ details, getPostList }) => {
 
   return (
     <>
-      <div className={darkMode ? "quora_timeLineDark" : "quora_timeLine"}>
+      {
+        <div className={darkMode ? "quora_timeLineDark" : "quora_timeLine"}>
         <div className="quoraprofileSection_details">
           <CgProfile
             className={darkMode ? "quoraprofile_LogoDark" : "quoraprofile_Logo"}
@@ -363,6 +366,7 @@ const Timeline = ({ details, getPostList }) => {
             );
           })}
       </div>
+      }
       <Editquestion id={_id} postdata={getPostList} />
     </>
   );

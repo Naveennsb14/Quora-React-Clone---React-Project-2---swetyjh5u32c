@@ -17,6 +17,7 @@ import {
 } from "../App";
 import Addquestion from "../modalcomponents/Addquestion";
 import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -27,10 +28,11 @@ export const Header = () => {
   const { createPortalforuserProfile, setCreatePortaluserProfile } =
     useContext(modalforuserProfile);
   const { query, setQuery } = useContext(searchTerm);
-  console.log('searchTerm',query);
+  console.log("searchTerm", query);
 
   const { darkMode, setDarkMode } = useContext(toggleTheme);
-  const [inputSearch, setInputSearch]=useState("");
+  const [inputSearch, setInputSearch] = useState("");
+  const [finalResult, setfinalResult] = useState(null);
 
   const handleToggle = () => {
     setDarkMode((prev) => {
@@ -42,12 +44,41 @@ export const Header = () => {
     navigate("/");
   };
 
-  const handleKeyword = (e)=>{
-    console.log('handlekeyword',e.target.value);
-    const {value}=e.target;
-    setInputSearch(value)
+  // console.log('querysearch',query);
 
-  }
+  const handleKeyword = (e) => {
+    console.log("handlekeyword", e.target.value);
+    const { value } = e.target;
+    setInputSearch(value);
+  };
+
+  //calling the API for implementing the Searching functionality
+  const searchData = async () => {
+    const config = {
+      headers: {
+        projectID: "swetyjh5u32c",
+      },
+    };
+    try {
+      let searchpost = await axios.get(
+        `https://academics.newtonschool.co/api/v1/quora/post?search=${JSON.stringify(
+          { content: inputSearch, title: inputSearch }
+        )}`,
+        config
+      );
+      // console.log("Searching done successfully", searchpost);
+
+      // setfinalResult(searchpost.data.data);
+      console.log('searchpost', searchpost);
+      console.log("finalresult", finalResult);
+
+      navigate("/searchresult", { state: { finalResult: searchpost?.data.data } });
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  // }
   return (
     <div className={darkMode ? "qHeader__dark" : "qHeader"}>
       <div className="qHeader__content">
@@ -105,7 +136,9 @@ export const Header = () => {
           />
         </div>
         <div className="quora__searchBtn">
-          <button className="search__quora" onClick={()=>setQuery(inputSearch)}>Search</button>
+          <button className="search__quora" onClick={searchData}>
+            Search
+          </button>
         </div>
         <div className="qHeader__Rem">
           <RxAvatar
