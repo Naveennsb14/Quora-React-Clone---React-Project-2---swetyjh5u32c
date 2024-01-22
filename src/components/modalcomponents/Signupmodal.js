@@ -48,7 +48,7 @@ export const Signupmodal = () => {
       const token = response.data.token;
       console.log("token", token);
       if (token) {
-        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("token", JSON.stringify(token));
         sessionStorage.setItem("name", JSON.stringify(response.data.data.user.name));
         setIsLoggedIn(true);
         if(state){
