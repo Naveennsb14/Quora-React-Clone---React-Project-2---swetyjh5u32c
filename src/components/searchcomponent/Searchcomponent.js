@@ -34,7 +34,8 @@ const Searchcomponent = ({ details }) => {
   };
   const readableDate = dateObject.toLocaleDateString("en-US", options);
   return (
-    <div className="quora__searchResult">
+    <div className={darkMode?"quora__searchResultContainerDark": "quora__searchResultContainer"}>
+      <div className={darkMode? "quora__searchResultDark": "quora__searchResult"}>
         <div className={darkMode ? "quora_timeLineDark" : "quora_timeLine"}>
       <div className="quoraprofileSection_details">
         <CgProfile
@@ -136,6 +137,7 @@ const Searchcomponent = ({ details }) => {
         }
       >
       </div>
+    </div>
     </div>
     </div>
   );
