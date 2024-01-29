@@ -65,6 +65,7 @@
 
 .quora__span{
     color: #8F9092;
+    text-decoration: none;
 }
 
 .qHeader__icon:hover{
@@ -204,7 +205,7 @@ color: #B92B27;
     }
     .qHeader__input {
         display: flex;
-        margin-left: -24px;
+        margin-left: -36px;
     }
 }
 

@@ -136,6 +136,9 @@ function App() {
                                 path="/notifications"
                                 element={<Underconstruction />}
                               />
+                              <Route path="/underconstructions"
+                                element={<Underconstruction />}
+                              />
                             </Routes>
                           </BrowserRouter>
                         </modalforCreatePost.Provider>
